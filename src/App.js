@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ChessBoard from "./ChessBoard";
+import "./App.css";
 
 function App() {
+  const startPosition = [
+    ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"],
+    ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
+    ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"]
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ChessBoard position={startPosition} perspective="white" />
     </div>
   );
 }
