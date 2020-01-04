@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.bb {
+  content: url("../images/pieces/black_bishop.png");
+}
+
+.bk {
+  content: url("../images/pieces/black_king.png");
+}
+
+.bn {
+  content: url("../images/pieces/black_knight.png");
+}
+
+.bp {
+  content: url("../images/pieces/black_pawn.png");
+}
+
+.bq {
+  content: url("../images/pieces/black_queen.png");
+}
+
+.br {
+  content: url("../images/pieces/black_rook.png");
+}
+
+.wb {
+  content: url("../images/pieces/white_bishop.png");
+}
+
+.wk {
+  content: url("../images/pieces/white_king.png");
+}
+
+.wn {
+  content: url("../images/pieces/white_knight.png");
+}
+
+.wp {
+  content: url("../images/pieces/white_pawn.png");
+}
+
+.wq {
+  content: url("../images/pieces/white_queen.png");
+}
+
+.wr {
+  content: url("../images/pieces/white_rook.png");
+}

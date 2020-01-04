@@ -1,22 +1,20 @@
 import React from "react";
-import ChessBoard from "./ChessBoard";
-import "./App.css";
+import ChessBoard from "./containers/ChessBoard";
+import InputMove from "./components/InputMove";
+import chess from "./index";
+import "./styles/App.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
-  const startPosition = [
-    ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"],
-    ["wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP"],
-    [null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null],
-    ["bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP"],
-    ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"]
-  ];
+  const makeMove = move => {
+    chess.move(move);
+    // not rerendering
+  };
 
   return (
-    <div className="App">
-      <ChessBoard position={startPosition} perspective="white" />
+    <div>
+      <ChessBoard position={chess.board()} perspective="white" />
+      <InputMove makeMove={makeMove} />
     </div>
   );
 }

@@ -1,0 +1,22 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.board {
+  width: 50%;
+}
+
+.square {
+  width: 75px;
+  height: 75px;
+}
+
+.piece {
+  max-width: 100%;
+  height: auto;
+  padding: 10%;
+}
