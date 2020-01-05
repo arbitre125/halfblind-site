@@ -4,214 +4,470 @@ import Square from "../components/Square";
 function ChessBoard(props) {
   if (props.perspective === "white") {
     return (
-      <table className="board">
+      <table className="center">
         <tbody>
           <tr>
             <td>
-              <Square color="dark" piece={props.position[0][0]} />
+              <Square
+                color="dark"
+                piece={props.position[0][0]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[0][1]} />
+              <Square
+                color="light"
+                piece={props.position[0][1]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[0][2]} />
+              <Square
+                color="dark"
+                piece={props.position[0][2]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[0][3]} />
+              <Square
+                color="light"
+                piece={props.position[0][3]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[0][4]} />
+              <Square
+                color="dark"
+                piece={props.position[0][4]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[0][5]} />
+              <Square
+                color="light"
+                piece={props.position[0][5]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[0][6]} />
+              <Square
+                color="dark"
+                piece={props.position[0][6]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[0][7]} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Square color="light" piece={props.position[1][0]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[1][1]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[1][2]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[1][3]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[1][4]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[1][5]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[1][6]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[1][7]} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Square color="dark" piece={props.position[2][0]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[2][1]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[2][2]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[2][3]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[2][4]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[2][5]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[2][6]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[2][7]} />
+              <Square
+                color="light"
+                piece={props.position[0][7]}
+                size={props.size}
+              />
             </td>
           </tr>
           <tr>
             <td>
-              <Square color="light" piece={props.position[3][0]} />
+              <Square
+                color="light"
+                piece={props.position[1][0]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[3][1]} />
+              <Square
+                color="dark"
+                piece={props.position[1][1]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[3][2]} />
+              <Square
+                color="light"
+                piece={props.position[1][2]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[3][3]} />
+              <Square
+                color="dark"
+                piece={props.position[1][3]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[3][4]} />
+              <Square
+                color="light"
+                piece={props.position[1][4]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[3][5]} />
+              <Square
+                color="dark"
+                piece={props.position[1][5]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[3][6]} />
+              <Square
+                color="light"
+                piece={props.position[1][6]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[3][7]} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Square color="dark" piece={props.position[4][0]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[4][1]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[4][2]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[4][3]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[4][4]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[4][5]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[4][6]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[4][7]} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Square color="light" piece={props.position[5][0]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[5][1]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[5][2]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[5][3]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[5][4]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[5][5]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[5][6]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[5][7]} />
+              <Square
+                color="dark"
+                piece={props.position[1][7]}
+                size={props.size}
+              />
             </td>
           </tr>
           <tr>
             <td>
-              <Square color="dark" piece={props.position[6][0]} />
+              <Square
+                color="dark"
+                piece={props.position[2][0]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[6][1]} />
+              <Square
+                color="light"
+                piece={props.position[2][1]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[6][2]} />
+              <Square
+                color="dark"
+                piece={props.position[2][2]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[6][3]} />
+              <Square
+                color="light"
+                piece={props.position[2][3]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[6][4]} />
+              <Square
+                color="dark"
+                piece={props.position[2][4]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[6][5]} />
+              <Square
+                color="light"
+                piece={props.position[2][5]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[6][6]} />
+              <Square
+                color="dark"
+                piece={props.position[2][6]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[6][7]} />
+              <Square
+                color="light"
+                piece={props.position[2][7]}
+                size={props.size}
+              />
             </td>
           </tr>
           <tr>
             <td>
-              <Square color="light" piece={props.position[7][0]} />
+              <Square
+                color="light"
+                piece={props.position[3][0]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[7][1]} />
+              <Square
+                color="dark"
+                piece={props.position[3][1]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[7][2]} />
+              <Square
+                color="light"
+                piece={props.position[3][2]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[7][3]} />
+              <Square
+                color="dark"
+                piece={props.position[3][3]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[7][4]} />
+              <Square
+                color="light"
+                piece={props.position[3][4]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[7][5]} />
+              <Square
+                color="dark"
+                piece={props.position[3][5]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[7][6]} />
+              <Square
+                color="light"
+                piece={props.position[3][6]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[7][7]} />
+              <Square
+                color="dark"
+                piece={props.position[3][7]}
+                size={props.size}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[4][0]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[4][1]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[4][2]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[4][3]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[4][4]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[4][5]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[4][6]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[4][7]}
+                size={props.size}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[5][0]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[5][1]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[5][2]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[5][3]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[5][4]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[5][5]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[5][6]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[5][7]}
+                size={props.size}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[6][0]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[6][1]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[6][2]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[6][3]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[6][4]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[6][5]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[6][6]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[6][7]}
+                size={props.size}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[7][0]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[7][1]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[7][2]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[7][3]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[7][4]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[7][5]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[7][6]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[7][7]}
+                size={props.size}
+              />
             </td>
           </tr>
         </tbody>
@@ -223,210 +479,466 @@ function ChessBoard(props) {
         <tbody>
           <tr>
             <td>
-              <Square color="dark" piece={props.position[7][7]} />
+              <Square
+                color="dark"
+                piece={props.position[7][7]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[7][6]} />
+              <Square
+                color="light"
+                piece={props.position[7][6]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[7][5]} />
+              <Square
+                color="dark"
+                piece={props.position[7][5]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[7][4]} />
+              <Square
+                color="light"
+                piece={props.position[7][4]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[7][3]} />
+              <Square
+                color="dark"
+                piece={props.position[7][3]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[7][2]} />
+              <Square
+                color="light"
+                piece={props.position[7][2]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[7][1]} />
+              <Square
+                color="dark"
+                piece={props.position[7][1]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[7][0]} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Square color="light" piece={props.position[6][7]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[6][6]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[6][5]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[6][4]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[6][3]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[6][2]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[6][1]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[6][0]} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Square color="dark" piece={props.position[5][7]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[5][6]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[5][5]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[5][4]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[5][3]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[5][2]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[5][1]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[5][0]} />
+              <Square
+                color="light"
+                piece={props.position[7][0]}
+                size={props.size}
+              />
             </td>
           </tr>
           <tr>
             <td>
-              <Square color="light" piece={props.position[4][7]} />
+              <Square
+                color="light"
+                piece={props.position[6][7]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[4][6]} />
+              <Square
+                color="dark"
+                piece={props.position[6][6]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[4][5]} />
+              <Square
+                color="light"
+                piece={props.position[6][5]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[4][4]} />
+              <Square
+                color="dark"
+                piece={props.position[6][4]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[4][3]} />
+              <Square
+                color="light"
+                piece={props.position[6][3]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[4][2]} />
+              <Square
+                color="dark"
+                piece={props.position[6][2]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[4][1]} />
+              <Square
+                color="light"
+                piece={props.position[6][1]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[4][0]} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Square color="dark" piece={props.position[3][7]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[3][6]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[3][5]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[3][4]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[3][3]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[3][2]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[3][1]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[3][0]} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Square color="light" piece={props.position[2][7]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[2][6]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[2][5]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[2][4]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[2][3]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[2][2]} />
-            </td>
-            <td>
-              <Square color="light" piece={props.position[2][1]} />
-            </td>
-            <td>
-              <Square color="dark" piece={props.position[2][0]} />
+              <Square
+                color="dark"
+                piece={props.position[6][0]}
+                size={props.size}
+              />
             </td>
           </tr>
           <tr>
             <td>
-              <Square color="dark" piece={props.position[1][7]} />
+              <Square
+                color="dark"
+                piece={props.position[5][7]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[1][6]} />
+              <Square
+                color="light"
+                piece={props.position[5][6]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[1][5]} />
+              <Square
+                color="dark"
+                piece={props.position[5][5]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[1][4]} />
+              <Square
+                color="light"
+                piece={props.position[5][4]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[1][3]} />
+              <Square
+                color="dark"
+                piece={props.position[5][3]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[1][2]} />
+              <Square
+                color="light"
+                piece={props.position[5][2]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[1][1]} />
+              <Square
+                color="dark"
+                piece={props.position[5][1]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[1][0]} />
+              <Square
+                color="light"
+                piece={props.position[5][0]}
+                size={props.size}
+              />
             </td>
           </tr>
           <tr>
             <td>
-              <Square color="light" piece={props.position[0][7]} />
+              <Square
+                color="light"
+                piece={props.position[4][7]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[0][6]} />
+              <Square
+                color="dark"
+                piece={props.position[4][6]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[0][5]} />
+              <Square
+                color="light"
+                piece={props.position[4][5]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[0][4]} />
+              <Square
+                color="dark"
+                piece={props.position[4][4]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[0][3]} />
+              <Square
+                color="light"
+                piece={props.position[4][3]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[0][2]} />
+              <Square
+                color="dark"
+                piece={props.position[4][2]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="light" piece={props.position[0][1]} />
+              <Square
+                color="light"
+                piece={props.position[4][1]}
+                size={props.size}
+              />
             </td>
             <td>
-              <Square color="dark" piece={props.position[0][0]} />
+              <Square
+                color="dark"
+                piece={props.position[4][0]}
+                size={props.size}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[3][7]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[3][6]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[3][5]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[3][4]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[3][3]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[3][2]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[3][1]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[3][0]}
+                size={props.size}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[2][7]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[2][6]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[2][5]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[2][4]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[2][3]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[2][2]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[2][1]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[2][0]}
+                size={props.size}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[1][7]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[1][6]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[1][5]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[1][4]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[1][3]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[1][2]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[1][1]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[1][0]}
+                size={props.size}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[0][7]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[0][6]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[0][5]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[0][4]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[0][3]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[0][2]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="light"
+                piece={props.position[0][1]}
+                size={props.size}
+              />
+            </td>
+            <td>
+              <Square
+                color="dark"
+                piece={props.position[0][0]}
+                size={props.size}
+              />
             </td>
           </tr>
         </tbody>

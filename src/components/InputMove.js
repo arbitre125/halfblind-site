@@ -10,13 +10,14 @@ function InputMove(props) {
 
   const handleSubmit = event => {
     props.makeMove(value);
+    setValue("");
     event.preventDefault();
   };
 
   return (
-    <div style={{ width: "20%" }}>
+    <div className="center" style={{ width: "15%", marginTop: 20 }}>
       <InputGroup>
-        <FormControl onChange={handleChange} />
+        <FormControl onChange={handleChange} value={value} />
         <InputGroup.Append>
           <Button variant="outline-secondary" onClick={handleSubmit}>
             Move
