@@ -9,464 +9,592 @@ function ChessBoard(props) {
           <tr>
             <td>
               <Square
+                name="a8"
                 color="dark"
                 piece={props.position[0][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b8"
                 color="light"
                 piece={props.position[0][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c8"
                 color="dark"
                 piece={props.position[0][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d8"
                 color="light"
                 piece={props.position[0][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e8"
                 color="dark"
                 piece={props.position[0][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f8"
                 color="light"
                 piece={props.position[0][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g8"
                 color="dark"
                 piece={props.position[0][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="h8"
                 color="light"
                 piece={props.position[0][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="a7"
                 color="light"
                 piece={props.position[1][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b7"
                 color="dark"
                 piece={props.position[1][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c7"
                 color="light"
                 piece={props.position[1][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d7"
                 color="dark"
                 piece={props.position[1][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e7"
                 color="light"
                 piece={props.position[1][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f7"
                 color="dark"
                 piece={props.position[1][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g7"
                 color="light"
                 piece={props.position[1][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="h7"
                 color="dark"
                 piece={props.position[1][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="a6"
                 color="dark"
                 piece={props.position[2][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b6"
                 color="light"
                 piece={props.position[2][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c6"
                 color="dark"
                 piece={props.position[2][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d6"
                 color="light"
                 piece={props.position[2][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e6"
                 color="dark"
                 piece={props.position[2][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f6"
                 color="light"
                 piece={props.position[2][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g6"
                 color="dark"
                 piece={props.position[2][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="h6"
                 color="light"
                 piece={props.position[2][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="a5"
                 color="light"
                 piece={props.position[3][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b5"
                 color="dark"
                 piece={props.position[3][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c5"
                 color="light"
                 piece={props.position[3][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d5"
                 color="dark"
                 piece={props.position[3][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e5"
                 color="light"
                 piece={props.position[3][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f5"
                 color="dark"
                 piece={props.position[3][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g5"
                 color="light"
                 piece={props.position[3][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="h5"
                 color="dark"
                 piece={props.position[3][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="a4"
                 color="dark"
                 piece={props.position[4][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b4"
                 color="light"
                 piece={props.position[4][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c4"
                 color="dark"
                 piece={props.position[4][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d4"
                 color="light"
                 piece={props.position[4][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e4"
                 color="dark"
                 piece={props.position[4][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f4"
                 color="light"
                 piece={props.position[4][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g4"
                 color="dark"
                 piece={props.position[4][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="h4"
                 color="light"
                 piece={props.position[4][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="a3"
                 color="light"
                 piece={props.position[5][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b3"
                 color="dark"
                 piece={props.position[5][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c3"
                 color="light"
                 piece={props.position[5][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d3"
                 color="dark"
                 piece={props.position[5][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e3"
                 color="light"
                 piece={props.position[5][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f3"
                 color="dark"
                 piece={props.position[5][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g3"
                 color="light"
                 piece={props.position[5][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="h3"
                 color="dark"
                 piece={props.position[5][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="a2"
                 color="dark"
                 piece={props.position[6][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b2"
                 color="light"
                 piece={props.position[6][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c2"
                 color="dark"
                 piece={props.position[6][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d2"
                 color="light"
                 piece={props.position[6][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e2"
                 color="dark"
                 piece={props.position[6][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f2"
                 color="light"
                 piece={props.position[6][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g2"
                 color="dark"
                 piece={props.position[6][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="h2"
                 color="light"
                 piece={props.position[6][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="a1"
                 color="light"
                 piece={props.position[7][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b1"
                 color="dark"
                 piece={props.position[7][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c1"
                 color="light"
                 piece={props.position[7][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d1"
                 color="dark"
                 piece={props.position[7][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e1"
                 color="light"
                 piece={props.position[7][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f1"
                 color="dark"
                 piece={props.position[7][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g1"
                 color="light"
                 piece={props.position[7][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="h1"
                 color="dark"
                 piece={props.position[7][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
@@ -475,469 +603,597 @@ function ChessBoard(props) {
     );
   } else {
     return (
-      <table>
+      <table className="center">
         <tbody>
           <tr>
             <td>
               <Square
+                name="h1"
                 color="dark"
                 piece={props.position[7][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g1"
                 color="light"
                 piece={props.position[7][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f1"
                 color="dark"
                 piece={props.position[7][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e1"
                 color="light"
                 piece={props.position[7][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d1"
                 color="dark"
                 piece={props.position[7][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c1"
                 color="light"
                 piece={props.position[7][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b1"
                 color="dark"
                 piece={props.position[7][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="a1"
                 color="light"
                 piece={props.position[7][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="h2"
                 color="light"
                 piece={props.position[6][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g2"
                 color="dark"
                 piece={props.position[6][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f2"
                 color="light"
                 piece={props.position[6][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e2"
                 color="dark"
                 piece={props.position[6][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d2"
                 color="light"
                 piece={props.position[6][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c2"
                 color="dark"
                 piece={props.position[6][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b2"
                 color="light"
                 piece={props.position[6][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="a2"
                 color="dark"
                 piece={props.position[6][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="h3"
                 color="dark"
                 piece={props.position[5][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g3"
                 color="light"
                 piece={props.position[5][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f3"
                 color="dark"
                 piece={props.position[5][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e3"
                 color="light"
                 piece={props.position[5][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d3"
                 color="dark"
                 piece={props.position[5][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c3"
                 color="light"
                 piece={props.position[5][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b3"
                 color="dark"
                 piece={props.position[5][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="a3"
                 color="light"
                 piece={props.position[5][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="h4"
                 color="light"
                 piece={props.position[4][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g4"
                 color="dark"
                 piece={props.position[4][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f4"
                 color="light"
                 piece={props.position[4][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e4"
                 color="dark"
                 piece={props.position[4][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d4"
                 color="light"
                 piece={props.position[4][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c4"
                 color="dark"
                 piece={props.position[4][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b4"
                 color="light"
                 piece={props.position[4][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="a4"
                 color="dark"
                 piece={props.position[4][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="h5"
                 color="dark"
                 piece={props.position[3][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g5"
                 color="light"
                 piece={props.position[3][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f5"
                 color="dark"
                 piece={props.position[3][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e5"
                 color="light"
                 piece={props.position[3][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d5"
                 color="dark"
                 piece={props.position[3][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c5"
                 color="light"
                 piece={props.position[3][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b5"
                 color="dark"
                 piece={props.position[3][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="a5"
                 color="light"
                 piece={props.position[3][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="h6"
                 color="light"
                 piece={props.position[2][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g6"
                 color="dark"
                 piece={props.position[2][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f6"
                 color="light"
                 piece={props.position[2][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e6"
                 color="dark"
                 piece={props.position[2][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d6"
                 color="light"
                 piece={props.position[2][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c6"
                 color="dark"
                 piece={props.position[2][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b6"
                 color="light"
                 piece={props.position[2][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="a6"
                 color="dark"
                 piece={props.position[2][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="h7"
                 color="dark"
                 piece={props.position[1][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g7"
                 color="light"
                 piece={props.position[1][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f7"
                 color="dark"
                 piece={props.position[1][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e7"
                 color="light"
                 piece={props.position[1][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d7"
                 color="dark"
                 piece={props.position[1][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c7"
                 color="light"
                 piece={props.position[1][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b7"
                 color="dark"
                 piece={props.position[1][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="a7"
                 color="light"
                 piece={props.position[1][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
           <tr>
             <td>
               <Square
+                name="h8"
                 color="light"
                 piece={props.position[0][7]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="g8"
                 color="dark"
                 piece={props.position[0][6]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="f8"
                 color="light"
                 piece={props.position[0][5]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="e8"
                 color="dark"
                 piece={props.position[0][4]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="d8"
                 color="light"
                 piece={props.position[0][3]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="c8"
                 color="dark"
                 piece={props.position[0][2]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="b8"
                 color="light"
                 piece={props.position[0][1]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
             <td>
               <Square
+                name="a8"
                 color="dark"
                 piece={props.position[0][0]}
                 size={props.size}
+                hiddenPiece={props.hiddenPiece}
               />
             </td>
           </tr>
