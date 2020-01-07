@@ -6,10 +6,13 @@
   margin: auto;
 }
 
+.vertical-center {
+  position: relative;
+  top: 25%;
+}
+
 .piece {
   width: 100%;
   height: auto;
   padding: 10%;
 }
-
-/* 692, 1118 */

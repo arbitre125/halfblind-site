@@ -29,6 +29,10 @@ function GameWindow(props) {
     }
   };
 
+  const getMoves = square => {
+    return chess.moves(square);
+  };
+
   return (
     <div>
       <ChessBoard
@@ -36,6 +40,7 @@ function GameWindow(props) {
         size={props.size}
         position={boardPosition}
         hiddenPiece={hiddenPiece}
+        getMoves={getMoves}
       />
       <InputMove makeMove={makeMove} />
       {showGameOverWindow && <GameOver />}

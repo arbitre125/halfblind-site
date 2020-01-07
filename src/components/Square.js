@@ -22,7 +22,10 @@ function Square(props) {
   };
 
   return (
-    <div style={squareStyle}>
+    <div
+      style={squareStyle}
+      onClick={() => props.onClick({ square: props.name })}
+    >
       {props.piece !== null && !hiddenPieceHere && (
         <Image
           className={"piece center " + props.piece.color + props.piece.type}
@@ -34,6 +37,12 @@ function Square(props) {
             "piece center " + props.hiddenPiece.color + props.hiddenPiece.piece
           }
           style={{ opacity: 0.5 }}
+        />
+      )}
+      {props.possibleMoves.includes(props.name) && (
+        <Image
+          className={"piece center vertical-center indicator"}
+          style={{ opacity: 0.5, width: "50%" }}
         />
       )}
     </div>

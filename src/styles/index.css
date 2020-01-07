@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.indicator {
+  content: url("../images/indicator.png");
+}
+
 .bb {
   content: url("../images/pieces/black_bishop.png");
 }
