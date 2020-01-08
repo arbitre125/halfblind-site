@@ -18,8 +18,7 @@ function Square(props) {
   const squareStyle = {
     backgroundColor: backgroundColor,
     width: props.size / 8,
-    height: props.size / 8,
-    margin: -1
+    height: props.size / 8
   };
 
   return (
@@ -37,7 +36,7 @@ function Square(props) {
           style={{ opacity: 0.5 }}
         />
       )}
-      {props.possibleMoves.includes(props.name) && (
+      {props.possibleMove && (
         <Image
           className={"piece center vertical-center indicator"}
           style={{ opacity: 0.5, width: "50%" }}
