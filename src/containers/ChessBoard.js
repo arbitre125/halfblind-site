@@ -3,15 +3,33 @@ import Square from "../components/Square";
 
 function ChessBoard(props) {
   const [possibleMoves, setPossibleMoves] = useState([]);
+  const [clickToMove, setClickToMove] = useState(false);
+  const [fromSquare, setFromSquare] = useState("");
 
-  const getMoves = s => {
-    setPossibleMoves(props.getMoves(s));
-    console.log(props.getMoves(s));
+  const getMoves = startSquare => {
+    setPossibleMoves(props.getMoves(startSquare));
+    console.log(props.getMoves(startSquare));
+  };
+
+  const makeMove = move => {
+    props.makeMove(move);
+    setPossibleMoves([]);
+  };
+
+  const onClickHandler = square => {
+    if (!clickToMove) {
+      getMoves(square);
+      setFromSquare(square);
+      setClickToMove(true);
+    } else {
+      makeMove({ from: fromSquare, to: square });
+      setClickToMove(false);
+    }
   };
 
   if (props.perspective === "white") {
     return (
-      <table className="center">
+      <table className="center" style={{ width: props.size }}>
         <tbody>
           <tr>
             <td>
@@ -22,7 +40,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -33,7 +51,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -44,7 +62,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -55,7 +73,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -66,7 +84,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -77,7 +95,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -88,7 +106,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -99,7 +117,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -112,7 +130,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -123,7 +141,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -134,7 +152,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -145,7 +163,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -156,7 +174,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -167,7 +185,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -178,7 +196,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -189,7 +207,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -202,7 +220,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -213,7 +231,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -224,7 +242,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -235,7 +253,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -246,7 +264,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -257,7 +275,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -268,7 +286,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -279,7 +297,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -292,7 +310,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -303,7 +321,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -314,7 +332,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -325,7 +343,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -336,7 +354,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -347,7 +365,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -358,7 +376,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -369,7 +387,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -382,7 +400,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -393,7 +411,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -404,7 +422,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -415,7 +433,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -426,7 +444,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -437,7 +455,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -448,7 +466,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -459,7 +477,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -472,7 +490,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -483,7 +501,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -494,7 +512,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -505,7 +523,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -516,7 +534,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -527,7 +545,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -538,7 +556,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -549,7 +567,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -562,7 +580,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -573,7 +591,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -584,7 +602,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -595,7 +613,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -606,7 +624,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -617,7 +635,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -628,7 +646,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -639,7 +657,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -652,7 +670,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -663,7 +681,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -674,7 +692,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -685,7 +703,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -696,7 +714,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -707,7 +725,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -718,7 +736,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -729,7 +747,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -749,7 +767,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -760,7 +778,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -771,7 +789,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -782,7 +800,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -793,7 +811,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -804,7 +822,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -815,7 +833,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -826,7 +844,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -839,7 +857,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -850,7 +868,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -861,7 +879,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -872,7 +890,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -883,7 +901,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -894,7 +912,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -905,7 +923,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -916,7 +934,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -929,7 +947,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -940,7 +958,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -951,7 +969,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -962,7 +980,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -973,7 +991,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -984,7 +1002,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -995,7 +1013,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1006,7 +1024,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -1019,7 +1037,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1030,7 +1048,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1041,7 +1059,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1052,7 +1070,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1063,7 +1081,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1074,7 +1092,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1085,7 +1103,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1096,7 +1114,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -1109,7 +1127,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1120,7 +1138,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1131,7 +1149,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1142,7 +1160,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1153,7 +1171,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1164,7 +1182,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1175,7 +1193,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1186,7 +1204,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -1199,7 +1217,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1210,7 +1228,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1221,7 +1239,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1232,7 +1250,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1243,7 +1261,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1254,7 +1272,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1265,7 +1283,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1276,7 +1294,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -1289,7 +1307,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1300,7 +1318,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1311,7 +1329,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1322,7 +1340,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1333,7 +1351,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1344,7 +1362,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1355,7 +1373,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1366,7 +1384,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>
@@ -1379,7 +1397,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1390,7 +1408,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1401,7 +1419,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1412,7 +1430,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1423,7 +1441,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1434,7 +1452,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1445,7 +1463,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
             <td>
@@ -1456,7 +1474,7 @@ function ChessBoard(props) {
                 size={props.size}
                 hiddenPiece={props.hiddenPiece}
                 possibleMoves={possibleMoves}
-                onClick={getMoves}
+                onClick={onClickHandler}
               />
             </td>
           </tr>

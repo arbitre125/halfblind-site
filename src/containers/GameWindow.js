@@ -10,7 +10,7 @@ function GameWindow(props) {
   const [showGameOverWindow, setShowGameOverWindow] = useState(false);
 
   const makeMove = move => {
-    const thisMove = chess.move(move, { sloppy: true });
+    const thisMove = chess.move(move);
     if (thisMove !== null) {
       setBoardPosition(chess.board());
       if (chess.turn_number() % 3 === 2) {
@@ -30,7 +30,7 @@ function GameWindow(props) {
   };
 
   const getMoves = square => {
-    return chess.moves(square);
+    return chess.moves({ square: square, end: true });
   };
 
   return (
@@ -41,6 +41,7 @@ function GameWindow(props) {
         position={boardPosition}
         hiddenPiece={hiddenPiece}
         getMoves={getMoves}
+        makeMove={makeMove}
       />
       <InputMove makeMove={makeMove} />
       {showGameOverWindow && <GameOver />}

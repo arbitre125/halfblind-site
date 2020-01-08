@@ -2,6 +2,7 @@ import React from "react";
 import { Image } from "react-bootstrap";
 
 function Square(props) {
+  // Half-blind functionality
   const hiddenPieceHere =
     props.hiddenPiece === null || props.piece === null
       ? false
@@ -22,10 +23,7 @@ function Square(props) {
   };
 
   return (
-    <div
-      style={squareStyle}
-      onClick={() => props.onClick({ square: props.name })}
-    >
+    <div style={squareStyle} onClick={() => props.onClick(props.name)}>
       {props.piece !== null && !hiddenPieceHere && (
         <Image
           className={"piece center " + props.piece.color + props.piece.type}
