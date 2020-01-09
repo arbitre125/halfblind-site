@@ -13,12 +13,21 @@ function Square(props) {
       ? false
       : props.name === props.hiddenPiece.fromSquare;
 
-  const backgroundColor = props.color === "light" ? "#e4e8f7" : "#a2a6b3";
+  const backgroundColor =
+    props.possibleMove && props.piece !== null && !hiddenPieceHere
+      ? props.color === "light"
+        ? "#e9bac6"
+        : "#b5858f"
+      : props.color === "light"
+      ? "#e4e8f7"
+      : "#a2a6b3";
 
   const squareStyle = {
     backgroundColor: backgroundColor,
     width: props.size / 8,
-    height: props.size / 8
+    height: props.size / 8,
+    margin: -1,
+    zIndex: 1
   };
 
   return (
@@ -33,13 +42,13 @@ function Square(props) {
           className={
             "piece center " + props.hiddenPiece.color + props.hiddenPiece.piece
           }
-          style={{ opacity: 0.5 }}
+          style={{ opacity: 0.5, zIndex: 3 }}
         />
       )}
-      {props.possibleMove && (
+      {props.possibleMove && (hiddenPieceHere || props.piece === null) && (
         <Image
           className={"piece center vertical-center indicator"}
-          style={{ opacity: 0.5, width: "50%" }}
+          style={{ opacity: 0.3, width: "50%", zIndex: 2 }}
         />
       )}
     </div>
