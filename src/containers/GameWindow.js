@@ -13,6 +13,9 @@ function GameWindow(props) {
     const thisMove = chess.move(move);
     if (thisMove !== null) {
       setBoardPosition(chess.board());
+      console.log(move);
+      console.log(chess.board());
+      console.log(chess.turn());
       if (chess.turn_number() % 3 === 2) {
         setHiddenPiece({
           toSquare: thisMove.to,

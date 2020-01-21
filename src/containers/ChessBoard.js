@@ -8,7 +8,6 @@ function ChessBoard(props) {
 
   const getMoves = startSquare => {
     setPossibleMoves(props.getMoves(startSquare));
-    console.log(props.getMoves(startSquare));
   };
 
   const makeMove = move => {
