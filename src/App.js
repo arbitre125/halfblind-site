@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 function App() {
   return (
     <div>
-      <GameWindow size={640} />
+      <GameWindow size={650} />
     </div>
   );
 }
