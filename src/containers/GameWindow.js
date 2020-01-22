@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ChessBoard from "./ChessBoard";
 import InputMove from "../components/InputMove";
 import GameOver from "../components/GameOver";
-import chess from "../index";
+import chess from "../api/chess";
 
 function GameWindow(props) {
   const [boardPosition, setBoardPosition] = useState(chess.board());
