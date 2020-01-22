@@ -10,12 +10,14 @@ function GameWindow(props) {
   const [showGameOverWindow, setShowGameOverWindow] = useState(false);
 
   const makeMove = move => {
+    console.log("attempting");
+    console.log(move);
     const thisMove = chess.move(move);
+    console.log("success?");
+    console.log(thisMove);
+    console.log("turn: " + chess.turn());
     if (thisMove !== null) {
       setBoardPosition(chess.board());
-      console.log(move);
-      console.log(chess.board());
-      console.log(chess.turn());
       if (chess.turn_number() % 3 === 2) {
         setHiddenPiece({
           toSquare: thisMove.to,
