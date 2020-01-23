@@ -15,16 +15,14 @@ function InputMove(props) {
   };
 
   return (
-    <div className="center" style={{ width: "15%", marginTop: 20 }}>
-      <InputGroup>
-        <FormControl onChange={handleChange} value={value} />
-        <InputGroup.Append>
-          <Button variant="outline-secondary" onClick={handleSubmit}>
-            Move
-          </Button>
-        </InputGroup.Append>
-      </InputGroup>
-    </div>
+    <InputGroup style={{ width: 150 }}>
+      <FormControl onChange={handleChange} value={value} />
+      <InputGroup.Append>
+        <Button variant="outline-secondary" onClick={handleSubmit}>
+          Move
+        </Button>
+      </InputGroup.Append>
+    </InputGroup>
   );
 }
 

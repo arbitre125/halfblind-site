@@ -10,12 +10,7 @@ function GameWindow(props) {
   const [showGameOverWindow, setShowGameOverWindow] = useState(false);
 
   const makeMove = move => {
-    console.log("attempting");
-    console.log(move);
     const thisMove = chess.move(move);
-    console.log("success?");
-    console.log(thisMove);
-    console.log("turn: " + chess.turn());
     if (thisMove !== null) {
       setBoardPosition(chess.board());
       if (chess.turn_number() % 3 === 2) {
@@ -35,7 +30,7 @@ function GameWindow(props) {
   };
 
   const getMoves = square => {
-    return chess.moves({ square: square, end: true });
+    return chess.moves({ square: square, verbose: true });
   };
 
   return (
@@ -48,8 +43,9 @@ function GameWindow(props) {
         getMoves={getMoves}
         makeMove={makeMove}
       />
-      <InputMove makeMove={makeMove} />
-      {showGameOverWindow && <GameOver />}
+      <div className="center">
+        <div style={{ margin: 20 }}><InputMove makeMove={makeMove} /></div>
+      </div>
     </div>
   );
 }

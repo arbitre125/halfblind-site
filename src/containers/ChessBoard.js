@@ -7,7 +7,7 @@ function ChessBoard(props) {
   const [fromSquare, setFromSquare] = useState("");
 
   const getMoves = startSquare => {
-    setPossibleMoves(props.getMoves(startSquare));
+    setPossibleMoves(props.getMoves(startSquare).map(move => move.to));
   };
 
   const makeMove = move => {
