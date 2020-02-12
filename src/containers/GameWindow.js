@@ -8,25 +8,18 @@ function GameWindow(props) {
   const [hiddenPiece, setHiddenPiece] = useState(null);
   const [showGameOverWindow, setShowGameOverWindow] = useState(false);
 
-  const makeMove = async move => {
-    const response = await fetch("/api/move", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ post: move })
-    });
-    const thisMove = response;
-    if (thisMove) {
-      setBoardPosition(getBoard());
-      if (getTurnNumber() % 3 === 2) {
+  const makeMove = move => {
+    const thisMove = chess.move(move);
+    if (thisMove !== null) {
+      setBoardPosition(chess.board());
+      if (chess.turn_number() % 3 === 2) {
         setHiddenPiece({
           toSquare: thisMove.to,
           fromSquare: thisMove.from,
           color: thisMove.color,
           type: thisMove.piece
         });
-      } else if (getTurnNumber() % 3 === 0) {
+      } else if (chess.turn_number() % 3 === 0) {
         setHiddenPiece(null);
       }
       if (chess.game_over()) {

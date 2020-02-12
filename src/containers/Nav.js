@@ -8,12 +8,7 @@ const Nav = () => {
       <Navbar.Brand>
         <Row>
           <Col>
-            <Image
-              src={logo}
-              style={{ padding: -10 }}
-              width="100"
-              height="100"
-            />
+            <Image src={logo} style={{ padding: -10 }} width="50" height="50" />
           </Col>
           <Col></Col>
         </Row>
