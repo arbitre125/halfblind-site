@@ -15,9 +15,7 @@ const Nav = () => {
               height="100"
             />
           </Col>
-          <Col>
-            <h3>Half-Blind Chess</h3>
-          </Col>
+          <Col></Col>
         </Row>
       </Navbar.Brand>
     </Navbar>

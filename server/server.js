@@ -8,20 +8,26 @@ const port = process.env.PORT || 3001;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const chess = new Chess(
-  "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2"
-);
+const chess = new Chess();
 
 app.get("/api/board", (req, res) => {
-  res.send(chess.ascii());
+  res.send(chess.board());
 });
 
-app.post("/api/world", (req, res) => {
-  console.log(req.body);
+app.get("/api/moves", (req, res) => {
+  res.send(chess.moves({ verbose: true }));
+});
+
+app.get("/api/turn_number", (req, res) => {
+  res.send(chess.turn_number());
+});
+
+app.post("/api/move", (req, res) => {
+  console.log("Move:", req.body);
   if (chess.move(req.body.post)) {
-    res.send(`The move: ${req.body.post} was made`);
+    res.send(true);
   } else {
-    res.send(`${req.body.post} is an invalid move`);
+    res.send(false);
   }
 });
 
