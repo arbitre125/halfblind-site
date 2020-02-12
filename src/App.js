@@ -1,7 +1,5 @@
 import React from "react";
 import GameWindow from "./containers/GameWindow";
-import "./styles/App.css";
-import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   return (

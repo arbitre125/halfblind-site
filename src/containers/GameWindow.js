@@ -18,7 +18,7 @@ function GameWindow(props) {
           toSquare: thisMove.to,
           fromSquare: thisMove.from,
           color: thisMove.color,
-          piece: thisMove.piece
+          type: thisMove.piece
         });
       } else if (chess.turn_number() % 3 === 0) {
         setHiddenPiece(null);
@@ -44,7 +44,9 @@ function GameWindow(props) {
         makeMove={makeMove}
       />
       <div className="center">
-        <div style={{ margin: 20 }}><InputMove makeMove={makeMove} /></div>
+        <div style={{ margin: 20 }}>
+          <InputMove makeMove={makeMove} />
+        </div>
       </div>
     </div>
   );
