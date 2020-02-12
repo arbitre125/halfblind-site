@@ -10,16 +10,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const chess = new Chess();
 
-app.get("/api/board", (req, res) => {
-  res.send(chess.board());
-});
-
-app.get("/api/moves", (req, res) => {
-  res.send(chess.moves({ verbose: true }));
-});
-
-app.get("/api/turn_number", (req, res) => {
-  res.send(chess.turn_number());
+app.get("/api/chess", (req, res) => {
+  res.send({
+    board: chess.board(),
+    turn: chess.turn(),
+    turnNumber: chess.turn_number(),
+    moves: chess.moves({ verbose: true }),
+    history: chess.history({ verbose: false }),
+    inCheck: chess.in_check(),
+    gameOver: chess.game_over(),
+    inCheckmate: chess.in_checkmate(),
+    inStalemate: chess.in_stalemate(),
+    inDraw: chess.in_draw(),
+    insufficientMaterial: chess.insufficient_material(),
+    inThreeFoldRepetition: chess.in_threefold_repetition()
+  });
 });
 
 app.post("/api/move", (req, res) => {
