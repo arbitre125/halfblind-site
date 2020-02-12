@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ChessBoard from "./ChessBoard";
 import InputMove from "../components/InputMove";
-import { getBoard, getTurnNumber } from "../api/getRequests";
 import chess from "../index";
 
 function GameWindow(props) {
-  const [boardPosition, setBoardPosition] = useState(
-    getBoard(setBoardPosition)
-  );
+  const [boardPosition, setBoardPosition] = useState(chess.board());
   const [hiddenPiece, setHiddenPiece] = useState(null);
   const [showGameOverWindow, setShowGameOverWindow] = useState(false);
 
