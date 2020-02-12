@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ChessBoard from "./ChessBoard";
 import InputMove from "../components/InputMove";
-import GameOver from "../components/GameOver";
+import getBoard from "../api/getBoard";
 import chess from "../index";
 
 function GameWindow(props) {
