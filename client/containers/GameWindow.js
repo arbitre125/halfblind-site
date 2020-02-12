@@ -44,7 +44,9 @@ function GameWindow(props) {
         makeMove={makeMove}
       />
       <div className="center">
-        <div style={{ margin: 20 }}><InputMove makeMove={makeMove} /></div>
+        <div style={{ margin: 20 }}>
+          <InputMove makeMove={makeMove} />
+        </div>
       </div>
     </div>
   );
