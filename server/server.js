@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const chess = new Chess(
   "r1bqkbnr/pppp1ppp/2n5/8/2BpP3/5N2/PPP2PPP/RNBQK2R b KQkq - 1 4"
 );
-const id = "id";
+const id = 123;
 
 app.get(`/game/${id}`, (req, res) => {
   res.send({

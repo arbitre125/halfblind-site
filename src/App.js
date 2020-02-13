@@ -1,5 +1,4 @@
 import React from "react";
-import Nav from "./containers/Nav";
 import GameWindow from "./containers/GameWindow";
 
 function App() {

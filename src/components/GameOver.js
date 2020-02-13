@@ -5,7 +5,7 @@ function GameOver(props) {
   return (
     <Card
       className="center"
-      style={{ width: "25%", position: "relative", top: "25%", zIndex: 2 }}
+      style={{ width: 300, position: "relative", top: "25%", zIndex: 2 }}
     >
       <Card.Body>
         <Card.Title>Game Over</Card.Title>
