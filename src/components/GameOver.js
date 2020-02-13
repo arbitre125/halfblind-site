@@ -1,14 +1,24 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 function GameOver(props) {
   return (
-    <div>
-      <h4 className="center">Game Over!</h4>
-      <Button className="center" variant="outline-secondary" onClick={props.newGame}>
-        New Game
-      </Button>
-    </div>
+    <Card
+      className="center"
+      style={{ width: "25%", position: "relative", top: "25%", zIndex: 2 }}
+    >
+      <Card.Body>
+        <Card.Title>Game Over</Card.Title>
+        <Card.Text>Play again!</Card.Text>
+        <Button
+          className="center"
+          variant="outline-secondary"
+          onClick={props.newGame}
+        >
+          New Game
+        </Button>
+      </Card.Body>
+    </Card>
   );
 }
 

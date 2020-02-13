@@ -28,7 +28,7 @@ function ChessBoard(props) {
 
   if (props.perspective === "white") {
     return (
-      <table className="center" style={{ width: props.size }}>
+      <table className="center" style={{ width: props.size, zIndex: 1 }}>
         <tbody>
           <tr>
             <td>
