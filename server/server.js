@@ -24,8 +24,8 @@ app.get(`/game/${id}`, (req, res) => {
     inCheck: chess.in_check(),
     gameOver: chess.game_over(),
     inCheckmate: chess.in_checkmate(),
-    inStalemate: chess.in_stalemate(),
     inDraw: chess.in_draw(),
+    inStalemate: chess.in_stalemate(),
     insufficientMaterial: chess.insufficient_material(),
     inThreeFoldRepetition: chess.in_threefold_repetition()
   });
@@ -39,6 +39,12 @@ app.post(`/game/${id}/move`, (req, res) => {
   } else {
     res.send(null);
   }
+});
+
+app.post(`/game/${id}/newgame`, (req, res) => {
+  console.log("New game!");
+  chess.reset();
+  res.send(true);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

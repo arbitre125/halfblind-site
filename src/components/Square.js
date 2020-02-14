@@ -42,8 +42,10 @@ function Square(props) {
       : props.name === props.hiddenPiece.fromSquare;
 
   const backgroundColor =
-    props.possibleMove && props.piece !== null && !hiddenPieceHere
-      ? // Colors: standard, take-highlight and last-moved-highlight respectively
+    props.piece !== null &&
+    props.possibleMove && !hiddenPieceHere // ||
+    // (props.piece.type === "k" && props.inCheck)
+      ? // Colors: take-highlight, standard respectively
         props.color === "light"
         ? "#e9bac6"
         : "#b5858f"
