@@ -1,32 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Square from "../components/Square";
 
 function ChessBoard(props) {
-  const [clickToMove, setClickToMove] = useState(false);
-  const [fromSquare, setFromSquare] = useState("");
-  const [specificPossibleMoves, setSpecificPossibleMoves] = useState([]);
-
-  useEffect(() => {
-    setSpecificPossibleMoves(
-      props.possibleMoves
-        .filter(move => move.from === fromSquare)
-        .map(move => move.to)
-    );
-  }, [fromSquare, props.possibleMoves]);
-
-  const onClickHandler = square => {
-    if (!clickToMove) {
-      if (props.possibleMoves.map(move => move.from).includes(square)) {
-        setFromSquare(square);
-        setClickToMove(true);
-      }
-    } else {
-      props.makeMove({ from: fromSquare, to: square });
-      setFromSquare("");
-      setClickToMove(false);
-    }
-  };
-
   if (props.perspective === "white") {
     return (
       <table className="center" style={{ width: props.size }}>
@@ -38,10 +13,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[0][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -50,10 +21,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[0][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -62,10 +29,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[0][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -74,10 +37,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[0][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -86,10 +45,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[0][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -98,10 +53,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[0][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -110,10 +61,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[0][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -122,10 +69,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[0][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -136,10 +79,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[1][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -148,10 +87,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[1][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -160,10 +95,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[1][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -172,10 +103,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[1][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -184,10 +111,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[1][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -196,10 +119,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[1][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -208,10 +127,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[1][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -220,10 +135,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[1][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -234,10 +145,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[2][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -246,10 +153,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[2][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -258,10 +161,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[2][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -270,10 +169,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[2][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -282,10 +177,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[2][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -294,10 +185,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[2][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -306,10 +193,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[2][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -318,10 +201,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[2][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -332,10 +211,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[3][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -344,10 +219,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[3][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -356,10 +227,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[3][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -368,10 +235,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[3][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -380,10 +243,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[3][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -392,10 +251,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[3][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -404,10 +259,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[3][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -416,10 +267,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[3][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -430,10 +277,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[4][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -442,10 +285,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[4][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -454,10 +293,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[4][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -466,10 +301,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[4][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -478,10 +309,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[4][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -490,10 +317,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[4][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -502,10 +325,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[4][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -514,10 +333,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[4][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -528,10 +343,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[5][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -540,10 +351,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[5][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -552,10 +359,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[5][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -564,10 +367,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[5][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -576,10 +375,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[5][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -588,10 +383,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[5][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -600,10 +391,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[5][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -612,10 +399,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[5][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -626,10 +409,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[6][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -638,10 +417,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[6][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -650,10 +425,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[6][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -662,10 +433,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[6][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -674,10 +441,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[6][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -686,10 +449,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[6][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -698,10 +457,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[6][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -710,10 +465,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[6][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -724,10 +475,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[7][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -736,10 +483,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[7][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -748,10 +491,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[7][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -760,10 +499,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[7][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -772,10 +507,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[7][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -784,10 +515,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[7][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -796,10 +523,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[7][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -808,10 +531,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[7][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -829,10 +548,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[7][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -841,10 +556,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[7][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -853,10 +564,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[7][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -865,10 +572,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[7][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -877,10 +580,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[7][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -889,10 +588,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[7][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -901,10 +596,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[7][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -913,10 +604,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[7][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a1")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -927,10 +614,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[6][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -939,10 +622,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[6][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -951,10 +630,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[6][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -963,10 +638,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[6][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -975,10 +646,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[6][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -987,10 +654,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[6][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -999,10 +662,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[6][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1011,10 +670,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[6][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a2")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -1025,10 +680,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[5][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1037,10 +688,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[5][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1049,10 +696,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[5][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1061,10 +704,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[5][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1073,10 +712,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[5][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1085,10 +720,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[5][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1097,10 +728,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[5][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1109,10 +736,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[5][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a3")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -1123,10 +746,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[4][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1135,10 +754,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[4][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1147,10 +762,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[4][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1159,10 +770,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[4][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1171,10 +778,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[4][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1183,10 +786,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[4][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1195,10 +794,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[4][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1207,10 +802,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[4][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a4")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -1221,10 +812,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[3][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1233,10 +820,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[3][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1245,10 +828,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[3][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1257,10 +836,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[3][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1269,10 +844,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[3][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1281,10 +852,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[3][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1293,10 +860,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[3][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1305,10 +868,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[3][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a5")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -1319,10 +878,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[2][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1331,10 +886,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[2][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1343,10 +894,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[2][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1355,10 +902,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[2][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1367,10 +910,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[2][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1379,10 +918,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[2][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1391,10 +926,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[2][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1403,10 +934,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[2][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a6")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -1417,10 +944,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[1][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1429,10 +952,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[1][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1441,10 +960,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[1][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1453,10 +968,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[1][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1465,10 +976,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[1][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1477,10 +984,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[1][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1489,10 +992,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[1][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1501,10 +1000,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[1][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a7")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>
@@ -1515,10 +1010,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[0][7]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("h8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1527,10 +1018,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[0][6]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("g8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1539,10 +1026,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[0][5]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("f8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1551,10 +1034,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[0][4]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("e8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1563,10 +1042,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[0][3]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("d8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1575,10 +1050,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[0][2]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("c8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1587,10 +1058,6 @@ function ChessBoard(props) {
                 color="dark"
                 piece={props.position[0][1]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("b8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
             <td>
@@ -1599,10 +1066,6 @@ function ChessBoard(props) {
                 color="light"
                 piece={props.position[0][0]}
                 size={props.size}
-                hiddenPiece={props.hiddenPiece}
-                possibleMove={specificPossibleMoves.includes("a8")}
-                onClick={onClickHandler}
-                inCheck={props.inCheck}
               />
             </td>
           </tr>

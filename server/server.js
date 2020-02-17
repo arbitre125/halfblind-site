@@ -41,10 +41,4 @@ app.post(`/game/${id}/move`, (req, res) => {
   }
 });
 
-app.post(`/game/${id}/newgame`, (req, res) => {
-  console.log("New game!");
-  chess.reset();
-  res.send(true);
-});
-
 app.listen(port, () => console.log(`Listening on port ${port}`));
