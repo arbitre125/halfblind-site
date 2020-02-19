@@ -9,16 +9,24 @@ function InputMove(props) {
   };
 
   const handleSubmit = event => {
+    event.preventDefault();
     props.makeMove(value);
     setValue("");
-    event.preventDefault();
   };
 
   return (
     <InputGroup style={{ width: 150 }}>
-      <FormControl onChange={handleChange} value={value} />
+      <FormControl
+        className="no-outline"
+        onChange={handleChange}
+        value={value}
+      />
       <InputGroup.Append>
-        <Button variant="outline-secondary" onClick={handleSubmit}>
+        <Button
+          className="light-btn"
+          variant="outline-light"
+          onClick={handleSubmit}
+        >
           Move
         </Button>
       </InputGroup.Append>

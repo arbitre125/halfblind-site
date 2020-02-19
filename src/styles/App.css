@@ -7,12 +7,90 @@
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin: auto;
+}
+
+.no-padding-no-margin {
+  padding: 0px;
+  margin: 0px;
+}
+
+.main {
+  background-color: #4c5157;
+}
+
+.secondary {
+  background-color: #343a40;
+}
+
+.board-bg {
+  position: relative;
+  z-index: 1;
+}
+
+.board-bg:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url("../images/board.jpeg");
+  background-size: auto;
+  opacity: 0.05;
+}
+
+.txt-xs {
+  font-size: 12px;
+}
+
+.txt-sm {
+  font-size: 16px;
+}
+
+.txt-md {
+  font-size: 24px;
+}
+
+.txt-lg {
+  font-size: 32px;
+}
+
+.white-txt {
+  color: #ffffff;
+}
+
+.grey-txt {
+  color: #e0e0e0 !important;
+}
+
+.grey-link {
+  color: #e0e0e0 !important;
+}
+
+.grey-link:hover {
+  color: white !important;
+}
+
+.light-btn {
+  color: #e0e0e0;
+}
+
+.light-btn:hover {
+  color: white;
+  background-color: #343a40;
 }
 
 .indicator {

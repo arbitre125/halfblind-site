@@ -12,7 +12,7 @@ import bn from "../images/pieces/black_knight.png";
 import bp from "../images/pieces/black_pawn.png";
 import bq from "../images/pieces/black_queen.png";
 import br from "../images/pieces/black_rook.png";
-import ind from "../images/indicator.png";
+// import ind from "../images/indicator.png";
 
 const imageMap = new Map([
   ["wb", wb],
@@ -30,28 +30,7 @@ const imageMap = new Map([
 ]);
 
 function Square(props) {
-  // Half-blind functionality
-  const hiddenPieceHere =
-    props.hiddenPiece === null || props.piece === null
-      ? false
-      : props.name === props.hiddenPiece.toSquare;
-
-  const hiddenPieceWasHere =
-    props.hiddenPiece === null
-      ? false
-      : props.name === props.hiddenPiece.fromSquare;
-
-  const backgroundColor =
-    props.piece !== null &&
-    props.possibleMove && !hiddenPieceHere // ||
-    // (props.piece.type === "k" && props.inCheck)
-      ? // Colors: take-highlight, standard respectively
-        props.color === "light"
-        ? "#e9bac6"
-        : "#b5858f"
-      : props.color === "light"
-      ? "#e4e8f7"
-      : "#a2a6b3";
+  const backgroundColor = props.color === "light" ? "#e4e8f7" : "#a2a6b3";
 
   const squareStyle = {
     backgroundColor: backgroundColor,
@@ -62,26 +41,12 @@ function Square(props) {
   };
 
   return (
-    <div
-      className="no-select"
-      style={squareStyle}
-      onClick={() => props.onClick(props.name)}
-    >
-      {props.piece !== null && !hiddenPieceHere && (
+    <div className="no-select" style={squareStyle}>
+      {props.piece !== null && (
         <Image
           className="piece center"
           src={imageMap.get(props.piece.color + props.piece.type)}
         />
-      )}
-      {hiddenPieceWasHere && (
-        <Image
-          className="piece center"
-          src={imageMap.get(props.hiddenPiece.color + props.hiddenPiece.type)}
-          style={{ opacity: 0.5 }}
-        />
-      )}
-      {props.possibleMove && (hiddenPieceHere || props.piece === null) && (
-        <Image className={"piece center indicator"} src={ind} />
       )}
     </div>
   );

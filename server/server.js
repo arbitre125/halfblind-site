@@ -9,9 +9,7 @@ const port = process.env.PORT || 3001;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const chess = new Chess(
-  "r1bqkbnr/pppp1ppp/2n5/8/2BpP3/5N2/PPP2PPP/RNBQK2R b KQkq - 1 4"
-);
+const chess = new Chess();
 const id = 123;
 
 app.get(`/game/${id}`, (req, res) => {
@@ -37,7 +35,7 @@ app.post(`/game/${id}/move`, (req, res) => {
     console.log("Move:", req.body.move);
     res.send(moveAttempt);
   } else {
-    res.send(null);
+    res.send(null); // check if this is needed
   }
 });
 
