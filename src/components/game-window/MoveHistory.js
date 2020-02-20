@@ -18,11 +18,11 @@ const MoveHistory = props => {
 
   return (
     <Card
+      className="secondary"
       style={{
         width: 250,
         maxHeight: 320,
-        overflowY: "scroll",
-        backgroundColor: "#343a40"
+        overflowY: "scroll"
       }}
     >
       <Card.Body className="grey-txt txt-sm" style={{ marginTop: -10 }}>

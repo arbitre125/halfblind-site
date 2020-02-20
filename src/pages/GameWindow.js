@@ -56,9 +56,14 @@ function GameWindow(props) {
         </Col>
       </Row>
       <div className="center">
-        <div style={{ margin: 20, marginLeft: 40 }}>
+        <div style={{ marginTop: 20, marginBottom: 10 }}>
           <InputMove makeMove={makeMove} />
         </div>
+      </div>
+      <div className="center">
+        <p className="center grey-txt txt-xs">
+          Input your move in valid PGN format
+        </p>
       </div>
     </div>
   );

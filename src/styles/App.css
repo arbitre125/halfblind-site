@@ -26,12 +26,12 @@
   margin: 0px;
 }
 
-.main {
-  background-color: #4c5157;
+.primary {
+  background-color: #464a50;
 }
 
 .secondary {
-  background-color: #343a40;
+  background-color: #2d3136;
 }
 
 .board-bg {
@@ -49,7 +49,7 @@
   right: 0;
   background-image: url("../images/board.jpeg");
   background-size: auto;
-  opacity: 0.05;
+  opacity: 0.4;
 }
 
 .txt-xs {

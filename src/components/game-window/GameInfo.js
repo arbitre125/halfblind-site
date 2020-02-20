@@ -4,22 +4,22 @@ import { Card } from "react-bootstrap";
 const GameInfo = props => {
   return (
     <Card
+      className="secondary"
       style={{
         float: "right",
         top: props.size / 2 - props.size / 8,
         width: 300,
-        height: 160,
-        backgroundColor: "#343a40"
+        height: 160
       }}
     >
       <Card.Body style={{ padding: 10 }}>
         <table>
           <tr className="white-txt txt-md">
-            <td width="200">M. Carlsen</td>
+            <td width="200">aStandardTwe</td>
             <td>0:00.0</td>
           </tr>
           <tr className="grey-txt txt-xs">
-            <td>2863</td>
+            <td>2862</td>
           </tr>
           <br />
           <tr className="white-txt txt-md">

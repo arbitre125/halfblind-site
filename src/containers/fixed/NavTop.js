@@ -4,7 +4,7 @@ import half_eye from "../../images/logos/half-eye-l-w.png";
 
 const NavTop = () => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar className="secondary" variant="dark">
       <Navbar.Brand
         href="/"
         className="no-select"
@@ -37,7 +37,9 @@ const NavTop = () => {
             Challenge a Friend
           </NavDropdown.Item>
         </NavDropdown>
-        <Nav.Link className="grey-link txt-sm">About</Nav.Link>
+        <Nav.Link href="/about" className="grey-link txt-sm">
+          About
+        </Nav.Link>
       </Nav>
       <Nav className="mr-sm-2">
         <Nav.Link className="grey-link txt-sm">Login</Nav.Link>
