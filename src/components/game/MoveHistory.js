@@ -7,7 +7,7 @@ const MoveHistory = props => {
       className="secondary"
       style={{
         width: 250,
-        maxHeight: 320,
+        maxHeight: props.size / 2,
         overflowY: "scroll"
       }}
     >

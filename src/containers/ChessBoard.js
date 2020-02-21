@@ -4,7 +4,10 @@ import Square from "../components/Square";
 function ChessBoard(props) {
   if (props.perspective === "white") {
     return (
-      <table className="center" style={{ width: props.size }}>
+      <table
+        className="center no-padding-no-margin"
+        style={{ width: props.size }}
+      >
         <tbody>
           <tr>
             <td>

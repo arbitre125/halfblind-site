@@ -77,7 +77,7 @@ function GameWindow(props) {
 
   return (
     <div style={{ paddingTop: 20, paddingBottom: 100 }}>
-      <Row>
+      <Row style={{ display: "flex" }}>
         <Col
           style={{
             padding: 5
@@ -113,6 +113,16 @@ function GameWindow(props) {
           <MoveHistory size={props.size} moveHistory={moveHistory} />
         </Col>
       </Row>
+      <div className="center">
+        <div style={{ position: "relative", marginTop: 20, marginBottom: 10 }}>
+          <InputMove makeMove={makeMove} />
+        </div>
+      </div>
+      <div className="center">
+        <p className="center grey-txt txt-xs">
+          Input your move in valid PGN format
+        </p>
+      </div>
       {gameOver !== -1 && (
         <GameOver
           type={gameOver}
@@ -123,16 +133,6 @@ function GameWindow(props) {
           size={props.size}
         />
       )}
-      <div className="center">
-        <div style={{ marginTop: 20, marginBottom: 10 }}>
-          <InputMove makeMove={makeMove} />
-        </div>
-      </div>
-      <div className="center">
-        <p className="center grey-txt txt-xs">
-          Input your move in valid PGN format
-        </p>
-      </div>
     </div>
   );
 }

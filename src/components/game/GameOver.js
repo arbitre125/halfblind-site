@@ -29,8 +29,9 @@ const GameOver = props => {
         className="center secondary"
         style={{
           width: 300,
+          height: 200,
           position: "relative",
-          top: (-3 * props.size) / 4 + 20
+          top: -(props.size / 2 + 100 + 87)
         }}
       >
         <Card.Body>
