@@ -1,6 +1,6 @@
 ## Half-Blind Chess
 
-Half-blind chess ([halfblindchess.com](https://halfblindchess.com)) is a free, adless and open-source chess project for the half-blind variant.
+Half-blind chess ([half-blind-chess.web.app](https://half-blind-chess.web.app)) is a free, adless and open-source chess project for the half-blind variant.
 
 ![](half-blind.png)
 
