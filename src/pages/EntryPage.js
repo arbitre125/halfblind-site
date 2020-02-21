@@ -7,27 +7,27 @@ const EntryPage = () => {
   return (
     <>
       <div className="no-padding-no-margin board-bg" style={{ height: 650 }}>
+        <Image
+          src={whole_logo}
+          width="500"
+          style={{ position: "absolute", right: -200, top: 27, opacity: 0.5 }}
+        />
         <div style={{ paddingTop: 250 }}>
           <div className="center" style={{ padding: 10 }}>
             <p className="center white-txt txt-md">
-              Play half-blind chess online!
+              Play half-blind chess offline!
             </p>
           </div>
           <div className="center">
-            <Button className="light-btn" variant="outline-light" href="/play">
+            <Button variant="outline-light" href="/game">
               Play
             </Button>
           </div>
         </div>
-        <Image
-          src={whole_logo}
-          width="500"
-          style={{ position: "absolute", right: -200, top: "5%", opacity: 0.5 }}
-        />
       </div>
       <div
         className="secondary"
-        style={{ height: "80vh", paddingLeft: 80, paddingRight: 80 }}
+        style={{ height: 500, paddingLeft: 80, paddingRight: 80 }}
       >
         <p
           className="white-txt txt-lg"
@@ -35,7 +35,7 @@ const EntryPage = () => {
         >
           Rules:
         </p>
-        <p className="grey-txt txt-md">
+        <p className="grey-txt txt-sm-md">
           <ol>
             <li style={{ paddingBottom: 20 }}>
               Every third turn, a player makes a <b>half-blind move</b>.

@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";
 import half_eye from "../../images/logos/half-eye-l-w.png";
 
-const NavTop = () => {
+const Header = () => {
   return (
     <Navbar className="secondary" variant="dark">
       <Navbar.Brand
@@ -17,36 +17,37 @@ const NavTop = () => {
           <Col>
             <p className="white-txt txt-md" style={{ marginLeft: -20 }}>
               Half-Blind Chess{" "}
-              <p style={{ marginTop: -8 }} className="grey-txt txt-sm">
-                alpha v1.0
-              </p>
+            </p>
+            <p
+              style={{ marginTop: -22, marginLeft: -20 }}
+              className="grey-txt txt-sm"
+            >
+              alpha v0.1
             </p>
           </Col>
         </Row>
       </Navbar.Brand>
       <Nav className="mr-auto">
         <NavDropdown title={<span className="grey-link txt-sm">Play</span>}>
-          <NavDropdown.Item href="/play" className="txt-sm">
+          <NavDropdown.Item href="/game" className="txt-sm">
             Play Offline
           </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item className="txt-sm">
-            Find an Opponent
-          </NavDropdown.Item>
-          <NavDropdown.Item className="txt-sm">
-            Challenge a Friend
-          </NavDropdown.Item>
         </NavDropdown>
         <Nav.Link href="/about" className="grey-link txt-sm">
           About
         </Nav.Link>
       </Nav>
       <Nav className="mr-sm-2">
-        <Nav.Link className="grey-link txt-sm">Login</Nav.Link>
-        <Nav.Link className="grey-link txt-sm">Register</Nav.Link>
+        <Nav.Link href="/login" className="grey-link txt-sm">
+          Login
+        </Nav.Link>
+        <Nav.Link href="/register" className="grey-link txt-sm">
+          Register
+        </Nav.Link>
       </Nav>
     </Navbar>
   );
 };
 
-export default NavTop;
+export default Header;

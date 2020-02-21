@@ -22,11 +22,7 @@ function InputMove(props) {
         value={value}
       />
       <InputGroup.Append>
-        <Button
-          className="light-btn"
-          variant="outline-light"
-          onClick={handleSubmit}
-        >
+        <Button variant="outline-light" onClick={handleSubmit}>
           Move
         </Button>
       </InputGroup.Append>

@@ -8,7 +8,7 @@ const AboutPage = () => {
       <Image
         src={whole_logo}
         width="500"
-        style={{ position: "absolute", right: -200, top: "10%", opacity: 0.5 }}
+        style={{ position: "absolute", right: -200, top: 93, opacity: 0.5 }}
       />
       <div
         className="secondary"
@@ -23,14 +23,14 @@ const AboutPage = () => {
           <p className="white-txt txt-lg" style={{ paddingBottom: 20 }}>
             About
           </p>
-          <p className="grey-txt txt-sm">
+          <p className="grey-txt txt-sm-md">
             Half-blind chess is a free, adless and open-source chess project for
             the <b>half-blind</b> variant.
           </p>
-          <p className="grey-txt txt-sm">
+          <p className="grey-txt txt-sm-md">
             Released in early 2020, the project is still in its early stages. If
-            you notice any bugs, imagine any improvements, or want to contribute
-            in any way, see the contact links below.
+            you notice any bugs, envision any improvements, or want to
+            contribute in any way, feel free to share via the links below.
           </p>
           <p
             className="white-txt txt-lg"
@@ -38,19 +38,19 @@ const AboutPage = () => {
           >
             Contact / Contribute
           </p>
-          <p className="grey-link txt-sm">
+          <p className="grey-link txt-sm-md">
             Email:{" "}
             <a
-              className="grey-link txt-sm"
+              className="grey-link txt-sm-md"
               href="mailto:benchaplin@protonmail.ch"
             >
               benchaplin@protonmail.ch
             </a>
           </p>
-          <p className="grey-link txt-sm">
+          <p className="grey-link txt-sm-md">
             Github:{" "}
             <a
-              className="grey-link txt-sm"
+              className="grey-link txt-sm-md"
               href="https://github.com/benchaplin/halfblind-site"
             >
               https://github.com/benchaplin/halfblind-site
@@ -70,14 +70,15 @@ const AboutPage = () => {
         </p>
         <ul style={{ color: "white" }}>
           <li>
-            <p className="grey-txt txt-sm">alpha v0.1.0 (02.20.20):</p>
+            <p className="grey-txt txt-sm-md">alpha v0.1.0 (02.21.20):</p>
             <ul>
               <li>
                 <p className="grey-txt txt-sm">Initial release.</p>
               </li>
               <li>
                 <p className="grey-txt txt-sm">
-                  <b>Added:</b> Offline mode, account creation, basic layout.
+                  <b>Added:</b> Offline mode (move by form input), account
+                  creation, basic layout.
                 </p>
               </li>
             </ul>

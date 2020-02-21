@@ -13,6 +13,13 @@
   box-shadow: none;
 }
 
+.center-horiz {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -49,7 +56,7 @@
   right: 0;
   background-image: url("../images/board.jpeg");
   background-size: auto;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .txt-xs {
@@ -60,8 +67,16 @@
   font-size: 16px;
 }
 
+.txt-sm-md {
+  font-size: 18px;
+}
+
 .txt-md {
   font-size: 24px;
+}
+
+.txt-md-lg {
+  font-size: 28px;
 }
 
 .txt-lg {
@@ -82,15 +97,6 @@
 
 .grey-link:hover {
   color: white !important;
-}
-
-.light-btn {
-  color: #e0e0e0;
-}
-
-.light-btn:hover {
-  color: white;
-  background-color: #343a40;
 }
 
 .indicator {
