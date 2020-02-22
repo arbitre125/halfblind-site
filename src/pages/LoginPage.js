@@ -6,6 +6,7 @@ const LoginPage = () => {
     <div
       className="center-horiz secondary"
       style={{
+        height: "100vh",
         padding: 60,
         paddingTop: 20
       }}
