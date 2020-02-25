@@ -76,7 +76,7 @@ function GameWindow(props) {
   };
 
   return (
-    <div style={{ paddingTop: 20, paddingBottom: 100 }}>
+    <div style={{ height: "100vh", paddingTop: 20, paddingBottom: 100 }}>
       <Row style={{ display: "flex" }}>
         <Col
           style={{

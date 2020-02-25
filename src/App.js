@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./containers/fixed/Header";
 import EntryPage from "./pages/EntryPage";
@@ -6,13 +6,20 @@ import GameWindow from "./pages/GameWindow";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
 import Footer from "./containers/fixed/Footer";
 
 function App() {
+  const [userLogged, setUserLogged] = useState(
+    typeof localStorage.usertoken !== "undefined"
+  );
+
+  console.log("logged: " + userLogged);
+
   return (
     <div className="primary">
       <div>
-        <Header />
+        <Header setUserLogged={setUserLogged} />
       </div>
       <div>
         <BrowserRouter>
@@ -34,11 +41,23 @@ function App() {
             />
             <Route
               path="/login"
-              render={history => <LoginPage {...history} isAuthed={true} />}
+              render={history => (
+                <LoginPage
+                  {...history}
+                  setUserLogged={setUserLogged}
+                  isAuthed={true}
+                />
+              )}
             />
             <Route
               path="/register"
               render={history => <RegisterPage {...history} isAuthed={true} />}
+            />
+            <Route
+              path="/profile"
+              render={history => (
+                <ProfilePage {...history} isAuthed={userLogged} />
+              )}
             />
           </Switch>
         </BrowserRouter>

@@ -35,35 +35,34 @@ const EntryPage = () => {
         >
           Rules:
         </p>
-        <p className="grey-txt txt-sm-md">
-          <ol>
-            <li style={{ paddingBottom: 20 }}>
-              Every third turn, a player makes a <b>half-blind move</b>.
-            </li>
-            <li style={{ paddingBottom: 20 }}>
-              A <b>half-blind move</b> is a move in which the opposing player
-              only sees <i>which</i> piece was moved, not <i>where</i> it was
-              moved to.
-              <p className="grey-txt txt-sm" style={{ paddingTop: 20 }}>
-                <i>
-                  (&nbsp;the piece is indicated by the half-blind icon:{" "}
-                  <span>
-                    <Image
-                      src={half_eye}
-                      width="20"
-                      style={{ marginBottom: 5 }}
-                    />
-                  </span>{" "}
-                  )
-                </i>
-              </p>
-            </li>
-            <li style={{ marginTop: -20, paddingBottom: 20 }}>
-              The position of the piece remains hidden until the next turn has
-              been made.
-            </li>
-          </ol>
-        </p>
+        <ol className="grey-txt txt-sm-md">
+          <li style={{ paddingBottom: 20 }}>
+            Every third turn, a player makes a <b>half-blind move</b>.
+          </li>
+          <li style={{ paddingBottom: 20 }}>
+            A <b>half-blind move</b> is a move in which the opposing player only
+            sees <i>which</i> piece was moved, not <i>where</i> it was moved to.
+            <div style={{ height: 10 }}></div>
+            <span className="grey-txt txt-sm">
+              <i>
+                (&nbsp;the piece is indicated by the half-blind icon:{" "}
+                <span>
+                  <Image
+                    src={half_eye}
+                    width="20"
+                    style={{ marginBottom: 5 }}
+                  />
+                </span>{" "}
+                )
+              </i>
+            </span>
+            <div style={{ height: 10 }}></div>
+          </li>
+          <li style={{ marginTop: -20, paddingBottom: 20 }}>
+            The position of the piece remains hidden until the next turn has
+            been made.
+          </li>
+        </ol>
       </div>
     </>
   );

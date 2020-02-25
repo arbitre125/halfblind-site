@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 
-const RegisterPage = () => {
+const RegisterPage = props => {
+  const [info, setInfo] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+  const onChange = e => {
+    setInfo({ ...info, [e.target.id]: e.target.value });
+  };
+
+  const register = async newUser => {
+    await axios
+      .post("/users/register", {
+        username: newUser.username,
+        email: newUser.email,
+        password: newUser.password
+      })
+      .then(res => console.log("Registered."))
+      .catch(err => console.log(err));
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+
+    // Confirm passwords match !!
+
+    register({
+      email: info.email,
+      username: info.username,
+      password: info.password
+    })
+      .then(res => {
+        props.history.push("/login");
+      })
+      .catch(err => console.log(err));
+  };
+
   return (
     <div
       className="center-horiz secondary"
@@ -16,23 +55,44 @@ const RegisterPage = () => {
         <Form className="white-txt txt-sm-md">
           <Form.Group controlId="email">
             <Form.Label style={{ float: "left" }}>Email</Form.Label>
-            <Form.Control type="text" placeholder="Enter email" />
+            <Form.Control
+              type="text"
+              value={info.email}
+              onChange={onChange}
+              placeholder="Enter email"
+            />
           </Form.Group>
           <Form.Group controlId="username">
             <Form.Label style={{ float: "left" }}>Username</Form.Label>
-            <Form.Control type="text" placeholder="Enter username" />
+            <Form.Control
+              type="text"
+              value={info.username}
+              onChange={onChange}
+              placeholder="Enter username"
+            />
           </Form.Group>
           <Form.Group controlId="password">
             <Form.Label style={{ float: "left" }}>Password</Form.Label>
-            <Form.Control type="password" placeholder="Enter password" />
+            <Form.Control
+              type="password"
+              value={info.password}
+              onChange={onChange}
+              placeholder="Enter password"
+            />
           </Form.Group>
-          <Form.Group controlId="password">
+          <Form.Group controlId="confirmPassword">
             <Form.Label style={{ float: "left" }}>Confirm password</Form.Label>
-            <Form.Control type="password" placeholder="Confirm password" />
+            <Form.Control
+              type="password"
+              value={info.confirmPassword}
+              onChange={onChange}
+              placeholder="Confirm password"
+            />
           </Form.Group>
           <Button
             className="dark-btn"
             variant="outline-light"
+            onClick={onSubmit}
             style={{ marginTop: 10 }}
           >
             Register

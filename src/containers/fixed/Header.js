@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";
+import decode from "jwt-decode";
 import half_eye from "../../images/logos/half-eye-l-w.png";
 
-const Header = () => {
+const Header = props => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    if (localStorage.usertoken) {
+      setUsername(decode(localStorage.usertoken).username);
+    }
+  }, []);
+
+  const logout = e => {
+    e.preventDefault();
+    localStorage.removeItem("usertoken");
+    props.setUserLogged(false);
+    setUsername("");
+  };
+
+  const notLoggedIn = (
+    <Nav className="mr-sm-2">
+      <Nav.Link href="/login" className="grey-link txt-sm">
+        Login
+      </Nav.Link>
+      <Nav.Link href="/register" className="grey-link txt-sm">
+        Register
+      </Nav.Link>
+    </Nav>
+  );
+
+  const loggedIn = (
+    <Nav className="mr-sm-2">
+      <Nav.Link href="/profile" className="grey-link txt-sm">
+        {username}
+      </Nav.Link>
+      <Nav.Link href="/login" onClick={logout} className="grey-link txt-sm">
+        Logout
+      </Nav.Link>
+    </Nav>
+  );
+
   return (
     <Navbar className="secondary" variant="dark">
       <Navbar.Brand
@@ -38,14 +76,7 @@ const Header = () => {
           About
         </Nav.Link>
       </Nav>
-      <Nav className="mr-sm-2">
-        <Nav.Link href="/login" className="grey-link txt-sm">
-          Login
-        </Nav.Link>
-        <Nav.Link href="/register" className="grey-link txt-sm">
-          Register
-        </Nav.Link>
-      </Nav>
+      {localStorage.usertoken ? loggedIn : notLoggedIn}
     </Navbar>
   );
 };
