@@ -1,13 +1,21 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
-const Chess = require("./chess/chess").Chess;
-const uuid = require("uuid");
 
 const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const Users = require("./routes/Users");
+
+app.use("/users", Users);
+
+// Building chess api
+
+const Chess = require("./chess/chess").Chess;
 
 const chess = new Chess("8/8/8/8/1k6/8/1p6/1K6 b - - 0 1");
 const id = 123;
