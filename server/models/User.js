@@ -17,6 +17,9 @@ module.exports = db.sequelize.define(
     },
     password: {
       type: Sequelize.STRING
+    },
+    date_created: {
+      type: Sequelize.STRING
     }
   },
   {

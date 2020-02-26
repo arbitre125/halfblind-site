@@ -19,10 +19,9 @@ const LoginPage = props => {
       .then(res => {
         if (res.data) {
           localStorage.setItem("usertoken", res.data.token);
-          props.setUserLogged(true);
-          props.history.push("/profile");
         } else {
           setWrongAlert(true);
+          setInfo({ email: "", password: "" });
         }
       })
       .catch(err => console.log(err));

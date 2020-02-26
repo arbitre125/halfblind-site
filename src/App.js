@@ -10,53 +10,51 @@ import ProfilePage from "./pages/ProfilePage";
 import Footer from "./containers/fixed/Footer";
 
 function App() {
-  const [userLogged, setUserLogged] = useState(
-    typeof localStorage.usertoken !== "undefined"
+  const [userLoggedIn, setUserLoggedIn] = useState(
+    localStorage.hasOwnProperty("usertoken")
   );
-
-  console.log("logged: " + userLogged);
 
   return (
     <div className="primary">
       <div>
-        <Header setUserLogged={setUserLogged} />
-      </div>
-      <div>
         <BrowserRouter>
+          <div>
+            <Header setUserLoggedIn={setUserLoggedIn} />
+          </div>
           <Switch>
             <Route
               exact
               path="/"
-              render={history => <EntryPage {...history} isAuthed={true} />}
+              render={history => <EntryPage {...history} />}
             />
             <Route
               path="/game"
-              render={history => (
-                <GameWindow size={640} {...history} isAuthed={true} />
-              )}
+              render={history => <GameWindow {...history} size={640} />}
             />
             <Route
               path="/about"
-              render={history => <AboutPage {...history} isAuthed={true} />}
+              render={history => <AboutPage {...history} />}
             />
             <Route
               path="/login"
               render={history => (
                 <LoginPage
                   {...history}
-                  setUserLogged={setUserLogged}
-                  isAuthed={true}
+                  userLoggedIn={userLoggedIn}
+                  setUserLoggedIn={setUserLoggedIn}
                 />
               )}
             />
             <Route
               path="/register"
-              render={history => <RegisterPage {...history} isAuthed={true} />}
+              render={history => (
+                <RegisterPage {...history} userLoggedIn={userLoggedIn} />
+              )}
             />
             <Route
               path="/profile"
               render={history => (
-                <ProfilePage {...history} isAuthed={userLogged} />
+                <ProfilePage {...history} userLoggedIn={userLoggedIn} />
               )}
             />
           </Switch>

@@ -6,8 +6,10 @@ import MoveHistory from "../components/game/MoveHistory";
 import GameOver from "../components/game/GameOver";
 import InputMove from "../components/game/InputMove";
 import axios from "axios";
+import uuid from "uuid";
 
 function GameWindow(props) {
+  const [gameId, setGameId] = useState(uuid());
   const [boardPosition, setBoardPosition] = useState(
     Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null))
   );

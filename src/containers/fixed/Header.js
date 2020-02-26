@@ -15,8 +15,7 @@ const Header = props => {
   const logout = e => {
     e.preventDefault();
     localStorage.removeItem("usertoken");
-    props.setUserLogged(false);
-    setUsername("");
+    props.setUserLoggedIn(false);
   };
 
   const notLoggedIn = (
@@ -32,9 +31,12 @@ const Header = props => {
 
   const loggedIn = (
     <Nav className="mr-sm-2">
-      <Nav.Link href="/profile" className="grey-link txt-sm">
-        {username}
-      </Nav.Link>
+      <NavDropdown
+        alignRight
+        title={<span className="grey-link txt-sm">{username}</span>}
+      >
+        <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+      </NavDropdown>
       <Nav.Link href="/login" onClick={logout} className="grey-link txt-sm">
         Logout
       </Nav.Link>
@@ -70,7 +72,6 @@ const Header = props => {
           <NavDropdown.Item href="/game" className="txt-sm">
             Play Offline
           </NavDropdown.Item>
-          <NavDropdown.Divider />
         </NavDropdown>
         <Nav.Link href="/about" className="grey-link txt-sm">
           About

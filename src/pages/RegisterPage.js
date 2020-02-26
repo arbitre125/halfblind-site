@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 
 const RegisterPage = props => {
   const [info, setInfo] = useState({
@@ -9,6 +9,7 @@ const RegisterPage = props => {
     password: "",
     confirmPassword: ""
   });
+  const [successAlert, setSuccessAlert] = useState(false);
 
   const onChange = e => {
     setInfo({ ...info, [e.target.id]: e.target.value });
@@ -36,7 +37,8 @@ const RegisterPage = props => {
       password: info.password
     })
       .then(res => {
-        props.history.push("/login");
+        setInfo({ email: "", username: "", password: "", confirmPassword: "" });
+        setSuccessAlert(true);
       })
       .catch(err => console.log(err));
   };
@@ -98,6 +100,17 @@ const RegisterPage = props => {
             Register
           </Button>
         </Form>
+        {successAlert && (
+          <Alert
+            className="txt-sm"
+            variant="success"
+            style={{ marginTop: 30 }}
+            onClose={() => setSuccessAlert(false)}
+            dismissible
+          >
+            Account created, <a href="/login">login</a>!
+          </Alert>
+        )}
         <p className="grey-txt txt-sm" style={{ paddingTop: 15 }}>
           Already have an account?{" "}
           <a className="grey-link" href="/login">
