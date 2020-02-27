@@ -14,7 +14,7 @@ const Header = props => {
 
   const logout = e => {
     e.preventDefault();
-    localStorage.removeItem("usertoken");
+    localStorage.clear();
     props.setUserLoggedIn(false);
   };
 

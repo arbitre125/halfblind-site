@@ -8,11 +8,23 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import Footer from "./containers/fixed/Footer";
+import axios from "axios";
+import uuid from "uuid";
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(
     localStorage.hasOwnProperty("usertoken")
   );
+
+  const newGame = async () => {
+    const id = uuid().slice(0, 7);
+    await axios
+      .post(`/game/newgame`, { id })
+      .then(res => {
+        localStorage.setItem("gameId", id);
+      })
+      .catch(err => console.log(err));
+  };
 
   return (
     <div className="primary">
@@ -25,11 +37,13 @@ function App() {
             <Route
               exact
               path="/"
-              render={history => <EntryPage {...history} />}
+              render={history => <EntryPage {...history} newGame={newGame} />}
             />
             <Route
-              path="/game"
-              render={history => <GameWindow {...history} size={640} />}
+              path="/game/:gameId"
+              render={history => (
+                <GameWindow {...history} size={640} newGame={newGame} />
+              )}
             />
             <Route
               path="/about"

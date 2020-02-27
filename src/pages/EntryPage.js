@@ -3,7 +3,7 @@ import { Button, Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
 
-const EntryPage = () => {
+const EntryPage = props => {
   return (
     <>
       <div className="no-padding-no-margin board-bg" style={{ height: 650 }}>
@@ -19,7 +19,7 @@ const EntryPage = () => {
             </p>
           </div>
           <div className="center">
-            <Button variant="outline-light" href="/game">
+            <Button variant="outline-light" onClick={() => props.newGame()}>
               Play
             </Button>
           </div>

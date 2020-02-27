@@ -2,40 +2,47 @@ const express = require("express");
 const game = express.Router();
 const Chess = require("../chess/chess").Chess;
 
-const chess = new Chess("8/8/8/8/1k6/8/1p6/1K6 b - - 0 1");
-const id = 123;
+let chess_games = {};
 
-game.get(`/${id}`, (req, res) => {
-  res.send({
-    board: chess.board(),
-    turn: chess.turn(),
-    turnNumber: chess.turn_number(),
-    moves: chess.moves({ verbose: true }),
-    history: chess.history({ verbose: false }),
-    inCheck: chess.in_check(),
-    gameOver: chess.game_over(),
-    inCheckmate: chess.in_checkmate(),
-    inDraw: chess.in_draw(),
-    inStalemate: chess.in_stalemate(),
-    insufficientMaterial: chess.insufficient_material(),
-    inThreeFoldRepetition: chess.in_threefold_repetition()
-  });
+game.get(`/all`, (req, res) => {
+  res.send(chess_games);
 });
 
-game.post(`/${id}/move`, (req, res) => {
-  const moveAttempt = chess.move(req.body.move);
+game.post(`/newgame`, (req, res) => {
+  console.log(req.body.id);
+  const chess = new Chess();
+  chess_games[req.body.id] = chess;
+  res.send(true);
+});
+
+game.get(`/`, (req, res) => {
+  if (chess_games[req.query.id]) {
+    res.send({
+      board: chess_games[req.query.id].board(),
+      turn: chess_games[req.query.id].turn(),
+      turnNumber: chess_games[req.query.id].turn_number(),
+      moves: chess_games[req.query.id].moves({ verbose: true }),
+      history: chess_games[req.query.id].history({ verbose: false }),
+      inCheck: chess_games[req.query.id].in_check(),
+      gameOver: chess_games[req.query.id].game_over(),
+      inCheckmate: chess_games[req.query.id].in_checkmate(),
+      inDraw: chess_games[req.query.id].in_draw(),
+      inStalemate: chess_games[req.query.id].in_stalemate(),
+      insufficientMaterial: chess_games[req.query.id].insufficient_material(),
+      inThreeFoldRepetition: chess_games[req.query.id].in_threefold_repetition()
+    });
+  } else {
+    res.send("No game with that id!");
+  }
+});
+
+game.post(`/move`, (req, res) => {
+  const moveAttempt = chess_games[req.body.id].move(req.body.move);
   if (moveAttempt) {
-    console.log("Move:", req.body.move);
     res.send(moveAttempt);
   } else {
     res.send(null); // check if this is needed
   }
-});
-
-game.post(`/${id}/newgame`, (req, res) => {
-  console.log("New game!");
-  chess.reset();
-  res.send(true);
 });
 
 module.exports = game;

@@ -6,10 +6,8 @@ import MoveHistory from "../components/game/MoveHistory";
 import GameOver from "../components/game/GameOver";
 import InputMove from "../components/game/InputMove";
 import axios from "axios";
-import uuid from "uuid";
 
 function GameWindow(props) {
-  const [gameId, setGameId] = useState(uuid());
   const [boardPosition, setBoardPosition] = useState(
     Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null))
   );
@@ -18,28 +16,37 @@ function GameWindow(props) {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    readBoard(123);
-    readHistory(123);
-    readGameOver(123);
-  }, [reload]);
+    const {
+      match: { params }
+    } = props;
+    readBoard(params.gameId);
+    readHistory(params.gameId);
+    readGameOver(params.gameId);
+  }, [reload, props]);
 
   const readBoard = async id => {
     await axios
-      .get(`/game/${id}`)
+      .get(`/game`, {
+        params: { id }
+      })
       .then(response => setBoardPosition(response.data.board))
       .catch(err => console.log(err));
   };
 
   const readHistory = async id => {
     await axios
-      .get(`/game/${id}`)
+      .get(`/game`, {
+        params: { id }
+      })
       .then(response => setMoveHistory(response.data.history))
       .catch(err => console.log(err));
   };
 
   const readGameOver = async id => {
     await axios
-      .get(`/game/${id}`)
+      .get(`/game`, {
+        params: { id }
+      })
       .then(response =>
         // Game on: return -1
         // Game over mate: return 0 for W mate, 1 for B mate
@@ -63,22 +70,28 @@ function GameWindow(props) {
 
   const updateMove = async (id, move) => {
     return await axios
-      .post(`/game/${id}/move`, { move })
+      .post(`/game/move`, { id, move })
       .then(res => res)
       .catch(err => console.log(err));
   };
 
-  const updateNewGame = async id => {
-    await axios.post(`/game/${id}/newgame`).catch(err => console.log(err));
-  };
-
   const makeMove = async move => {
-    await updateMove(123, move);
+    const {
+      match: { params }
+    } = props;
+    await updateMove(params.gameId, move);
     setReload(!reload);
   };
 
   return (
-    <div style={{ height: "100vh", paddingTop: 20, paddingBottom: 100 }}>
+    <div
+      style={{
+        height: "100vh",
+        paddingTop: 20,
+        paddingBottom: 100,
+        overflowX: "hidden"
+      }}
+    >
       <Row style={{ display: "flex" }}>
         <Col
           style={{
@@ -96,7 +109,7 @@ function GameWindow(props) {
             <Button
               variant="outline-light"
               onClick={async () => {
-                await updateNewGame(123);
+                await props.newGame();
                 setReload(!reload);
               }}
             >
@@ -129,7 +142,7 @@ function GameWindow(props) {
         <GameOver
           type={gameOver}
           newGame={async () => {
-            await updateNewGame(123);
+            await props.newGame();
             setReload(!reload);
           }}
           size={props.size}

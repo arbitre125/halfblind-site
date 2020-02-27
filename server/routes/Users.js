@@ -29,7 +29,7 @@ users.post("/register", (req, res) => {
         User.create(userData)
           .then(user => {
             let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-              expiresIn: 1440
+              expiresIn: "24hr"
             });
             res.json({ token: token });
           })
@@ -58,7 +58,7 @@ users.post("/login", (req, res) => {
         bcrypt.compareSync(req.body.password, user.password)
       ) {
         let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-          expiresIn: 1440
+          expiresIn: "24hr"
         });
         res.json({ token: token });
       } else {
