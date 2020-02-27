@@ -8,4 +8,4 @@ Released in early 2020, the project is still in its early stages. If you notice 
 
 ### Dependencies
 
-Half-blind chess is a MERN project ([MySQL](https://www.mysql.com/) + [Express](https://expressjs.com/) + [React](https://reactjs.org/) + [Node.js](https://nodejs.org/en/)). The game engine is powered by [chess.js](https://github.com/jhlywa/chess.js/blob/master/README.md), and styling is aided by Bootstrap (specifically [React Bootstrap](https://react-bootstrap.github.io/)).
+Half-blind chess runs on a MERN stack ([MySQL](https://www.mysql.com/) + [Express](https://expressjs.com/) + [React](https://reactjs.org/) + [Node.js](https://nodejs.org/en/)). The game engine is powered by [chess.js](https://github.com/jhlywa/chess.js/blob/master/README.md), and styling is aided by [React Bootstrap](https://react-bootstrap.github.io/).
