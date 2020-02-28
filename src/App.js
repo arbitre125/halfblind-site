@@ -37,10 +37,10 @@ const App = () => {
           </div>
           <Switch>
             <Route exact path="/">
-              <EntryPage newGame={newGame} />
+              <EntryPage userLoggedIn={userLoggedIn} newGame={newGame} />
             </Route>
-            <UserRoute path="/game/:gameId" userAuthenticated={userLoggedIn}>
-              <GamePage size={640} newGame={newGame} />
+            <UserRoute path="/game/:gameId" userLoggedIn={userLoggedIn}>
+              <GamePage size={640} />
             </UserRoute>
             <Route path="/about">
               <AboutPage />

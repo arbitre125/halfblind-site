@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Row, Col, Button } from "react-bootstrap";
 import GameInfo from "../components/game/GameInfo";
 import ChessBoard from "../components/game/board/ChessBoard";

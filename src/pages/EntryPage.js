@@ -25,8 +25,12 @@ const EntryPage = props => {
             <Button
               variant="outline-light"
               onClick={async () => {
-                const id = await props.newGame();
-                history.push(`/game/${id}`);
+                if (props.userLoggedIn) {
+                  const id = await props.newGame();
+                  history.push(`/game/${id}`);
+                } else {
+                  history.push(`/login`);
+                }
               }}
             >
               Play

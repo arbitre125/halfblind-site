@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const UserRoute = ({ children, userAuthenticated, ...props }) => {
+const UserRoute = ({ children, userLoggedIn, ...props }) => {
   return (
     <Route
       {...props}
       render={({ location }) =>
-        userAuthenticated ? (
+        userLoggedIn ? (
           children
         ) : (
           <Redirect
