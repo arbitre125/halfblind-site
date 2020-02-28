@@ -1,38 +1,41 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
+import axios from "axios";
 
 const LoginPage = props => {
   const [info, setInfo] = useState({ email: "", password: "" });
   const [wrongAlert, setWrongAlert] = useState(false);
+
+  let history = useHistory();
 
   const onChange = e => {
     setInfo({ ...info, [e.target.id]: e.target.value });
   };
 
   const login = async user => {
-    return axios
+    return await axios
       .post("/users/login", {
         email: user.email,
         password: user.password
       })
-      .then(res => {
-        if (res.data) {
-          localStorage.setItem("usertoken", res.data.token);
-        } else {
-          setWrongAlert(true);
-          setInfo({ email: "", password: "" });
-        }
-      })
+      .then(res => res)
       .catch(err => console.log(err));
   };
 
   const onSubmit = async e => {
     e.preventDefault();
 
-    await login(info)
-      .then(res => res)
-      .catch(err => console.log(err));
+    await login(info).then(res => {
+      if (res.data) {
+        localStorage.setItem("usertoken", res.data.token);
+        props.setUserLoggedIn(true);
+        history.push("/");
+      } else {
+        setWrongAlert(true);
+        setInfo({ email: "", password: "" });
+      }
+    });
   };
 
   return (

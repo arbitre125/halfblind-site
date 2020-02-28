@@ -1,9 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
 
 const EntryPage = props => {
+  let history = useHistory();
+
   return (
     <>
       <div className="no-padding-no-margin board-bg" style={{ height: 650 }}>
@@ -19,7 +22,13 @@ const EntryPage = props => {
             </p>
           </div>
           <div className="center">
-            <Button variant="outline-light" onClick={() => props.newGame()}>
+            <Button
+              variant="outline-light"
+              onClick={async () => {
+                const id = await props.newGame();
+                history.push(`/game/${id}`);
+              }}
+            >
               Play
             </Button>
           </div>

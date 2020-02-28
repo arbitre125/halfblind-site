@@ -1,18 +1,18 @@
 import React from "react";
 import { Image } from "react-bootstrap";
-import wb from "../images/pieces/white_bishop.png";
-import wk from "../images/pieces/white_king.png";
-import wn from "../images/pieces/white_knight.png";
-import wp from "../images/pieces/white_pawn.png";
-import wq from "../images/pieces/white_queen.png";
-import wr from "../images/pieces/white_rook.png";
-import bb from "../images/pieces/black_bishop.png";
-import bk from "../images/pieces/black_king.png";
-import bn from "../images/pieces/black_knight.png";
-import bp from "../images/pieces/black_pawn.png";
-import bq from "../images/pieces/black_queen.png";
-import br from "../images/pieces/black_rook.png";
-// import ind from "../images/indicator.png";
+import wb from "../../../images/pieces/white_bishop.png";
+import wk from "../../../images/pieces/white_king.png";
+import wn from "../../../images/pieces/white_knight.png";
+import wp from "../../../images/pieces/white_pawn.png";
+import wq from "../../../images/pieces/white_queen.png";
+import wr from "../../../images/pieces/white_rook.png";
+import bb from "../../../images/pieces/black_bishop.png";
+import bk from "../../../images/pieces/black_king.png";
+import bn from "../../../images/pieces/black_knight.png";
+import bp from "../../../images/pieces/black_pawn.png";
+import bq from "../../../images/pieces/black_queen.png";
+import br from "../../../images/pieces/black_rook.png";
+// import ind from "../../../images/indicator.png";
 
 const imageMap = new Map([
   ["wb", wb],

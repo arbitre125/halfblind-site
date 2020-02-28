@@ -1,29 +1,31 @@
 import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "./containers/fixed/Header";
+import UserRoute from "./authentication/routing/UserRoute";
+import Header from "./components/fixed/Header";
 import EntryPage from "./pages/EntryPage";
-import GameWindow from "./pages/GameWindow";
+import GamePage from "./pages/GamePage";
 import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
-import Footer from "./containers/fixed/Footer";
+import Footer from "./components/fixed/Footer";
 import axios from "axios";
 import uuid from "uuid";
 
-function App() {
+const App = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(
     localStorage.hasOwnProperty("usertoken")
   );
 
   const newGame = async () => {
-    const id = uuid().slice(0, 7);
+    const id = uuid().slice(0, 8);
     await axios
       .post(`/game/newgame`, { id })
       .then(res => {
         localStorage.setItem("gameId", id);
       })
       .catch(err => console.log(err));
+    return id;
   };
 
   return (
@@ -34,43 +36,27 @@ function App() {
             <Header setUserLoggedIn={setUserLoggedIn} />
           </div>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={history => <EntryPage {...history} newGame={newGame} />}
-            />
-            <Route
-              path="/game/:gameId"
-              render={history => (
-                <GameWindow {...history} size={640} newGame={newGame} />
-              )}
-            />
-            <Route
-              path="/about"
-              render={history => <AboutPage {...history} />}
-            />
-            <Route
-              path="/login"
-              render={history => (
-                <LoginPage
-                  {...history}
-                  userLoggedIn={userLoggedIn}
-                  setUserLoggedIn={setUserLoggedIn}
-                />
-              )}
-            />
-            <Route
-              path="/register"
-              render={history => (
-                <RegisterPage {...history} userLoggedIn={userLoggedIn} />
-              )}
-            />
-            <Route
-              path="/profile"
-              render={history => (
-                <ProfilePage {...history} userLoggedIn={userLoggedIn} />
-              )}
-            />
+            <Route exact path="/">
+              <EntryPage newGame={newGame} />
+            </Route>
+            <UserRoute path="/game/:gameId" userAuthenticated={userLoggedIn}>
+              <GamePage size={640} newGame={newGame} />
+            </UserRoute>
+            <Route path="/about">
+              <AboutPage />
+            </Route>
+            <Route path="/login">
+              <LoginPage
+                userLoggedIn={userLoggedIn}
+                setUserLoggedIn={setUserLoggedIn}
+              />
+            </Route>
+            <Route path="/register">
+              <RegisterPage userLoggedIn={userLoggedIn} />
+            </Route>
+            <Route path="/profile">
+              <ProfilePage userLoggedIn={userLoggedIn} />
+            </Route>
           </Switch>
         </BrowserRouter>
       </div>
@@ -79,6 +65,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

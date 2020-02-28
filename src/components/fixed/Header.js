@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";
 import decode from "jwt-decode";
 import half_eye from "../../images/logos/half-eye-l-w.png";
 
 const Header = props => {
   const [username, setUsername] = useState("");
+
+  let history = useHistory();
 
   useEffect(() => {
     if (localStorage.usertoken) {
@@ -16,6 +19,7 @@ const Header = props => {
     e.preventDefault();
     localStorage.clear();
     props.setUserLoggedIn(false);
+    history.push("/login");
   };
 
   const notLoggedIn = (

@@ -9,40 +9,47 @@ game.get(`/all`, (req, res) => {
 });
 
 game.post(`/newgame`, (req, res) => {
-  console.log(req.body.id);
   const chess = new Chess();
   chess_games[req.body.id] = chess;
   res.send(true);
 });
 
-game.get(`/`, (req, res) => {
-  if (chess_games[req.query.id]) {
+game.get(`/:gameId`, (req, res) => {
+  if (chess_games[req.params.gameId]) {
     res.send({
-      board: chess_games[req.query.id].board(),
-      turn: chess_games[req.query.id].turn(),
-      turnNumber: chess_games[req.query.id].turn_number(),
-      moves: chess_games[req.query.id].moves({ verbose: true }),
-      history: chess_games[req.query.id].history({ verbose: false }),
-      inCheck: chess_games[req.query.id].in_check(),
-      gameOver: chess_games[req.query.id].game_over(),
-      inCheckmate: chess_games[req.query.id].in_checkmate(),
-      inDraw: chess_games[req.query.id].in_draw(),
-      inStalemate: chess_games[req.query.id].in_stalemate(),
-      insufficientMaterial: chess_games[req.query.id].insufficient_material(),
-      inThreeFoldRepetition: chess_games[req.query.id].in_threefold_repetition()
+      board: chess_games[req.params.gameId].board(),
+      turn: chess_games[req.params.gameId].turn(),
+      turnNumber: chess_games[req.params.gameId].turn_number(),
+      moves: chess_games[req.params.gameId].moves({ verbose: true }),
+      history: chess_games[req.params.gameId].history({ verbose: false }),
+      inCheck: chess_games[req.params.gameId].in_check(),
+      gameOver: chess_games[req.params.gameId].game_over(),
+      inCheckmate: chess_games[req.params.gameId].in_checkmate(),
+      inDraw: chess_games[req.params.gameId].in_draw(),
+      inStalemate: chess_games[req.params.gameId].in_stalemate(),
+      insufficientMaterial: chess_games[
+        req.params.gameId
+      ].insufficient_material(),
+      inThreeFoldRepetition: chess_games[
+        req.params.gameId
+      ].in_threefold_repetition()
     });
   } else {
-    res.send("No game with that id!");
+    res.send("There is no game with that id.");
   }
 });
 
-game.post(`/move`, (req, res) => {
-  const moveAttempt = chess_games[req.body.id].move(req.body.move);
+game.post(`/:gameId/move`, (req, res) => {
+  const moveAttempt = chess_games[req.params.gameId].move(req.body.move);
   if (moveAttempt) {
     res.send(moveAttempt);
   } else {
     res.send(null); // check if this is needed
   }
+});
+
+game.post(`/:gameId/reset`, (req, res) => {
+  res.send(chess_games[req.params.gameId].reset());
 });
 
 module.exports = game;

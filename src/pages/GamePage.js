@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Row, Col, Button } from "react-bootstrap";
 import GameInfo from "../components/game/GameInfo";
-import ChessBoard from "../containers/ChessBoard";
+import ChessBoard from "../components/game/board/ChessBoard";
 import MoveHistory from "../components/game/MoveHistory";
 import GameOver from "../components/game/GameOver";
 import InputMove from "../components/game/InputMove";
 import axios from "axios";
 
-function GameWindow(props) {
+const GamePage = props => {
   const [boardPosition, setBoardPosition] = useState(
     Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null))
   );
@@ -15,38 +16,31 @@ function GameWindow(props) {
   const [gameOver, setGameOver] = useState(-1);
   const [reload, setReload] = useState(false);
 
+  let { gameId } = useParams();
+
   useEffect(() => {
-    const {
-      match: { params }
-    } = props;
-    readBoard(params.gameId);
-    readHistory(params.gameId);
-    readGameOver(params.gameId);
-  }, [reload, props]);
+    readBoard(gameId);
+    readHistory(gameId);
+    readGameOver(gameId);
+  }, [reload, gameId]);
 
   const readBoard = async id => {
     await axios
-      .get(`/game`, {
-        params: { id }
-      })
+      .get(`/game/${id}`)
       .then(response => setBoardPosition(response.data.board))
       .catch(err => console.log(err));
   };
 
   const readHistory = async id => {
     await axios
-      .get(`/game`, {
-        params: { id }
-      })
+      .get(`/game/${id}`)
       .then(response => setMoveHistory(response.data.history))
       .catch(err => console.log(err));
   };
 
   const readGameOver = async id => {
     await axios
-      .get(`/game`, {
-        params: { id }
-      })
+      .get(`/game/${id}`)
       .then(response =>
         // Game on: return -1
         // Game over mate: return 0 for W mate, 1 for B mate
@@ -70,17 +64,25 @@ function GameWindow(props) {
 
   const updateMove = async (id, move) => {
     return await axios
-      .post(`/game/move`, { id, move })
+      .post(`/game/${id}/move`, { move })
+      .then(res => res)
+      .catch(err => console.log(err));
+  };
+
+  const updateReset = async id => {
+    await axios
+      .post(`/game/${id}/reset`)
       .then(res => res)
       .catch(err => console.log(err));
   };
 
   const makeMove = async move => {
-    const {
-      match: { params }
-    } = props;
-    await updateMove(params.gameId, move);
+    await updateMove(gameId, move);
     setReload(!reload);
+  };
+
+  const resetGame = async () => {
+    await updateReset(gameId);
   };
 
   return (
@@ -109,7 +111,7 @@ function GameWindow(props) {
             <Button
               variant="outline-light"
               onClick={async () => {
-                await props.newGame();
+                await resetGame();
                 setReload(!reload);
               }}
             >
@@ -142,7 +144,7 @@ function GameWindow(props) {
         <GameOver
           type={gameOver}
           newGame={async () => {
-            await props.newGame();
+            await resetGame();
             setReload(!reload);
           }}
           size={props.size}
@@ -150,6 +152,6 @@ function GameWindow(props) {
       )}
     </div>
   );
-}
+};
 
-export default GameWindow;
+export default GamePage;
