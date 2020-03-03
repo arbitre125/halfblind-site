@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";
+import axios from "axios";
 import decode from "jwt-decode";
 import half_eye from "../../images/logos/half-eye-l-w.png";
 
-const Header = ({ userLogged, usertoken, logout }) => {
+const Header = ({ userLogged, usertoken, currentGameId, logout }) => {
   const [username, setUsername] = useState("");
 
   let history = useHistory();
@@ -16,8 +17,12 @@ const Header = ({ userLogged, usertoken, logout }) => {
     }
   }, [userLogged, usertoken]);
 
-  const logoutHandler = e => {
+  const logoutHandler = async e => {
     e.preventDefault();
+    await axios
+      .post(`/game/${currentGameId}/delete`)
+      .then(res => res)
+      .catch(err => console.log(err));
     localStorage.clear();
     logout();
     history.push("/login");
@@ -94,7 +99,8 @@ const Header = ({ userLogged, usertoken, logout }) => {
 const mapStateToProps = state => {
   return {
     userLogged: state.userLogged,
-    usertoken: state.usertoken
+    usertoken: state.usertoken,
+    currentGameId: state.currentGameId
   };
 };
 

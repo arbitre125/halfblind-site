@@ -12,7 +12,7 @@ const EntryPage = ({ userLogged, currentGameId, newGame }) => {
   const updateNewGame = async () => {
     return await axios
       .post(`/game/newgame`)
-      .then(res => res.data.id)
+      .then(res => res.data)
       .catch(err => console.log(err));
   };
 
@@ -22,7 +22,6 @@ const EntryPage = ({ userLogged, currentGameId, newGame }) => {
         history.push(`/game/${currentGameId}`);
       } else {
         const id = await updateNewGame();
-        console.log(id);
         localStorage.setItem("gameId", id);
         newGame(id);
         history.push(`/game/${id}`);

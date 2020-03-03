@@ -54,4 +54,9 @@ game.post(`/:gameId/reset`, (req, res) => {
   res.send(chess_games[req.params.gameId].reset());
 });
 
+game.post(`/:gameId/delete`, (req, res) => {
+  delete chess_games[req.params.gameId];
+  res.send(true);
+});
+
 module.exports = game;
