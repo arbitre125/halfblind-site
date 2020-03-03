@@ -1,11 +1,36 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 import { Button, Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
+import axios from "axios";
 
-const EntryPage = props => {
+const EntryPage = ({ userLogged, currentGameId, newGame }) => {
   let history = useHistory();
+
+  const updateNewGame = async () => {
+    return await axios
+      .post(`/game/newgame`)
+      .then(res => res.data.id)
+      .catch(err => console.log(err));
+  };
+
+  const enterGame = async () => {
+    if (userLogged) {
+      if (currentGameId) {
+        history.push(`/game/${currentGameId}`);
+      } else {
+        const id = await updateNewGame();
+        console.log(id);
+        localStorage.setItem("gameId", id);
+        newGame(id);
+        history.push(`/game/${id}`);
+      }
+    } else {
+      history.push(`/login`);
+    }
+  };
 
   return (
     <>
@@ -22,17 +47,7 @@ const EntryPage = props => {
             </p>
           </div>
           <div className="center">
-            <Button
-              variant="outline-light"
-              onClick={async () => {
-                if (props.userLoggedIn) {
-                  const id = await props.newGame();
-                  history.push(`/game/${id}`);
-                } else {
-                  history.push(`/login`);
-                }
-              }}
-            >
+            <Button variant="outline-light" onClick={enterGame}>
               Play
             </Button>
           </div>
@@ -81,4 +96,19 @@ const EntryPage = props => {
   );
 };
 
-export default EntryPage;
+const mapStateToProps = state => {
+  return {
+    userLogged: state.userLogged,
+    currentGameId: state.currentGameId
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    newGame: id => {
+      dispatch({ type: "NEW_GAME", payload: id });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EntryPage);

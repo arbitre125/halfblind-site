@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button, Alert } from "react-bootstrap";
 
-const RegisterPage = props => {
+const RegisterPage = () => {
   const [info, setInfo] = useState({
     email: "",
     username: "",

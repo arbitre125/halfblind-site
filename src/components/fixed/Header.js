@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";
 import decode from "jwt-decode";
 import half_eye from "../../images/logos/half-eye-l-w.png";
 
-const Header = props => {
+const Header = ({ userLogged, usertoken, logout }) => {
   const [username, setUsername] = useState("");
 
   let history = useHistory();
 
   useEffect(() => {
-    if (localStorage.usertoken) {
-      setUsername(decode(localStorage.usertoken).username);
+    if (userLogged) {
+      setUsername(decode(usertoken).username);
     }
-  }, []);
+  }, [userLogged, usertoken]);
 
-  const logout = e => {
+  const logoutHandler = e => {
     e.preventDefault();
     localStorage.clear();
-    props.setUserLoggedIn(false);
+    logout();
     history.push("/login");
   };
 
@@ -41,7 +42,11 @@ const Header = props => {
       >
         <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
       </NavDropdown>
-      <Nav.Link href="/login" onClick={logout} className="grey-link txt-sm">
+      <Nav.Link
+        href="/login"
+        onClick={logoutHandler}
+        className="grey-link txt-sm"
+      >
         Logout
       </Nav.Link>
     </Nav>
@@ -81,9 +86,24 @@ const Header = props => {
           About
         </Nav.Link>
       </Nav>
-      {localStorage.usertoken ? loggedIn : notLoggedIn}
+      {userLogged ? loggedIn : notLoggedIn}
     </Navbar>
   );
 };
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    userLogged: state.userLogged,
+    usertoken: state.usertoken
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => {
+      dispatch({ type: "LOGOUT" });
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

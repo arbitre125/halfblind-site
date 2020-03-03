@@ -1,6 +1,7 @@
 const express = require("express");
 const game = express.Router();
 const Chess = require("../chess/chess").Chess;
+const uuid = require("uuid");
 
 let chess_games = {};
 
@@ -10,8 +11,9 @@ game.get(`/all`, (req, res) => {
 
 game.post(`/newgame`, (req, res) => {
   const chess = new Chess();
-  chess_games[req.body.id] = chess;
-  res.send(true);
+  const id = uuid().slice(0, 8);
+  chess_games[id] = chess;
+  res.send(id);
 });
 
 game.get(`/:gameId`, (req, res) => {

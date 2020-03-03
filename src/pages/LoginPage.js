@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 import { Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 
-const LoginPage = props => {
+const LoginPage = ({ login }) => {
   const [info, setInfo] = useState({ email: "", password: "" });
   const [wrongAlert, setWrongAlert] = useState(false);
 
@@ -13,7 +14,7 @@ const LoginPage = props => {
     setInfo({ ...info, [e.target.id]: e.target.value });
   };
 
-  const login = async user => {
+  const loginHandler = async user => {
     return await axios
       .post("/users/login", {
         email: user.email,
@@ -26,10 +27,10 @@ const LoginPage = props => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    await login(info).then(res => {
+    await loginHandler(info).then(res => {
       if (res.data) {
         localStorage.setItem("usertoken", res.data.token);
-        props.setUserLoggedIn(true);
+        login(res.data.token);
         history.push("/");
       } else {
         setWrongAlert(true);
@@ -100,4 +101,12 @@ const LoginPage = props => {
   );
 };
 
-export default LoginPage;
+const mapDispatchToProps = dispatch => {
+  return {
+    login: token => {
+      dispatch({ type: "LOGIN", payload: token });
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(LoginPage);

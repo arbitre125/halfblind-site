@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-const UserRoute = ({ children, userLoggedIn, ...props }) => {
+const UserRoute = ({ children, userLogged, ...props }) => {
   return (
     <Route
       {...props}
       render={({ location }) =>
-        userLoggedIn ? (
+        userLogged ? (
           children
         ) : (
           <Redirect
@@ -21,4 +22,10 @@ const UserRoute = ({ children, userLoggedIn, ...props }) => {
   );
 };
 
-export default UserRoute;
+const mapStateToProps = state => {
+  return {
+    userLogged: state.userLogged
+  };
+};
+
+export default connect(mapStateToProps)(UserRoute);
