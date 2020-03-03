@@ -2,7 +2,7 @@
 
 Half-blind chess ([half-blind-chess.web.app](https://half-blind-chess.web.app)) is a free, adless and open-source chess project for the half-blind variant.
 
-![](half-blind.png)
+![](src/images/half-blind.png)
 
 Released in early 2020, the project is still in its early stages. If you notice any bugs, imagine any improvements, or want to contribute in any way, feel free to comment, raise an issue or submit a pull request.
 
