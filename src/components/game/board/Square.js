@@ -30,7 +30,14 @@ const imageMap = new Map([
 ]);
 
 function Square(props) {
-  const backgroundColor = props.color === "light" ? "#e4e8f7" : "#a2a6b3";
+  const backgroundColor =
+    props.lastMove.from === props.name || props.lastMove.to === props.name
+      ? props.color === "light"
+        ? "#e7dfc1" // lastMove highlight
+        : "#c6bf9f"
+      : props.color === "light"
+      ? "#e4e8f7" // normals
+      : "#a2a6b3";
 
   const squareStyle = {
     backgroundColor: backgroundColor,

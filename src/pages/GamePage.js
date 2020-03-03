@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Row, Col, Button } from "react-bootstrap";
 import GameInfo from "../components/game/GameInfo";
 import ChessBoard from "../components/game/board/ChessBoard";
@@ -13,6 +13,8 @@ const GamePage = props => {
     Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null))
   );
   const [moveHistory, setMoveHistory] = useState([]);
+  const [lastMove, setLastMove] = useState({ from: "", to: "" });
+  const [inCheck, setInCheck] = useState(false);
   const [gameOver, setGameOver] = useState(-1);
   const [reload, setReload] = useState(false);
 
@@ -20,8 +22,9 @@ const GamePage = props => {
 
   useEffect(() => {
     readBoard(gameId);
-    readHistory(gameId);
+    readInCheck(gameId);
     readGameOver(gameId);
+    readHistory(gameId);
   }, [reload, gameId]);
 
   const readBoard = async id => {
@@ -31,34 +34,41 @@ const GamePage = props => {
       .catch(err => console.log(err));
   };
 
-  const readHistory = async id => {
+  const readInCheck = async id => {
     await axios
       .get(`/game/${id}`)
-      .then(response => setMoveHistory(response.data.history))
+      .then(res => setInCheck(res.data.inCheck))
       .catch(err => console.log(err));
   };
 
   const readGameOver = async id => {
     await axios
       .get(`/game/${id}`)
-      .then(response =>
+      .then(res =>
         // Game on: return -1
         // Game over mate: return 0 for W mate, 1 for B mate
         // Game over draw: return 2 for stale, 3 for insuff, 4 for 3rep
         setGameOver(
-          response.data.gameOver
-            ? response.data.inCheckmate
-              ? response.data.turn === "b"
+          res.data.gameOver
+            ? res.data.inCheckmate
+              ? res.data.turn === "b"
                 ? 0
                 : 1
-              : response.data.inStalemate
+              : res.data.inStalemate
               ? 2
-              : response.data.insufficientMaterial
+              : res.data.insufficientMaterial
               ? 3
               : 4
             : -1
         )
       )
+      .catch(err => console.log(err));
+  };
+
+  const readHistory = async id => {
+    await axios
+      .get(`/game/${id}`)
+      .then(res => setMoveHistory(res.data.history))
       .catch(err => console.log(err));
   };
 
@@ -77,7 +87,8 @@ const GamePage = props => {
   };
 
   const makeMove = async move => {
-    await updateMove(gameId, move);
+    const moveObj = (await updateMove(gameId, move)).data;
+    setLastMove({ from: moveObj.from, to: moveObj.to });
     setReload(!reload);
   };
 
@@ -124,6 +135,8 @@ const GamePage = props => {
             perspective="white"
             size={props.size}
             position={boardPosition}
+            lastMove={lastMove}
+            inCheck={inCheck}
           />
         </Col>
         <Col style={{ padding: 5 }}>
