@@ -1,7 +1,7 @@
 import React from "react";
 import Square from "./Square";
 
-function ChessBoard(props) {
+const ChessBoard = props => {
   if (props.perspective === "white") {
     return (
       <table
@@ -1332,6 +1332,6 @@ function ChessBoard(props) {
       </table>
     );
   }
-}
+};
 
 export default ChessBoard;

@@ -29,8 +29,9 @@ const imageMap = new Map([
   ["br", br]
 ]);
 
-function Square(props) {
+const Square = props => {
   const backgroundColor =
+  (props.inCheck && props.piece.type === "k") ? props.color === "light"
     props.lastMove.from === props.name || props.lastMove.to === props.name
       ? props.color === "light"
         ? "#e7dfc1" // lastMove highlight
@@ -57,6 +58,6 @@ function Square(props) {
       )}
     </div>
   );
-}
+};
 
 export default Square;
