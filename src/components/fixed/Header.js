@@ -6,16 +6,30 @@ import axios from "axios";
 import decode from "jwt-decode";
 import half_eye from "../../images/logos/half-eye-l-w.png";
 
-const Header = ({ userLogged, usertoken, currentGameId, logout }) => {
-  const [username, setUsername] = useState("");
-
+const Header = ({ userLogged, usertoken, currentGameId, logout, newGame }) => {
   let history = useHistory();
 
-  useEffect(() => {
+  const updateNewGame = async () => {
+    return await axios
+      .post(`/game/newgame`)
+      .then(res => res.data)
+      .catch(err => console.log(err));
+  };
+
+  const enterGame = async () => {
     if (userLogged) {
-      setUsername(decode(usertoken).username);
+      if (currentGameId) {
+        history.push(`/game/${currentGameId}`);
+      } else {
+        const id = await updateNewGame();
+        localStorage.setItem("gameId", id);
+        newGame(id);
+        history.push(`/game/${id}`);
+      }
+    } else {
+      history.push(`/login`);
     }
-  }, [userLogged, usertoken]);
+  };
 
   const logoutHandler = async e => {
     e.preventDefault();
@@ -43,7 +57,11 @@ const Header = ({ userLogged, usertoken, currentGameId, logout }) => {
     <Nav className="mr-sm-2">
       <NavDropdown
         alignRight
-        title={<span className="grey-link txt-sm">{username}</span>}
+        title={
+          <span className="grey-link txt-sm">
+            {userLogged && decode(usertoken).username}
+          </span>
+        }
       >
         <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
       </NavDropdown>
@@ -83,7 +101,7 @@ const Header = ({ userLogged, usertoken, currentGameId, logout }) => {
       </Navbar.Brand>
       <Nav className="mr-auto">
         <NavDropdown title={<span className="grey-link txt-sm">Play</span>}>
-          <NavDropdown.Item href="/game" className="txt-sm">
+          <NavDropdown.Item onClick={enterGame} className="txt-sm">
             Play Offline
           </NavDropdown.Item>
         </NavDropdown>
@@ -108,6 +126,9 @@ const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
       dispatch({ type: "LOGOUT" });
+    },
+    newGame: id => {
+      dispatch({ type: "NEW_GAME", payload: id });
     }
   };
 };
