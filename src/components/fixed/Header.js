@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";

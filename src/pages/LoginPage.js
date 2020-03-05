@@ -77,7 +77,7 @@ const LoginPage = ({ login }) => {
               onClose={() => setWrongAlert(false)}
               dismissible
             >
-              Invalid email/password, try again.
+              Invalid email/password. Try again.
             </Alert>
           )}
           <Button

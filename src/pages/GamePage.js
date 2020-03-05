@@ -13,8 +13,6 @@ const GamePage = props => {
     Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null))
   );
   const [moveHistory, setMoveHistory] = useState([]);
-  const [lastMove, setLastMove] = useState({ from: "", to: "" });
-  const [inCheck, setInCheck] = useState(false);
   const [gameOver, setGameOver] = useState(-1);
   const [reload, setReload] = useState(false);
 
@@ -22,7 +20,6 @@ const GamePage = props => {
 
   useEffect(() => {
     readBoard(gameId);
-    readInCheck(gameId);
     readGameOver(gameId);
     readHistory(gameId);
   }, [reload, gameId]);
@@ -31,13 +28,6 @@ const GamePage = props => {
     await axios
       .get(`/game/${id}`)
       .then(response => setBoardPosition(response.data.board))
-      .catch(err => console.log(err));
-  };
-
-  const readInCheck = async id => {
-    await axios
-      .get(`/game/${id}`)
-      .then(res => setInCheck(res.data.inCheck))
       .catch(err => console.log(err));
   };
 
@@ -87,8 +77,7 @@ const GamePage = props => {
   };
 
   const makeMove = async move => {
-    const moveObj = (await updateMove(gameId, move)).data;
-    setLastMove({ from: moveObj.from, to: moveObj.to });
+    await updateMove(gameId, move);
     setReload(!reload);
   };
 
@@ -135,8 +124,6 @@ const GamePage = props => {
             perspective="white"
             size={props.size}
             position={boardPosition}
-            lastMove={lastMove}
-            inCheck={inCheck}
           />
         </Col>
         <Col style={{ padding: 5 }}>

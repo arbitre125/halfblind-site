@@ -6,7 +6,7 @@ const uuid = require("uuid");
 let chess_games = {};
 
 game.get(`/all`, (req, res) => {
-  res.send(chess_games);
+  res.send(Object.keys(chess_games));
 });
 
 game.post(`/newgame`, (req, res) => {

@@ -31,15 +31,16 @@ const imageMap = new Map([
 
 const Square = props => {
   const backgroundColor =
-    props.inCheck && props.piece !== null && props.piece.type === "k"
-      ? props.color === "light"
-        ? "#e9bac6" // check
-        : "#b5858f"
-      : props.lastMove.from === props.name || props.lastMove.to === props.name
-      ? props.color === "light"
-        ? "#e7dfc1" // lastMove highlight
-        : "#c6bf9f"
-      : props.color === "light"
+    // props.inCheck && props.piece !== null && props.piece.type === "k"
+    //   ? props.color === "light"
+    //     ? "#e9bac6" // check
+    //     : "#b5858f"
+    //   : props.lastMove.from === props.name || props.lastMove.to === props.name
+    //   ? props.color === "light"
+    //     ? "#e7dfc1" // lastMove highlight
+    //     : "#c6bf9f"
+    //:
+    props.color === "light"
       ? "#e4e8f7" // normals
       : "#a2a6b3";
 

@@ -34,10 +34,10 @@ users.post("/register", (req, res) => {
             res.json({ token: token });
           })
           .catch(err => {
-            res.send("Error: " + error);
+            res.send("Error: " + err);
           });
       } else {
-        res.json({ error: "User already exists." });
+        res.send(false);
       }
     })
     .catch(err => {

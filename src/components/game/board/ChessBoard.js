@@ -15,8 +15,6 @@ const ChessBoard = props => {
                 name="a8"
                 color="light"
                 piece={props.position[0][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -25,8 +23,6 @@ const ChessBoard = props => {
                 name="b8"
                 color="dark"
                 piece={props.position[0][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -35,8 +31,6 @@ const ChessBoard = props => {
                 name="c8"
                 color="light"
                 piece={props.position[0][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -45,8 +39,6 @@ const ChessBoard = props => {
                 name="d8"
                 color="dark"
                 piece={props.position[0][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -55,8 +47,6 @@ const ChessBoard = props => {
                 name="e8"
                 color="light"
                 piece={props.position[0][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -65,8 +55,6 @@ const ChessBoard = props => {
                 name="f8"
                 color="dark"
                 piece={props.position[0][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -75,8 +63,6 @@ const ChessBoard = props => {
                 name="g8"
                 color="light"
                 piece={props.position[0][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -85,8 +71,6 @@ const ChessBoard = props => {
                 name="h8"
                 color="dark"
                 piece={props.position[0][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -97,8 +81,6 @@ const ChessBoard = props => {
                 name="a7"
                 color="dark"
                 piece={props.position[1][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -107,8 +89,6 @@ const ChessBoard = props => {
                 name="b7"
                 color="light"
                 piece={props.position[1][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -117,8 +97,6 @@ const ChessBoard = props => {
                 name="c7"
                 color="dark"
                 piece={props.position[1][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -127,8 +105,6 @@ const ChessBoard = props => {
                 name="d7"
                 color="light"
                 piece={props.position[1][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -137,8 +113,6 @@ const ChessBoard = props => {
                 name="e7"
                 color="dark"
                 piece={props.position[1][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -147,8 +121,6 @@ const ChessBoard = props => {
                 name="f7"
                 color="light"
                 piece={props.position[1][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -157,8 +129,6 @@ const ChessBoard = props => {
                 name="g7"
                 color="dark"
                 piece={props.position[1][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -167,8 +137,6 @@ const ChessBoard = props => {
                 name="h7"
                 color="light"
                 piece={props.position[1][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -179,8 +147,6 @@ const ChessBoard = props => {
                 name="a6"
                 color="light"
                 piece={props.position[2][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -189,8 +155,6 @@ const ChessBoard = props => {
                 name="b6"
                 color="dark"
                 piece={props.position[2][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -199,8 +163,6 @@ const ChessBoard = props => {
                 name="c6"
                 color="light"
                 piece={props.position[2][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -209,8 +171,6 @@ const ChessBoard = props => {
                 name="d6"
                 color="dark"
                 piece={props.position[2][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -219,8 +179,6 @@ const ChessBoard = props => {
                 name="e6"
                 color="light"
                 piece={props.position[2][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -229,8 +187,6 @@ const ChessBoard = props => {
                 name="f6"
                 color="dark"
                 piece={props.position[2][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -239,8 +195,6 @@ const ChessBoard = props => {
                 name="g6"
                 color="light"
                 piece={props.position[2][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -249,8 +203,6 @@ const ChessBoard = props => {
                 name="h6"
                 color="dark"
                 piece={props.position[2][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -261,8 +213,6 @@ const ChessBoard = props => {
                 name="a5"
                 color="dark"
                 piece={props.position[3][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -271,8 +221,6 @@ const ChessBoard = props => {
                 name="b5"
                 color="light"
                 piece={props.position[3][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -281,8 +229,6 @@ const ChessBoard = props => {
                 name="c5"
                 color="dark"
                 piece={props.position[3][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -291,8 +237,6 @@ const ChessBoard = props => {
                 name="d5"
                 color="light"
                 piece={props.position[3][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -301,8 +245,6 @@ const ChessBoard = props => {
                 name="e5"
                 color="dark"
                 piece={props.position[3][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -311,8 +253,6 @@ const ChessBoard = props => {
                 name="f5"
                 color="light"
                 piece={props.position[3][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -321,8 +261,6 @@ const ChessBoard = props => {
                 name="g5"
                 color="dark"
                 piece={props.position[3][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -331,8 +269,6 @@ const ChessBoard = props => {
                 name="h5"
                 color="light"
                 piece={props.position[3][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -343,8 +279,6 @@ const ChessBoard = props => {
                 name="a4"
                 color="light"
                 piece={props.position[4][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -353,8 +287,6 @@ const ChessBoard = props => {
                 name="b4"
                 color="dark"
                 piece={props.position[4][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -363,8 +295,6 @@ const ChessBoard = props => {
                 name="c4"
                 color="light"
                 piece={props.position[4][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -373,8 +303,6 @@ const ChessBoard = props => {
                 name="d4"
                 color="dark"
                 piece={props.position[4][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -383,8 +311,6 @@ const ChessBoard = props => {
                 name="e4"
                 color="light"
                 piece={props.position[4][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -393,8 +319,6 @@ const ChessBoard = props => {
                 name="f4"
                 color="dark"
                 piece={props.position[4][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -403,8 +327,6 @@ const ChessBoard = props => {
                 name="g4"
                 color="light"
                 piece={props.position[4][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -413,8 +335,6 @@ const ChessBoard = props => {
                 name="h4"
                 color="dark"
                 piece={props.position[4][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -425,8 +345,6 @@ const ChessBoard = props => {
                 name="a3"
                 color="dark"
                 piece={props.position[5][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -435,8 +353,6 @@ const ChessBoard = props => {
                 name="b3"
                 color="light"
                 piece={props.position[5][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -445,8 +361,6 @@ const ChessBoard = props => {
                 name="c3"
                 color="dark"
                 piece={props.position[5][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -455,8 +369,6 @@ const ChessBoard = props => {
                 name="d3"
                 color="light"
                 piece={props.position[5][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -465,8 +377,6 @@ const ChessBoard = props => {
                 name="e3"
                 color="dark"
                 piece={props.position[5][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -475,8 +385,6 @@ const ChessBoard = props => {
                 name="f3"
                 color="light"
                 piece={props.position[5][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -485,8 +393,6 @@ const ChessBoard = props => {
                 name="g3"
                 color="dark"
                 piece={props.position[5][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -495,8 +401,6 @@ const ChessBoard = props => {
                 name="h3"
                 color="light"
                 piece={props.position[5][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -507,8 +411,6 @@ const ChessBoard = props => {
                 name="a2"
                 color="light"
                 piece={props.position[6][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -517,8 +419,6 @@ const ChessBoard = props => {
                 name="b2"
                 color="dark"
                 piece={props.position[6][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -527,8 +427,6 @@ const ChessBoard = props => {
                 name="c2"
                 color="light"
                 piece={props.position[6][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -537,8 +435,6 @@ const ChessBoard = props => {
                 name="d2"
                 color="dark"
                 piece={props.position[6][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -547,8 +443,6 @@ const ChessBoard = props => {
                 name="e2"
                 color="light"
                 piece={props.position[6][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -557,8 +451,6 @@ const ChessBoard = props => {
                 name="f2"
                 color="dark"
                 piece={props.position[6][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -567,8 +459,6 @@ const ChessBoard = props => {
                 name="g2"
                 color="light"
                 piece={props.position[6][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -577,8 +467,6 @@ const ChessBoard = props => {
                 name="h2"
                 color="dark"
                 piece={props.position[6][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -589,8 +477,6 @@ const ChessBoard = props => {
                 name="a1"
                 color="dark"
                 piece={props.position[7][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -599,8 +485,6 @@ const ChessBoard = props => {
                 name="b1"
                 color="light"
                 piece={props.position[7][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -609,8 +493,6 @@ const ChessBoard = props => {
                 name="c1"
                 color="dark"
                 piece={props.position[7][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -619,8 +501,6 @@ const ChessBoard = props => {
                 name="d1"
                 color="light"
                 piece={props.position[7][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -629,8 +509,6 @@ const ChessBoard = props => {
                 name="e1"
                 color="dark"
                 piece={props.position[7][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -639,8 +517,6 @@ const ChessBoard = props => {
                 name="f1"
                 color="light"
                 piece={props.position[7][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -649,8 +525,6 @@ const ChessBoard = props => {
                 name="g1"
                 color="dark"
                 piece={props.position[7][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -659,8 +533,6 @@ const ChessBoard = props => {
                 name="h1"
                 color="light"
                 piece={props.position[7][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -678,8 +550,6 @@ const ChessBoard = props => {
                 name="h1"
                 color="light"
                 piece={props.position[7][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -688,8 +558,6 @@ const ChessBoard = props => {
                 name="g1"
                 color="dark"
                 piece={props.position[7][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -698,8 +566,6 @@ const ChessBoard = props => {
                 name="f1"
                 color="light"
                 piece={props.position[7][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -708,8 +574,6 @@ const ChessBoard = props => {
                 name="e1"
                 color="dark"
                 piece={props.position[7][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -718,8 +582,6 @@ const ChessBoard = props => {
                 name="d1"
                 color="light"
                 piece={props.position[7][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -728,8 +590,6 @@ const ChessBoard = props => {
                 name="c1"
                 color="dark"
                 piece={props.position[7][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -738,8 +598,6 @@ const ChessBoard = props => {
                 name="b1"
                 color="light"
                 piece={props.position[7][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -748,8 +606,6 @@ const ChessBoard = props => {
                 name="a1"
                 color="dark"
                 piece={props.position[7][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -760,8 +616,6 @@ const ChessBoard = props => {
                 name="h2"
                 color="dark"
                 piece={props.position[6][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -770,8 +624,6 @@ const ChessBoard = props => {
                 name="g2"
                 color="light"
                 piece={props.position[6][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -780,8 +632,6 @@ const ChessBoard = props => {
                 name="f2"
                 color="dark"
                 piece={props.position[6][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -790,8 +640,6 @@ const ChessBoard = props => {
                 name="e2"
                 color="light"
                 piece={props.position[6][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -800,8 +648,6 @@ const ChessBoard = props => {
                 name="d2"
                 color="dark"
                 piece={props.position[6][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -810,8 +656,6 @@ const ChessBoard = props => {
                 name="c2"
                 color="light"
                 piece={props.position[6][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -820,8 +664,6 @@ const ChessBoard = props => {
                 name="b2"
                 color="dark"
                 piece={props.position[6][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -830,8 +672,6 @@ const ChessBoard = props => {
                 name="a2"
                 color="light"
                 piece={props.position[6][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -842,8 +682,6 @@ const ChessBoard = props => {
                 name="h3"
                 color="light"
                 piece={props.position[5][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -852,8 +690,6 @@ const ChessBoard = props => {
                 name="g3"
                 color="dark"
                 piece={props.position[5][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -862,8 +698,6 @@ const ChessBoard = props => {
                 name="f3"
                 color="light"
                 piece={props.position[5][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -872,8 +706,6 @@ const ChessBoard = props => {
                 name="e3"
                 color="dark"
                 piece={props.position[5][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -882,8 +714,6 @@ const ChessBoard = props => {
                 name="d3"
                 color="light"
                 piece={props.position[5][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -892,8 +722,6 @@ const ChessBoard = props => {
                 name="c3"
                 color="dark"
                 piece={props.position[5][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -902,8 +730,6 @@ const ChessBoard = props => {
                 name="b3"
                 color="light"
                 piece={props.position[5][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -912,8 +738,6 @@ const ChessBoard = props => {
                 name="a3"
                 color="dark"
                 piece={props.position[5][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -924,8 +748,6 @@ const ChessBoard = props => {
                 name="h4"
                 color="dark"
                 piece={props.position[4][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -934,8 +756,6 @@ const ChessBoard = props => {
                 name="g4"
                 color="light"
                 piece={props.position[4][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -944,8 +764,6 @@ const ChessBoard = props => {
                 name="f4"
                 color="dark"
                 piece={props.position[4][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -954,8 +772,6 @@ const ChessBoard = props => {
                 name="e4"
                 color="light"
                 piece={props.position[4][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -964,8 +780,6 @@ const ChessBoard = props => {
                 name="d4"
                 color="dark"
                 piece={props.position[4][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -974,8 +788,6 @@ const ChessBoard = props => {
                 name="c4"
                 color="light"
                 piece={props.position[4][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -984,8 +796,6 @@ const ChessBoard = props => {
                 name="b4"
                 color="dark"
                 piece={props.position[4][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -994,8 +804,6 @@ const ChessBoard = props => {
                 name="a4"
                 color="light"
                 piece={props.position[4][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1006,8 +814,6 @@ const ChessBoard = props => {
                 name="h5"
                 color="light"
                 piece={props.position[3][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1016,8 +822,6 @@ const ChessBoard = props => {
                 name="g5"
                 color="dark"
                 piece={props.position[3][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1026,8 +830,6 @@ const ChessBoard = props => {
                 name="f5"
                 color="light"
                 piece={props.position[3][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1036,8 +838,6 @@ const ChessBoard = props => {
                 name="e5"
                 color="dark"
                 piece={props.position[3][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1046,8 +846,6 @@ const ChessBoard = props => {
                 name="d5"
                 color="light"
                 piece={props.position[3][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1056,8 +854,6 @@ const ChessBoard = props => {
                 name="c5"
                 color="dark"
                 piece={props.position[3][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1066,8 +862,6 @@ const ChessBoard = props => {
                 name="b5"
                 color="light"
                 piece={props.position[3][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1076,8 +870,6 @@ const ChessBoard = props => {
                 name="a5"
                 color="dark"
                 piece={props.position[3][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1088,8 +880,6 @@ const ChessBoard = props => {
                 name="h6"
                 color="dark"
                 piece={props.position[2][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1098,8 +888,6 @@ const ChessBoard = props => {
                 name="g6"
                 color="light"
                 piece={props.position[2][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1108,8 +896,6 @@ const ChessBoard = props => {
                 name="f6"
                 color="dark"
                 piece={props.position[2][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1118,8 +904,6 @@ const ChessBoard = props => {
                 name="e6"
                 color="light"
                 piece={props.position[2][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1128,8 +912,6 @@ const ChessBoard = props => {
                 name="d6"
                 color="dark"
                 piece={props.position[2][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1138,8 +920,6 @@ const ChessBoard = props => {
                 name="c6"
                 color="light"
                 piece={props.position[2][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1148,8 +928,6 @@ const ChessBoard = props => {
                 name="b6"
                 color="dark"
                 piece={props.position[2][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1158,8 +936,6 @@ const ChessBoard = props => {
                 name="a6"
                 color="light"
                 piece={props.position[2][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1170,8 +946,6 @@ const ChessBoard = props => {
                 name="h7"
                 color="light"
                 piece={props.position[1][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1180,8 +954,6 @@ const ChessBoard = props => {
                 name="g7"
                 color="dark"
                 piece={props.position[1][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1190,8 +962,6 @@ const ChessBoard = props => {
                 name="f7"
                 color="light"
                 piece={props.position[1][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1200,8 +970,6 @@ const ChessBoard = props => {
                 name="e7"
                 color="dark"
                 piece={props.position[1][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1210,8 +978,6 @@ const ChessBoard = props => {
                 name="d7"
                 color="light"
                 piece={props.position[1][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1220,8 +986,6 @@ const ChessBoard = props => {
                 name="c7"
                 color="dark"
                 piece={props.position[1][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1230,8 +994,6 @@ const ChessBoard = props => {
                 name="b7"
                 color="light"
                 piece={props.position[1][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1240,8 +1002,6 @@ const ChessBoard = props => {
                 name="a7"
                 color="dark"
                 piece={props.position[1][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1252,8 +1012,6 @@ const ChessBoard = props => {
                 name="h8"
                 color="dark"
                 piece={props.position[0][7]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1262,8 +1020,6 @@ const ChessBoard = props => {
                 name="g8"
                 color="light"
                 piece={props.position[0][6]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1272,8 +1028,6 @@ const ChessBoard = props => {
                 name="f8"
                 color="dark"
                 piece={props.position[0][5]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1282,8 +1036,6 @@ const ChessBoard = props => {
                 name="e8"
                 color="light"
                 piece={props.position[0][4]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1292,8 +1044,6 @@ const ChessBoard = props => {
                 name="d8"
                 color="dark"
                 piece={props.position[0][3]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1302,8 +1052,6 @@ const ChessBoard = props => {
                 name="c8"
                 color="light"
                 piece={props.position[0][2]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1312,8 +1060,6 @@ const ChessBoard = props => {
                 name="b8"
                 color="dark"
                 piece={props.position[0][1]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>
@@ -1322,8 +1068,6 @@ const ChessBoard = props => {
                 name="a8"
                 color="light"
                 piece={props.position[0][0]}
-                lastMove={props.lastMove}
-                inCheck={props.inCheck}
                 size={props.size}
               />
             </td>

@@ -10,37 +10,50 @@ const RegisterPage = () => {
     confirmPassword: ""
   });
   const [successAlert, setSuccessAlert] = useState(false);
+  const [wrongAlert, setWrongAlert] = useState(false);
 
   const onChange = e => {
     setInfo({ ...info, [e.target.id]: e.target.value });
   };
 
   const register = async newUser => {
-    await axios
+    return await axios
       .post("/users/register", {
         username: newUser.username,
         email: newUser.email,
         password: newUser.password
       })
-      .then(res => console.log("Registered."))
+      .then(res => res)
       .catch(err => console.log(err));
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
 
-    // Confirm passwords match !!
+    // Check user already exist
+    // Check valid email
+    // Check valid username/pass format
+    // Confirm passwords match
 
-    register({
+    const res = await register({
       email: info.email,
       username: info.username,
       password: info.password
-    })
-      .then(res => {
-        setInfo({ email: "", username: "", password: "", confirmPassword: "" });
-        setSuccessAlert(true);
-      })
-      .catch(err => console.log(err));
+    });
+
+    console.log(res);
+    if (res.data) {
+      setSuccessAlert(true);
+      setWrongAlert(false);
+    } else {
+      setWrongAlert(true);
+    }
+    setInfo({
+      email: "",
+      username: "",
+      password: "",
+      confirmPassword: ""
+    });
   };
 
   return (
@@ -91,6 +104,17 @@ const RegisterPage = () => {
               placeholder="Confirm password"
             />
           </Form.Group>
+          {wrongAlert && (
+            <Alert
+              className="txt-sm"
+              variant="danger"
+              style={{ marginTop: 30 }}
+              onClose={() => setWrongAlert(false)}
+              dismissible
+            >
+              That email already exists.
+            </Alert>
+          )}
           <Button
             className="dark-btn"
             variant="outline-light"
