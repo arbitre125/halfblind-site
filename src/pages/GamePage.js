@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchBoardAction } from "../redux/store/actions/gameActions";
 import { Row, Col, Button } from "react-bootstrap";
 import GameInfo from "../components/game/GameInfo";
 import ChessBoard from "../components/game/board/ChessBoard";
@@ -8,10 +10,7 @@ import GameOver from "../components/game/GameOver";
 import InputMove from "../components/game/InputMove";
 import axios from "axios";
 
-const GamePage = props => {
-  const [boardPosition, setBoardPosition] = useState(
-    Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null))
-  );
+const GamePage = ({ fetchBoard, ...props }) => {
   const [moveHistory, setMoveHistory] = useState([]);
   const [gameOver, setGameOver] = useState(-1);
   const [reload, setReload] = useState(false);
@@ -19,17 +18,10 @@ const GamePage = props => {
   let { gameId } = useParams();
 
   useEffect(() => {
-    readBoard(gameId);
+    fetchBoard(gameId);
     readGameOver(gameId);
     readHistory(gameId);
-  }, [reload, gameId]);
-
-  const readBoard = async id => {
-    await axios
-      .get(`/game/${id}`)
-      .then(response => setBoardPosition(response.data.board))
-      .catch(err => console.log(err));
-  };
+  }, [reload, gameId, fetchBoard]);
 
   const readGameOver = async id => {
     await axios
@@ -123,7 +115,7 @@ const GamePage = props => {
           <ChessBoard
             perspective="white"
             size={props.size}
-            position={boardPosition}
+            position={props.board}
           />
         </Col>
         <Col style={{ padding: 5 }}>
@@ -154,4 +146,18 @@ const GamePage = props => {
   );
 };
 
-export default GamePage;
+const mapStateToProps = state => {
+  return {
+    board: state.game.board
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchBoard: id => {
+      dispatch(fetchBoardAction(id));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamePage);

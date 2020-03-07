@@ -24,7 +24,7 @@ const UserRoute = ({ children, userLogged, ...props }) => {
 
 const mapStateToProps = state => {
   return {
-    userLogged: state.userLogged
+    userLogged: state.user.userLogged
   };
 };
 

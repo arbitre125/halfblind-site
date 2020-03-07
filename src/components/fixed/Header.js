@@ -1,6 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import {
+  logoutAction,
+  newGameAction
+} from "../../redux/store/actions/userActions";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import decode from "jwt-decode";
@@ -116,19 +120,19 @@ const Header = ({ userLogged, usertoken, currentGameId, logout, newGame }) => {
 
 const mapStateToProps = state => {
   return {
-    userLogged: state.userLogged,
-    usertoken: state.usertoken,
-    currentGameId: state.currentGameId
+    userLogged: state.user.userLogged,
+    usertoken: state.user.usertoken,
+    currentGameId: state.user.currentGameId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
-      dispatch({ type: "LOGOUT" });
+      dispatch(logoutAction());
     },
     newGame: id => {
-      dispatch({ type: "NEW_GAME", payload: id });
+      dispatch(newGameAction(id));
     }
   };
 };

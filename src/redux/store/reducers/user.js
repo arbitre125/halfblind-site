@@ -1,3 +1,5 @@
+import { LOGIN, LOGOUT, NEW_GAME } from "../types";
+
 const initialState = {
   userLogged: localStorage.usertoken !== undefined,
   usertoken:
@@ -5,21 +7,21 @@ const initialState = {
   currentGameId: localStorage.gameId !== undefined ? localStorage.gameId : null
 };
 
-const reducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case LOGIN:
       return {
         userLogged: true,
         usertoken: action.payload,
         currentGameId: null
       };
-    case "LOGOUT":
+    case LOGOUT:
       return {
         userLogged: false,
         usertoken: null,
         currentGameId: null
       };
-    case "NEW_GAME":
+    case NEW_GAME:
       return {
         ...state,
         currentGameId: action.payload
@@ -29,4 +31,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default userReducer;

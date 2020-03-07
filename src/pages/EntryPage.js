@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import { newGameAction } from "../redux/store/actions/userActions";
 import { Button, Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
@@ -97,15 +98,15 @@ const EntryPage = ({ userLogged, currentGameId, newGame }) => {
 
 const mapStateToProps = state => {
   return {
-    userLogged: state.userLogged,
-    currentGameId: state.currentGameId
+    userLogged: state.user.userLogged,
+    currentGameId: state.user.currentGameId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     newGame: id => {
-      dispatch({ type: "NEW_GAME", payload: id });
+      dispatch(newGameAction(id));
     }
   };
 };

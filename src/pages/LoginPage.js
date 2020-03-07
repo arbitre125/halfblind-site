@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import { loginAction } from "../redux/store/actions/userActions";
 import { Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 
@@ -104,7 +105,7 @@ const LoginPage = ({ login }) => {
 const mapDispatchToProps = dispatch => {
   return {
     login: token => {
-      dispatch({ type: "LOGIN", payload: token });
+      dispatch(loginAction(token));
     }
   };
 };
