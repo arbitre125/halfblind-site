@@ -43,11 +43,7 @@ game.get(`/:gameId`, (req, res) => {
 
 game.post(`/:gameId/move`, (req, res) => {
   const moveAttempt = chess_games[req.params.gameId].move(req.body.move);
-  if (moveAttempt) {
-    res.send(moveAttempt);
-  } else {
-    res.send(null); // check if this is needed
-  }
+  res.send(moveAttempt);
 });
 
 game.post(`/:gameId/reset`, (req, res) => {

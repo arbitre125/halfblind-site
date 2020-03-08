@@ -4,9 +4,6 @@
 # env vars
 .env
 
-# testing
-/coverage
-
 # production
 /build
 

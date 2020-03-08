@@ -18,3 +18,24 @@ export const squareToIndices = square => {
       : 7;
   return [x, y];
 };
+
+export const indicesToSquare = ([x, y]) => {
+  const rank = 8 - x;
+  const file =
+    y === 0
+      ? "a"
+      : y === 1
+      ? "b"
+      : y === 2
+      ? "c"
+      : y === 3
+      ? "d"
+      : y === 4
+      ? "e"
+      : y === 5
+      ? "f"
+      : y === 6
+      ? "g"
+      : "h";
+  return rank.toString() + file;
+};

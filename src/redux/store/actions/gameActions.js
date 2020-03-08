@@ -1,5 +1,16 @@
 import axios from "axios";
-import { BOARD_FETCHING, BOARD_FETCHED } from "../types";
+import {
+  BOARD_FETCHING,
+  BOARD_FETCHED,
+  MOVES_FETCHING,
+  MOVES_FETCHED,
+  HISTORY_FETCHING,
+  HISTORY_FETCHED,
+  GAME_OVER_FETCHING,
+  GAME_OVER_FETCHED,
+  MAKE_MOVE,
+  RESET_GAME
+} from "../types";
 
 export const fetchBoardAction = id => {
   return dispatch => {
@@ -20,5 +31,121 @@ export const fetchBoardAction = id => {
       .catch(err => {
         console.log(err);
       });
+  };
+};
+
+export const fetchMovesAction = id => {
+  return dispatch => {
+    dispatch({
+      type: MOVES_FETCHING
+    });
+
+    return axios
+      .get(`/game/${id}`)
+      .then(res => {
+        if (res.status === 200) {
+          dispatch({
+            type: MOVES_FETCHED,
+            payload: res.data.moves
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
+export const fetchHistoryAction = id => {
+  return dispatch => {
+    dispatch({
+      type: HISTORY_FETCHING
+    });
+
+    return axios
+      .get(`/game/${id}`)
+      .then(res => {
+        if (res.status === 200) {
+          dispatch({
+            type: HISTORY_FETCHED,
+            payload: res.data.history
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
+export const fetchGameOverAction = id => {
+  return dispatch => {
+    dispatch({
+      type: GAME_OVER_FETCHING
+    });
+
+    return axios
+      .get(`/game/${id}`)
+      .then(res => {
+        if (res.status === 200) {
+          dispatch({
+            type: GAME_OVER_FETCHED,
+            // Game on: return -1
+            // Game over mate: return 0 for W mate, 1 for B mate
+            // Game over draw: return 2 for stale, 3 for insuff, 4 for 3rep
+            payload: res.data.gameOver
+              ? res.data.inCheckmate
+                ? res.data.turn === "b"
+                  ? 0
+                  : 1
+                : res.data.inStalemate
+                ? 2
+                : res.data.insufficientMaterial
+                ? 3
+                : 4
+              : -1
+          });
+        }
+      })
+      .catch(err => console.log(err));
+  };
+};
+
+// Make move client-side based on valid-move-call to server
+// (returns: valid ? moveObj : "")
+export const makeMoveAction = (id, move) => {
+  return dispatch => {
+    return axios
+      .post(`/game/${id}/move`, { move })
+      .then(res => {
+        if (res.status === 200 && res.data !== "") {
+          dispatch({
+            type: MAKE_MOVE,
+            payload: res.data
+          });
+        }
+      })
+      .catch(err => console.log(err));
+  };
+};
+
+export const resetGameAction = id => {
+  return dispatch => {
+    return axios
+      .post(`/game/${id}/reset`)
+      .then(async res => {
+        if (res.status === 200) {
+          // Get board (going to be startPos)
+          const board = await axios
+            .get(`/game/${id}`)
+            .then(res => res.data.board)
+            .catch(err => console.log(err));
+          dispatch({
+            type: RESET_GAME,
+            payload: board
+          });
+        }
+      })
+      .catch(err => console.log(err));
   };
 };

@@ -10,7 +10,7 @@ function InputMove(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.makeMove(value);
+    props.makeMove(props.id, value);
     setValue("");
   };
 

@@ -1,7 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
 import Square from "./Square";
 
-const ChessBoard = props => {
+const ChessBoard = ({ board, ...props }) => {
   if (props.perspective === "white") {
     return (
       <table
@@ -14,7 +15,7 @@ const ChessBoard = props => {
               <Square
                 name="a8"
                 color="light"
-                piece={props.position[0][0]}
+                piece={board[0][0]}
                 size={props.size}
               />
             </td>
@@ -22,7 +23,7 @@ const ChessBoard = props => {
               <Square
                 name="b8"
                 color="dark"
-                piece={props.position[0][1]}
+                piece={board[0][1]}
                 size={props.size}
               />
             </td>
@@ -30,7 +31,7 @@ const ChessBoard = props => {
               <Square
                 name="c8"
                 color="light"
-                piece={props.position[0][2]}
+                piece={board[0][2]}
                 size={props.size}
               />
             </td>
@@ -38,7 +39,7 @@ const ChessBoard = props => {
               <Square
                 name="d8"
                 color="dark"
-                piece={props.position[0][3]}
+                piece={board[0][3]}
                 size={props.size}
               />
             </td>
@@ -46,7 +47,7 @@ const ChessBoard = props => {
               <Square
                 name="e8"
                 color="light"
-                piece={props.position[0][4]}
+                piece={board[0][4]}
                 size={props.size}
               />
             </td>
@@ -54,7 +55,7 @@ const ChessBoard = props => {
               <Square
                 name="f8"
                 color="dark"
-                piece={props.position[0][5]}
+                piece={board[0][5]}
                 size={props.size}
               />
             </td>
@@ -62,7 +63,7 @@ const ChessBoard = props => {
               <Square
                 name="g8"
                 color="light"
-                piece={props.position[0][6]}
+                piece={board[0][6]}
                 size={props.size}
               />
             </td>
@@ -70,7 +71,7 @@ const ChessBoard = props => {
               <Square
                 name="h8"
                 color="dark"
-                piece={props.position[0][7]}
+                piece={board[0][7]}
                 size={props.size}
               />
             </td>
@@ -80,7 +81,7 @@ const ChessBoard = props => {
               <Square
                 name="a7"
                 color="dark"
-                piece={props.position[1][0]}
+                piece={board[1][0]}
                 size={props.size}
               />
             </td>
@@ -88,7 +89,7 @@ const ChessBoard = props => {
               <Square
                 name="b7"
                 color="light"
-                piece={props.position[1][1]}
+                piece={board[1][1]}
                 size={props.size}
               />
             </td>
@@ -96,7 +97,7 @@ const ChessBoard = props => {
               <Square
                 name="c7"
                 color="dark"
-                piece={props.position[1][2]}
+                piece={board[1][2]}
                 size={props.size}
               />
             </td>
@@ -104,7 +105,7 @@ const ChessBoard = props => {
               <Square
                 name="d7"
                 color="light"
-                piece={props.position[1][3]}
+                piece={board[1][3]}
                 size={props.size}
               />
             </td>
@@ -112,7 +113,7 @@ const ChessBoard = props => {
               <Square
                 name="e7"
                 color="dark"
-                piece={props.position[1][4]}
+                piece={board[1][4]}
                 size={props.size}
               />
             </td>
@@ -120,7 +121,7 @@ const ChessBoard = props => {
               <Square
                 name="f7"
                 color="light"
-                piece={props.position[1][5]}
+                piece={board[1][5]}
                 size={props.size}
               />
             </td>
@@ -128,7 +129,7 @@ const ChessBoard = props => {
               <Square
                 name="g7"
                 color="dark"
-                piece={props.position[1][6]}
+                piece={board[1][6]}
                 size={props.size}
               />
             </td>
@@ -136,7 +137,7 @@ const ChessBoard = props => {
               <Square
                 name="h7"
                 color="light"
-                piece={props.position[1][7]}
+                piece={board[1][7]}
                 size={props.size}
               />
             </td>
@@ -146,7 +147,7 @@ const ChessBoard = props => {
               <Square
                 name="a6"
                 color="light"
-                piece={props.position[2][0]}
+                piece={board[2][0]}
                 size={props.size}
               />
             </td>
@@ -154,7 +155,7 @@ const ChessBoard = props => {
               <Square
                 name="b6"
                 color="dark"
-                piece={props.position[2][1]}
+                piece={board[2][1]}
                 size={props.size}
               />
             </td>
@@ -162,7 +163,7 @@ const ChessBoard = props => {
               <Square
                 name="c6"
                 color="light"
-                piece={props.position[2][2]}
+                piece={board[2][2]}
                 size={props.size}
               />
             </td>
@@ -170,7 +171,7 @@ const ChessBoard = props => {
               <Square
                 name="d6"
                 color="dark"
-                piece={props.position[2][3]}
+                piece={board[2][3]}
                 size={props.size}
               />
             </td>
@@ -178,7 +179,7 @@ const ChessBoard = props => {
               <Square
                 name="e6"
                 color="light"
-                piece={props.position[2][4]}
+                piece={board[2][4]}
                 size={props.size}
               />
             </td>
@@ -186,7 +187,7 @@ const ChessBoard = props => {
               <Square
                 name="f6"
                 color="dark"
-                piece={props.position[2][5]}
+                piece={board[2][5]}
                 size={props.size}
               />
             </td>
@@ -194,7 +195,7 @@ const ChessBoard = props => {
               <Square
                 name="g6"
                 color="light"
-                piece={props.position[2][6]}
+                piece={board[2][6]}
                 size={props.size}
               />
             </td>
@@ -202,7 +203,7 @@ const ChessBoard = props => {
               <Square
                 name="h6"
                 color="dark"
-                piece={props.position[2][7]}
+                piece={board[2][7]}
                 size={props.size}
               />
             </td>
@@ -212,7 +213,7 @@ const ChessBoard = props => {
               <Square
                 name="a5"
                 color="dark"
-                piece={props.position[3][0]}
+                piece={board[3][0]}
                 size={props.size}
               />
             </td>
@@ -220,7 +221,7 @@ const ChessBoard = props => {
               <Square
                 name="b5"
                 color="light"
-                piece={props.position[3][1]}
+                piece={board[3][1]}
                 size={props.size}
               />
             </td>
@@ -228,7 +229,7 @@ const ChessBoard = props => {
               <Square
                 name="c5"
                 color="dark"
-                piece={props.position[3][2]}
+                piece={board[3][2]}
                 size={props.size}
               />
             </td>
@@ -236,7 +237,7 @@ const ChessBoard = props => {
               <Square
                 name="d5"
                 color="light"
-                piece={props.position[3][3]}
+                piece={board[3][3]}
                 size={props.size}
               />
             </td>
@@ -244,7 +245,7 @@ const ChessBoard = props => {
               <Square
                 name="e5"
                 color="dark"
-                piece={props.position[3][4]}
+                piece={board[3][4]}
                 size={props.size}
               />
             </td>
@@ -252,7 +253,7 @@ const ChessBoard = props => {
               <Square
                 name="f5"
                 color="light"
-                piece={props.position[3][5]}
+                piece={board[3][5]}
                 size={props.size}
               />
             </td>
@@ -260,7 +261,7 @@ const ChessBoard = props => {
               <Square
                 name="g5"
                 color="dark"
-                piece={props.position[3][6]}
+                piece={board[3][6]}
                 size={props.size}
               />
             </td>
@@ -268,7 +269,7 @@ const ChessBoard = props => {
               <Square
                 name="h5"
                 color="light"
-                piece={props.position[3][7]}
+                piece={board[3][7]}
                 size={props.size}
               />
             </td>
@@ -278,7 +279,7 @@ const ChessBoard = props => {
               <Square
                 name="a4"
                 color="light"
-                piece={props.position[4][0]}
+                piece={board[4][0]}
                 size={props.size}
               />
             </td>
@@ -286,7 +287,7 @@ const ChessBoard = props => {
               <Square
                 name="b4"
                 color="dark"
-                piece={props.position[4][1]}
+                piece={board[4][1]}
                 size={props.size}
               />
             </td>
@@ -294,7 +295,7 @@ const ChessBoard = props => {
               <Square
                 name="c4"
                 color="light"
-                piece={props.position[4][2]}
+                piece={board[4][2]}
                 size={props.size}
               />
             </td>
@@ -302,7 +303,7 @@ const ChessBoard = props => {
               <Square
                 name="d4"
                 color="dark"
-                piece={props.position[4][3]}
+                piece={board[4][3]}
                 size={props.size}
               />
             </td>
@@ -310,7 +311,7 @@ const ChessBoard = props => {
               <Square
                 name="e4"
                 color="light"
-                piece={props.position[4][4]}
+                piece={board[4][4]}
                 size={props.size}
               />
             </td>
@@ -318,7 +319,7 @@ const ChessBoard = props => {
               <Square
                 name="f4"
                 color="dark"
-                piece={props.position[4][5]}
+                piece={board[4][5]}
                 size={props.size}
               />
             </td>
@@ -326,7 +327,7 @@ const ChessBoard = props => {
               <Square
                 name="g4"
                 color="light"
-                piece={props.position[4][6]}
+                piece={board[4][6]}
                 size={props.size}
               />
             </td>
@@ -334,7 +335,7 @@ const ChessBoard = props => {
               <Square
                 name="h4"
                 color="dark"
-                piece={props.position[4][7]}
+                piece={board[4][7]}
                 size={props.size}
               />
             </td>
@@ -344,7 +345,7 @@ const ChessBoard = props => {
               <Square
                 name="a3"
                 color="dark"
-                piece={props.position[5][0]}
+                piece={board[5][0]}
                 size={props.size}
               />
             </td>
@@ -352,7 +353,7 @@ const ChessBoard = props => {
               <Square
                 name="b3"
                 color="light"
-                piece={props.position[5][1]}
+                piece={board[5][1]}
                 size={props.size}
               />
             </td>
@@ -360,7 +361,7 @@ const ChessBoard = props => {
               <Square
                 name="c3"
                 color="dark"
-                piece={props.position[5][2]}
+                piece={board[5][2]}
                 size={props.size}
               />
             </td>
@@ -368,7 +369,7 @@ const ChessBoard = props => {
               <Square
                 name="d3"
                 color="light"
-                piece={props.position[5][3]}
+                piece={board[5][3]}
                 size={props.size}
               />
             </td>
@@ -376,7 +377,7 @@ const ChessBoard = props => {
               <Square
                 name="e3"
                 color="dark"
-                piece={props.position[5][4]}
+                piece={board[5][4]}
                 size={props.size}
               />
             </td>
@@ -384,7 +385,7 @@ const ChessBoard = props => {
               <Square
                 name="f3"
                 color="light"
-                piece={props.position[5][5]}
+                piece={board[5][5]}
                 size={props.size}
               />
             </td>
@@ -392,7 +393,7 @@ const ChessBoard = props => {
               <Square
                 name="g3"
                 color="dark"
-                piece={props.position[5][6]}
+                piece={board[5][6]}
                 size={props.size}
               />
             </td>
@@ -400,7 +401,7 @@ const ChessBoard = props => {
               <Square
                 name="h3"
                 color="light"
-                piece={props.position[5][7]}
+                piece={board[5][7]}
                 size={props.size}
               />
             </td>
@@ -410,7 +411,7 @@ const ChessBoard = props => {
               <Square
                 name="a2"
                 color="light"
-                piece={props.position[6][0]}
+                piece={board[6][0]}
                 size={props.size}
               />
             </td>
@@ -418,7 +419,7 @@ const ChessBoard = props => {
               <Square
                 name="b2"
                 color="dark"
-                piece={props.position[6][1]}
+                piece={board[6][1]}
                 size={props.size}
               />
             </td>
@@ -426,7 +427,7 @@ const ChessBoard = props => {
               <Square
                 name="c2"
                 color="light"
-                piece={props.position[6][2]}
+                piece={board[6][2]}
                 size={props.size}
               />
             </td>
@@ -434,7 +435,7 @@ const ChessBoard = props => {
               <Square
                 name="d2"
                 color="dark"
-                piece={props.position[6][3]}
+                piece={board[6][3]}
                 size={props.size}
               />
             </td>
@@ -442,7 +443,7 @@ const ChessBoard = props => {
               <Square
                 name="e2"
                 color="light"
-                piece={props.position[6][4]}
+                piece={board[6][4]}
                 size={props.size}
               />
             </td>
@@ -450,7 +451,7 @@ const ChessBoard = props => {
               <Square
                 name="f2"
                 color="dark"
-                piece={props.position[6][5]}
+                piece={board[6][5]}
                 size={props.size}
               />
             </td>
@@ -458,7 +459,7 @@ const ChessBoard = props => {
               <Square
                 name="g2"
                 color="light"
-                piece={props.position[6][6]}
+                piece={board[6][6]}
                 size={props.size}
               />
             </td>
@@ -466,7 +467,7 @@ const ChessBoard = props => {
               <Square
                 name="h2"
                 color="dark"
-                piece={props.position[6][7]}
+                piece={board[6][7]}
                 size={props.size}
               />
             </td>
@@ -476,7 +477,7 @@ const ChessBoard = props => {
               <Square
                 name="a1"
                 color="dark"
-                piece={props.position[7][0]}
+                piece={board[7][0]}
                 size={props.size}
               />
             </td>
@@ -484,7 +485,7 @@ const ChessBoard = props => {
               <Square
                 name="b1"
                 color="light"
-                piece={props.position[7][1]}
+                piece={board[7][1]}
                 size={props.size}
               />
             </td>
@@ -492,7 +493,7 @@ const ChessBoard = props => {
               <Square
                 name="c1"
                 color="dark"
-                piece={props.position[7][2]}
+                piece={board[7][2]}
                 size={props.size}
               />
             </td>
@@ -500,7 +501,7 @@ const ChessBoard = props => {
               <Square
                 name="d1"
                 color="light"
-                piece={props.position[7][3]}
+                piece={board[7][3]}
                 size={props.size}
               />
             </td>
@@ -508,7 +509,7 @@ const ChessBoard = props => {
               <Square
                 name="e1"
                 color="dark"
-                piece={props.position[7][4]}
+                piece={board[7][4]}
                 size={props.size}
               />
             </td>
@@ -516,7 +517,7 @@ const ChessBoard = props => {
               <Square
                 name="f1"
                 color="light"
-                piece={props.position[7][5]}
+                piece={board[7][5]}
                 size={props.size}
               />
             </td>
@@ -524,7 +525,7 @@ const ChessBoard = props => {
               <Square
                 name="g1"
                 color="dark"
-                piece={props.position[7][6]}
+                piece={board[7][6]}
                 size={props.size}
               />
             </td>
@@ -532,7 +533,7 @@ const ChessBoard = props => {
               <Square
                 name="h1"
                 color="light"
-                piece={props.position[7][7]}
+                piece={board[7][7]}
                 size={props.size}
               />
             </td>
@@ -549,7 +550,7 @@ const ChessBoard = props => {
               <Square
                 name="h1"
                 color="light"
-                piece={props.position[7][7]}
+                piece={board[7][7]}
                 size={props.size}
               />
             </td>
@@ -557,7 +558,7 @@ const ChessBoard = props => {
               <Square
                 name="g1"
                 color="dark"
-                piece={props.position[7][6]}
+                piece={board[7][6]}
                 size={props.size}
               />
             </td>
@@ -565,7 +566,7 @@ const ChessBoard = props => {
               <Square
                 name="f1"
                 color="light"
-                piece={props.position[7][5]}
+                piece={board[7][5]}
                 size={props.size}
               />
             </td>
@@ -573,7 +574,7 @@ const ChessBoard = props => {
               <Square
                 name="e1"
                 color="dark"
-                piece={props.position[7][4]}
+                piece={board[7][4]}
                 size={props.size}
               />
             </td>
@@ -581,7 +582,7 @@ const ChessBoard = props => {
               <Square
                 name="d1"
                 color="light"
-                piece={props.position[7][3]}
+                piece={board[7][3]}
                 size={props.size}
               />
             </td>
@@ -589,7 +590,7 @@ const ChessBoard = props => {
               <Square
                 name="c1"
                 color="dark"
-                piece={props.position[7][2]}
+                piece={board[7][2]}
                 size={props.size}
               />
             </td>
@@ -597,7 +598,7 @@ const ChessBoard = props => {
               <Square
                 name="b1"
                 color="light"
-                piece={props.position[7][1]}
+                piece={board[7][1]}
                 size={props.size}
               />
             </td>
@@ -605,7 +606,7 @@ const ChessBoard = props => {
               <Square
                 name="a1"
                 color="dark"
-                piece={props.position[7][0]}
+                piece={board[7][0]}
                 size={props.size}
               />
             </td>
@@ -615,7 +616,7 @@ const ChessBoard = props => {
               <Square
                 name="h2"
                 color="dark"
-                piece={props.position[6][7]}
+                piece={board[6][7]}
                 size={props.size}
               />
             </td>
@@ -623,7 +624,7 @@ const ChessBoard = props => {
               <Square
                 name="g2"
                 color="light"
-                piece={props.position[6][6]}
+                piece={board[6][6]}
                 size={props.size}
               />
             </td>
@@ -631,7 +632,7 @@ const ChessBoard = props => {
               <Square
                 name="f2"
                 color="dark"
-                piece={props.position[6][5]}
+                piece={board[6][5]}
                 size={props.size}
               />
             </td>
@@ -639,7 +640,7 @@ const ChessBoard = props => {
               <Square
                 name="e2"
                 color="light"
-                piece={props.position[6][4]}
+                piece={board[6][4]}
                 size={props.size}
               />
             </td>
@@ -647,7 +648,7 @@ const ChessBoard = props => {
               <Square
                 name="d2"
                 color="dark"
-                piece={props.position[6][3]}
+                piece={board[6][3]}
                 size={props.size}
               />
             </td>
@@ -655,7 +656,7 @@ const ChessBoard = props => {
               <Square
                 name="c2"
                 color="light"
-                piece={props.position[6][2]}
+                piece={board[6][2]}
                 size={props.size}
               />
             </td>
@@ -663,7 +664,7 @@ const ChessBoard = props => {
               <Square
                 name="b2"
                 color="dark"
-                piece={props.position[6][1]}
+                piece={board[6][1]}
                 size={props.size}
               />
             </td>
@@ -671,7 +672,7 @@ const ChessBoard = props => {
               <Square
                 name="a2"
                 color="light"
-                piece={props.position[6][0]}
+                piece={board[6][0]}
                 size={props.size}
               />
             </td>
@@ -681,7 +682,7 @@ const ChessBoard = props => {
               <Square
                 name="h3"
                 color="light"
-                piece={props.position[5][7]}
+                piece={board[5][7]}
                 size={props.size}
               />
             </td>
@@ -689,7 +690,7 @@ const ChessBoard = props => {
               <Square
                 name="g3"
                 color="dark"
-                piece={props.position[5][6]}
+                piece={board[5][6]}
                 size={props.size}
               />
             </td>
@@ -697,7 +698,7 @@ const ChessBoard = props => {
               <Square
                 name="f3"
                 color="light"
-                piece={props.position[5][5]}
+                piece={board[5][5]}
                 size={props.size}
               />
             </td>
@@ -705,7 +706,7 @@ const ChessBoard = props => {
               <Square
                 name="e3"
                 color="dark"
-                piece={props.position[5][4]}
+                piece={board[5][4]}
                 size={props.size}
               />
             </td>
@@ -713,7 +714,7 @@ const ChessBoard = props => {
               <Square
                 name="d3"
                 color="light"
-                piece={props.position[5][3]}
+                piece={board[5][3]}
                 size={props.size}
               />
             </td>
@@ -721,7 +722,7 @@ const ChessBoard = props => {
               <Square
                 name="c3"
                 color="dark"
-                piece={props.position[5][2]}
+                piece={board[5][2]}
                 size={props.size}
               />
             </td>
@@ -729,7 +730,7 @@ const ChessBoard = props => {
               <Square
                 name="b3"
                 color="light"
-                piece={props.position[5][1]}
+                piece={board[5][1]}
                 size={props.size}
               />
             </td>
@@ -737,7 +738,7 @@ const ChessBoard = props => {
               <Square
                 name="a3"
                 color="dark"
-                piece={props.position[5][0]}
+                piece={board[5][0]}
                 size={props.size}
               />
             </td>
@@ -747,7 +748,7 @@ const ChessBoard = props => {
               <Square
                 name="h4"
                 color="dark"
-                piece={props.position[4][7]}
+                piece={board[4][7]}
                 size={props.size}
               />
             </td>
@@ -755,7 +756,7 @@ const ChessBoard = props => {
               <Square
                 name="g4"
                 color="light"
-                piece={props.position[4][6]}
+                piece={board[4][6]}
                 size={props.size}
               />
             </td>
@@ -763,7 +764,7 @@ const ChessBoard = props => {
               <Square
                 name="f4"
                 color="dark"
-                piece={props.position[4][5]}
+                piece={board[4][5]}
                 size={props.size}
               />
             </td>
@@ -771,7 +772,7 @@ const ChessBoard = props => {
               <Square
                 name="e4"
                 color="light"
-                piece={props.position[4][4]}
+                piece={board[4][4]}
                 size={props.size}
               />
             </td>
@@ -779,7 +780,7 @@ const ChessBoard = props => {
               <Square
                 name="d4"
                 color="dark"
-                piece={props.position[4][3]}
+                piece={board[4][3]}
                 size={props.size}
               />
             </td>
@@ -787,7 +788,7 @@ const ChessBoard = props => {
               <Square
                 name="c4"
                 color="light"
-                piece={props.position[4][2]}
+                piece={board[4][2]}
                 size={props.size}
               />
             </td>
@@ -795,7 +796,7 @@ const ChessBoard = props => {
               <Square
                 name="b4"
                 color="dark"
-                piece={props.position[4][1]}
+                piece={board[4][1]}
                 size={props.size}
               />
             </td>
@@ -803,7 +804,7 @@ const ChessBoard = props => {
               <Square
                 name="a4"
                 color="light"
-                piece={props.position[4][0]}
+                piece={board[4][0]}
                 size={props.size}
               />
             </td>
@@ -813,7 +814,7 @@ const ChessBoard = props => {
               <Square
                 name="h5"
                 color="light"
-                piece={props.position[3][7]}
+                piece={board[3][7]}
                 size={props.size}
               />
             </td>
@@ -821,7 +822,7 @@ const ChessBoard = props => {
               <Square
                 name="g5"
                 color="dark"
-                piece={props.position[3][6]}
+                piece={board[3][6]}
                 size={props.size}
               />
             </td>
@@ -829,7 +830,7 @@ const ChessBoard = props => {
               <Square
                 name="f5"
                 color="light"
-                piece={props.position[3][5]}
+                piece={board[3][5]}
                 size={props.size}
               />
             </td>
@@ -837,7 +838,7 @@ const ChessBoard = props => {
               <Square
                 name="e5"
                 color="dark"
-                piece={props.position[3][4]}
+                piece={board[3][4]}
                 size={props.size}
               />
             </td>
@@ -845,7 +846,7 @@ const ChessBoard = props => {
               <Square
                 name="d5"
                 color="light"
-                piece={props.position[3][3]}
+                piece={board[3][3]}
                 size={props.size}
               />
             </td>
@@ -853,7 +854,7 @@ const ChessBoard = props => {
               <Square
                 name="c5"
                 color="dark"
-                piece={props.position[3][2]}
+                piece={board[3][2]}
                 size={props.size}
               />
             </td>
@@ -861,7 +862,7 @@ const ChessBoard = props => {
               <Square
                 name="b5"
                 color="light"
-                piece={props.position[3][1]}
+                piece={board[3][1]}
                 size={props.size}
               />
             </td>
@@ -869,7 +870,7 @@ const ChessBoard = props => {
               <Square
                 name="a5"
                 color="dark"
-                piece={props.position[3][0]}
+                piece={board[3][0]}
                 size={props.size}
               />
             </td>
@@ -879,7 +880,7 @@ const ChessBoard = props => {
               <Square
                 name="h6"
                 color="dark"
-                piece={props.position[2][7]}
+                piece={board[2][7]}
                 size={props.size}
               />
             </td>
@@ -887,7 +888,7 @@ const ChessBoard = props => {
               <Square
                 name="g6"
                 color="light"
-                piece={props.position[2][6]}
+                piece={board[2][6]}
                 size={props.size}
               />
             </td>
@@ -895,7 +896,7 @@ const ChessBoard = props => {
               <Square
                 name="f6"
                 color="dark"
-                piece={props.position[2][5]}
+                piece={board[2][5]}
                 size={props.size}
               />
             </td>
@@ -903,7 +904,7 @@ const ChessBoard = props => {
               <Square
                 name="e6"
                 color="light"
-                piece={props.position[2][4]}
+                piece={board[2][4]}
                 size={props.size}
               />
             </td>
@@ -911,7 +912,7 @@ const ChessBoard = props => {
               <Square
                 name="d6"
                 color="dark"
-                piece={props.position[2][3]}
+                piece={board[2][3]}
                 size={props.size}
               />
             </td>
@@ -919,7 +920,7 @@ const ChessBoard = props => {
               <Square
                 name="c6"
                 color="light"
-                piece={props.position[2][2]}
+                piece={board[2][2]}
                 size={props.size}
               />
             </td>
@@ -927,7 +928,7 @@ const ChessBoard = props => {
               <Square
                 name="b6"
                 color="dark"
-                piece={props.position[2][1]}
+                piece={board[2][1]}
                 size={props.size}
               />
             </td>
@@ -935,7 +936,7 @@ const ChessBoard = props => {
               <Square
                 name="a6"
                 color="light"
-                piece={props.position[2][0]}
+                piece={board[2][0]}
                 size={props.size}
               />
             </td>
@@ -945,7 +946,7 @@ const ChessBoard = props => {
               <Square
                 name="h7"
                 color="light"
-                piece={props.position[1][7]}
+                piece={board[1][7]}
                 size={props.size}
               />
             </td>
@@ -953,7 +954,7 @@ const ChessBoard = props => {
               <Square
                 name="g7"
                 color="dark"
-                piece={props.position[1][6]}
+                piece={board[1][6]}
                 size={props.size}
               />
             </td>
@@ -961,7 +962,7 @@ const ChessBoard = props => {
               <Square
                 name="f7"
                 color="light"
-                piece={props.position[1][5]}
+                piece={board[1][5]}
                 size={props.size}
               />
             </td>
@@ -969,7 +970,7 @@ const ChessBoard = props => {
               <Square
                 name="e7"
                 color="dark"
-                piece={props.position[1][4]}
+                piece={board[1][4]}
                 size={props.size}
               />
             </td>
@@ -977,7 +978,7 @@ const ChessBoard = props => {
               <Square
                 name="d7"
                 color="light"
-                piece={props.position[1][3]}
+                piece={board[1][3]}
                 size={props.size}
               />
             </td>
@@ -985,7 +986,7 @@ const ChessBoard = props => {
               <Square
                 name="c7"
                 color="dark"
-                piece={props.position[1][2]}
+                piece={board[1][2]}
                 size={props.size}
               />
             </td>
@@ -993,7 +994,7 @@ const ChessBoard = props => {
               <Square
                 name="b7"
                 color="light"
-                piece={props.position[1][1]}
+                piece={board[1][1]}
                 size={props.size}
               />
             </td>
@@ -1001,7 +1002,7 @@ const ChessBoard = props => {
               <Square
                 name="a7"
                 color="dark"
-                piece={props.position[1][0]}
+                piece={board[1][0]}
                 size={props.size}
               />
             </td>
@@ -1011,7 +1012,7 @@ const ChessBoard = props => {
               <Square
                 name="h8"
                 color="dark"
-                piece={props.position[0][7]}
+                piece={board[0][7]}
                 size={props.size}
               />
             </td>
@@ -1019,7 +1020,7 @@ const ChessBoard = props => {
               <Square
                 name="g8"
                 color="light"
-                piece={props.position[0][6]}
+                piece={board[0][6]}
                 size={props.size}
               />
             </td>
@@ -1027,7 +1028,7 @@ const ChessBoard = props => {
               <Square
                 name="f8"
                 color="dark"
-                piece={props.position[0][5]}
+                piece={board[0][5]}
                 size={props.size}
               />
             </td>
@@ -1035,7 +1036,7 @@ const ChessBoard = props => {
               <Square
                 name="e8"
                 color="light"
-                piece={props.position[0][4]}
+                piece={board[0][4]}
                 size={props.size}
               />
             </td>
@@ -1043,7 +1044,7 @@ const ChessBoard = props => {
               <Square
                 name="d8"
                 color="dark"
-                piece={props.position[0][3]}
+                piece={board[0][3]}
                 size={props.size}
               />
             </td>
@@ -1051,7 +1052,7 @@ const ChessBoard = props => {
               <Square
                 name="c8"
                 color="light"
-                piece={props.position[0][2]}
+                piece={board[0][2]}
                 size={props.size}
               />
             </td>
@@ -1059,7 +1060,7 @@ const ChessBoard = props => {
               <Square
                 name="b8"
                 color="dark"
-                piece={props.position[0][1]}
+                piece={board[0][1]}
                 size={props.size}
               />
             </td>
@@ -1067,7 +1068,7 @@ const ChessBoard = props => {
               <Square
                 name="a8"
                 color="light"
-                piece={props.position[0][0]}
+                piece={board[0][0]}
                 size={props.size}
               />
             </td>
@@ -1078,4 +1079,10 @@ const ChessBoard = props => {
   }
 };
 
-export default ChessBoard;
+const mapStateToProps = state => {
+  return {
+    board: state.game.board
+  };
+};
+
+export default connect(mapStateToProps)(ChessBoard);

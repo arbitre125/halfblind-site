@@ -38,7 +38,7 @@ const GameOver = props => {
           <Card.Title className="white-txt">Game Over</Card.Title>
           <Card.Text className="grey-txt">{info}</Card.Text>
           <Card.Text className="grey-txt">Play again!</Card.Text>
-          <Button variant="outline-light" onClick={props.newGame}>
+          <Button variant="outline-light" onClick={props.resetGame}>
             New Game
           </Button>
         </Card.Body>

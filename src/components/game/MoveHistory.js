@@ -1,7 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Card } from "react-bootstrap";
 
-const MoveHistory = props => {
+const MoveHistory = ({ history, ...props }) => {
   return (
     <Card
       className="secondary"
@@ -12,10 +13,10 @@ const MoveHistory = props => {
       }}
     >
       <Card.Body className="grey-txt txt-sm" style={{ marginTop: -10 }}>
-        {props.moveHistory.length % 2 === 0 ? (
+        {history.length % 2 === 0 ? (
           <table>
             <tbody>
-              {props.moveHistory.map((move, ind) =>
+              {history.map((move, ind) =>
                 ind % 2 === 0 ? (
                   <tr key={ind}>
                     <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
@@ -23,7 +24,7 @@ const MoveHistory = props => {
                       {move}
                     </td>
                     <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
-                      {props.moveHistory[ind + 1]}
+                      {history[ind + 1]}
                     </td>
                   </tr>
                 ) : null
@@ -33,8 +34,8 @@ const MoveHistory = props => {
         ) : (
           <table>
             <tbody>
-              {props.moveHistory.map((move, ind) =>
-                ind !== props.moveHistory.length - 1 ? (
+              {history.map((move, ind) =>
+                ind !== history.length - 1 ? (
                   ind % 2 === 0 ? (
                     <tr key={ind}>
                       <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
@@ -42,7 +43,7 @@ const MoveHistory = props => {
                         {move}
                       </td>
                       <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
-                        {props.moveHistory[ind + 1]}
+                        {history[ind + 1]}
                       </td>
                     </tr>
                   ) : null
@@ -63,4 +64,10 @@ const MoveHistory = props => {
   );
 };
 
-export default MoveHistory;
+const mapStateToProps = state => {
+  return {
+    history: state.game.history
+  };
+};
+
+export default connect(mapStateToProps)(MoveHistory);
