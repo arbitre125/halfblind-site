@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Image } from "react-bootstrap";
 import wb from "../../../images/pieces/white_bishop.png";
 import wk from "../../../images/pieces/white_king.png";
@@ -29,18 +30,23 @@ const imageMap = new Map([
   ["br", br]
 ]);
 
-const Square = props => {
+const Square = ({ turnNumber, inCheck, ...props }) => {
+  const turn = turnNumber % 2 === 0 ? "w" : "b";
+
   const backgroundColor =
-    // props.inCheck && props.piece !== null && props.piece.type === "k"
-    //   ? props.color === "light"
-    //     ? "#e9bac6" // check
-    //     : "#b5858f"
-    //   : props.lastMove.from === props.name || props.lastMove.to === props.name
-    //   ? props.color === "light"
-    //     ? "#e7dfc1" // lastMove highlight
-    //     : "#c6bf9f"
-    //:
-    props.color === "light"
+    inCheck &&
+    props.piece !== null &&
+    props.piece.type === "k" &&
+    props.piece.color === turn
+      ? props.color === "light"
+        ? "#e9bac6" // check
+        : "#b5858f"
+      : // : props.lastMove.from === props.name || props.lastMove.to === props.name
+      false
+      ? props.color === "light"
+        ? "#e7dfc1" // lastMove highlight
+        : "#c6bf9f"
+      : props.color === "light"
       ? "#e4e8f7" // normals
       : "#a2a6b3";
 
@@ -64,4 +70,11 @@ const Square = props => {
   );
 };
 
-export default Square;
+const mapStateToProps = state => {
+  return {
+    turnNumber: state.game.turnNumber,
+    inCheck: state.game.inCheck
+  };
+};
+
+export default connect(mapStateToProps)(Square);

@@ -4,10 +4,14 @@ import {
   BOARD_FETCHED,
   MOVES_FETCHING,
   MOVES_FETCHED,
-  HISTORY_FETCHING,
-  HISTORY_FETCHED,
+  TURN_NUMBER_FETCHING,
+  TURN_NUMBER_FETCHED,
+  IN_CHECK_FETCHING,
+  IN_CHECK_FETCHED,
   GAME_OVER_FETCHING,
   GAME_OVER_FETCHED,
+  HISTORY_FETCHING,
+  HISTORY_FETCHED,
   MAKE_MOVE,
   RESET_GAME
 } from "../types";
@@ -56,10 +60,10 @@ export const fetchMovesAction = id => {
   };
 };
 
-export const fetchHistoryAction = id => {
+export const fetchTurnNumberAction = id => {
   return dispatch => {
     dispatch({
-      type: HISTORY_FETCHING
+      type: TURN_NUMBER_FETCHING
     });
 
     return axios
@@ -67,8 +71,30 @@ export const fetchHistoryAction = id => {
       .then(res => {
         if (res.status === 200) {
           dispatch({
-            type: HISTORY_FETCHED,
-            payload: res.data.history
+            type: TURN_NUMBER_FETCHED,
+            payload: res.data.turnNumber
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
+export const fetchInCheckAction = id => {
+  return dispatch => {
+    dispatch({
+      type: IN_CHECK_FETCHING
+    });
+
+    return axios
+      .get(`/game/${id}`)
+      .then(res => {
+        if (res.status === 200) {
+          dispatch({
+            type: IN_CHECK_FETCHED,
+            payload: res.data.inCheck
           });
         }
       })
@@ -108,6 +134,28 @@ export const fetchGameOverAction = id => {
         }
       })
       .catch(err => console.log(err));
+  };
+};
+
+export const fetchHistoryAction = id => {
+  return dispatch => {
+    dispatch({
+      type: HISTORY_FETCHING
+    });
+
+    return axios
+      .get(`/game/${id}`)
+      .then(res => {
+        if (res.status === 200) {
+          dispatch({
+            type: HISTORY_FETCHED,
+            payload: res.data.history
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 };
 

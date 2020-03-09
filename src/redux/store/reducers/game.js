@@ -3,10 +3,14 @@ import {
   BOARD_FETCHED,
   MOVES_FETCHING,
   MOVES_FETCHED,
-  HISTORY_FETCHING,
-  HISTORY_FETCHED,
+  TURN_NUMBER_FETCHING,
+  TURN_NUMBER_FETCHED,
+  IN_CHECK_FETCHING,
+  IN_CHECK_FETCHED,
   GAME_OVER_FETCHING,
   GAME_OVER_FETCHED,
+  HISTORY_FETCHING,
+  HISTORY_FETCHED,
   MAKE_MOVE,
   RESET_GAME
 } from "../types";
@@ -17,8 +21,10 @@ const initialState = {
   fetched: false,
   board: Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null)),
   moves: [],
-  history: [],
-  gameOver: -1
+  turnNumber: 0,
+  inCheck: false,
+  gameOver: -1,
+  history: []
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -47,17 +53,29 @@ const gameReducer = (state = initialState, action) => {
         fetched: true,
         moves: action.payload
       };
-    case HISTORY_FETCHING:
+    case TURN_NUMBER_FETCHING:
       return {
         ...state,
         fetching: true
       };
-    case HISTORY_FETCHED:
+    case TURN_NUMBER_FETCHED:
       return {
         ...state,
         fetching: false,
         fetched: true,
-        history: action.payload
+        turnNumber: action.payload
+      };
+    case IN_CHECK_FETCHING:
+      return {
+        ...state,
+        fetching: true
+      };
+    case IN_CHECK_FETCHED:
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        inCheck: action.payload
       };
     case GAME_OVER_FETCHING:
       return {
@@ -70,6 +88,18 @@ const gameReducer = (state = initialState, action) => {
         fetching: false,
         fetched: true,
         gameOver: action.payload
+      };
+    case HISTORY_FETCHING:
+      return {
+        ...state,
+        fetching: true
+      };
+    case HISTORY_FETCHED:
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        history: action.payload
       };
     case MAKE_MOVE:
       return {
@@ -85,6 +115,7 @@ const gameReducer = (state = initialState, action) => {
               : square
           )
         ),
+        turnNumber: state.turnNumber + 1,
         history: [...state.history, action.payload.san]
       };
     case RESET_GAME:

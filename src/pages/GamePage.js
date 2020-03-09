@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 import {
   fetchBoardAction,
   fetchMovesAction,
-  fetchHistoryAction,
+  fetchTurnNumberAction,
+  fetchInCheckAction,
   fetchGameOverAction,
+  fetchHistoryAction,
   makeMoveAction,
   resetGameAction
 } from "../redux/store/actions/gameActions";
@@ -21,8 +23,10 @@ const GamePage = ({
   gameOver,
   fetchBoard,
   fetchMoves,
-  fetchHistory,
+  fetchTurnNumber,
+  fetchInCheck,
   fetchGameOver,
+  fetchHistory,
   makeMove,
   resetGame,
   ...props
@@ -32,9 +36,19 @@ const GamePage = ({
   useEffect(() => {
     fetchBoard(gameId);
     fetchMoves(gameId);
-    fetchHistory(gameId);
+    fetchTurnNumber(gameId);
+    fetchInCheck(gameId);
     fetchGameOver(gameId);
-  }, [gameId, fetchBoard, fetchMoves, fetchHistory, fetchGameOver]);
+    fetchHistory(gameId);
+  }, [
+    gameId,
+    fetchBoard,
+    fetchMoves,
+    fetchTurnNumber,
+    fetchInCheck,
+    fetchGameOver,
+    fetchHistory
+  ]);
 
   return (
     <div
@@ -84,7 +98,7 @@ const GamePage = ({
       {gameOver !== -1 && (
         <GameOver
           type={gameOver}
-          newGame={() => resetGame(gameId)}
+          resetGame={() => resetGame(gameId)}
           size={props.size}
         />
       )}
@@ -107,11 +121,17 @@ const mapDispatchToProps = dispatch => {
     fetchMoves: id => {
       dispatch(fetchMovesAction(id));
     },
-    fetchHistory: id => {
-      dispatch(fetchHistoryAction(id));
+    fetchTurnNumber: id => {
+      dispatch(fetchTurnNumberAction(id));
+    },
+    fetchInCheck: id => {
+      dispatch(fetchInCheckAction(id));
     },
     fetchGameOver: id => {
       dispatch(fetchGameOverAction(id));
+    },
+    fetchHistory: id => {
+      dispatch(fetchHistoryAction(id));
     },
     makeMove: (id, move) => {
       dispatch(makeMoveAction(id, move));
