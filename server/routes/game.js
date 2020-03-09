@@ -23,7 +23,7 @@ game.get(`/:gameId`, (req, res) => {
       turn: chess_games[req.params.gameId].turn(),
       turnNumber: chess_games[req.params.gameId].turn_number(),
       moves: chess_games[req.params.gameId].moves({ verbose: true }),
-      history: chess_games[req.params.gameId].history({ verbose: false }),
+      history: chess_games[req.params.gameId].history({ verbose: true }),
       inCheck: chess_games[req.params.gameId].in_check(),
       gameOver: chess_games[req.params.gameId].game_over(),
       inCheckmate: chess_games[req.params.gameId].in_checkmate(),

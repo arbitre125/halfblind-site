@@ -21,10 +21,10 @@ const MoveHistory = ({ history, ...props }) => {
                   <tr key={ind}>
                     <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
                     <td style={{ paddingLeft: 10, paddingBottom: 10 }}>
-                      {move}
+                      {move.san}
                     </td>
                     <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
-                      {history[ind + 1]}
+                      {history[ind + 1].san}
                     </td>
                   </tr>
                 ) : null
@@ -40,10 +40,10 @@ const MoveHistory = ({ history, ...props }) => {
                     <tr key={ind}>
                       <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
                       <td style={{ paddingLeft: 10, paddingBottom: 10 }}>
-                        {move}
+                        {move.san}
                       </td>
                       <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
-                        {history[ind + 1]}
+                        {history[ind + 1].san}
                       </td>
                     </tr>
                   ) : null
@@ -51,7 +51,7 @@ const MoveHistory = ({ history, ...props }) => {
                   <tr key={ind}>
                     <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
                     <td style={{ paddingLeft: 10, paddingBottom: 10 }}>
-                      {move}
+                      {move.san}
                     </td>
                   </tr>
                 )

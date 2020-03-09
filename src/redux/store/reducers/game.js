@@ -116,7 +116,7 @@ const gameReducer = (state = initialState, action) => {
           )
         ),
         turnNumber: state.turnNumber + 1,
-        history: [...state.history, action.payload.san]
+        history: [...state.history, action.payload]
       };
     case RESET_GAME:
       return {

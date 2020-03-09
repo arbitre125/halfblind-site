@@ -30,8 +30,10 @@ const imageMap = new Map([
   ["br", br]
 ]);
 
-const Square = ({ turnNumber, inCheck, ...props }) => {
+const Square = ({ turnNumber, inCheck, history, ...props }) => {
   const turn = turnNumber % 2 === 0 ? "w" : "b";
+
+  const lastMove = history[history.length - 1];
 
   const backgroundColor =
     inCheck &&
@@ -41,8 +43,8 @@ const Square = ({ turnNumber, inCheck, ...props }) => {
       ? props.color === "light"
         ? "#e9bac6" // check
         : "#b5858f"
-      : // : props.lastMove.from === props.name || props.lastMove.to === props.name
-      false
+      : history.length > 0 &&
+        (lastMove.from === props.name || lastMove.to === props.name)
       ? props.color === "light"
         ? "#e7dfc1" // lastMove highlight
         : "#c6bf9f"
@@ -73,7 +75,8 @@ const Square = ({ turnNumber, inCheck, ...props }) => {
 const mapStateToProps = state => {
   return {
     turnNumber: state.game.turnNumber,
-    inCheck: state.game.inCheck
+    inCheck: state.game.inCheck,
+    history: state.game.history
   };
 };
 
