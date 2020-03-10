@@ -1,13 +1,13 @@
 import { LOGIN, LOGOUT, NEW_GAME } from "../types";
 
-const initialState = {
+const initialUserState = {
   userLogged: localStorage.usertoken !== undefined,
   usertoken:
     localStorage.usertoken !== undefined ? localStorage.usertoken : null,
   currentGameId: localStorage.gameId !== undefined ? localStorage.gameId : null
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = initialUserState, action) => {
   switch (action.type) {
     case LOGIN:
       return {

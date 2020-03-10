@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import {
+  fetchHalfBlindAction,
   fetchBoardAction,
   fetchMovesAction,
   fetchTurnNumberAction,
@@ -21,6 +22,7 @@ import InputMove from "../components/game/InputMove";
 const GamePage = ({
   board,
   gameOver,
+  fetchHalfBlind,
   fetchBoard,
   fetchMoves,
   fetchTurnNumber,
@@ -34,6 +36,7 @@ const GamePage = ({
   let { gameId } = useParams();
 
   useEffect(() => {
+    fetchHalfBlind(gameId);
     fetchBoard(gameId);
     fetchMoves(gameId);
     fetchTurnNumber(gameId);
@@ -42,6 +45,7 @@ const GamePage = ({
     fetchHistory(gameId);
   }, [
     gameId,
+    fetchHalfBlind,
     fetchBoard,
     fetchMoves,
     fetchTurnNumber,
@@ -115,6 +119,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchHalfBlind: id => {
+      dispatch(fetchHalfBlindAction(id));
+    },
     fetchBoard: id => {
       dispatch(fetchBoardAction(id));
     },

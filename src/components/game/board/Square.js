@@ -1,19 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Image } from "react-bootstrap";
-import wb from "../../../images/pieces/white_bishop.png";
-import wk from "../../../images/pieces/white_king.png";
-import wn from "../../../images/pieces/white_knight.png";
-import wp from "../../../images/pieces/white_pawn.png";
-import wq from "../../../images/pieces/white_queen.png";
-import wr from "../../../images/pieces/white_rook.png";
-import bb from "../../../images/pieces/black_bishop.png";
-import bk from "../../../images/pieces/black_king.png";
-import bn from "../../../images/pieces/black_knight.png";
-import bp from "../../../images/pieces/black_pawn.png";
-import bq from "../../../images/pieces/black_queen.png";
-import br from "../../../images/pieces/black_rook.png";
-// import ind from "../../../images/indicator.png";
+import wb from "../../../images/pieces/normal/white_bishop.png";
+import wk from "../../../images/pieces/normal/white_king.png";
+import wn from "../../../images/pieces/normal/white_knight.png";
+import wp from "../../../images/pieces/normal/white_pawn.png";
+import wq from "../../../images/pieces/normal/white_queen.png";
+import wr from "../../../images/pieces/normal/white_rook.png";
+import bb from "../../../images/pieces/normal/black_bishop.png";
+import bk from "../../../images/pieces/normal/black_king.png";
+import bn from "../../../images/pieces/normal/black_knight.png";
+import bp from "../../../images/pieces/normal/black_pawn.png";
+import bq from "../../../images/pieces/normal/black_queen.png";
+import br from "../../../images/pieces/normal/black_rook.png";
+import hb_wb from "../../../images/pieces/half-blind/hb_white_bishop.png";
+import hb_wk from "../../../images/pieces/half-blind/hb_white_king.png";
+import hb_wn from "../../../images/pieces/half-blind/hb_white_knight.png";
+import hb_wp from "../../../images/pieces/half-blind/hb_white_pawn.png";
+import hb_wq from "../../../images/pieces/half-blind/hb_white_queen.png";
+import hb_wr from "../../../images/pieces/half-blind/hb_white_rook.png";
+// import hb_bb from "../../../images/pieces/half-blind/hb_black_bishop.png";
+// import hb_bk from "../../../images/pieces/half-blind/hb_black_king.png";
+// import hb_bn from "../../../images/pieces/half-blind/hb_black_knight.png";
+// import hb_bp from "../../../images/pieces/half-blind/hb_black_pawn.png";
+// import hb_bq from "../../../images/pieces/half-blind/hb_black_queen.png";
+// import hb_br from "../../../images/pieces/half-blind/hb_black_rook.png";
+// import hb_ind from "../../../images/indicator.png";
 
 const imageMap = new Map([
   ["wb", wb],
@@ -22,6 +34,12 @@ const imageMap = new Map([
   ["wp", wp],
   ["wq", wq],
   ["wr", wr],
+  ["hb_wb", hb_wb],
+  ["hb_wk", hb_wk],
+  ["hb_wn", hb_wn],
+  ["hb_wp", hb_wp],
+  ["hb_wq", hb_wq],
+  ["hb_wr", hb_wr],
   ["bb", bb],
   ["bk", bk],
   ["bn", bn],
@@ -30,7 +48,7 @@ const imageMap = new Map([
   ["br", br]
 ]);
 
-const Square = ({ turnNumber, inCheck, history, ...props }) => {
+const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
   const turn = turnNumber % 2 === 0 ? "w" : "b";
 
   const lastMove = history[history.length - 1];
@@ -44,7 +62,8 @@ const Square = ({ turnNumber, inCheck, history, ...props }) => {
         ? "#e9bac6" // check
         : "#b5858f"
       : history.length > 0 &&
-        (lastMove.from === props.name || lastMove.to === props.name)
+        (lastMove.from === props.name || lastMove.to === props.name) &&
+        (!halfBlind || halfBlind.to !== props.name)
       ? props.color === "light"
         ? "#e7dfc1" // lastMove highlight
         : "#c6bf9f"
@@ -62,18 +81,27 @@ const Square = ({ turnNumber, inCheck, history, ...props }) => {
 
   return (
     <div className="no-select" style={squareStyle}>
-      {props.piece !== null && (
+      {props.piece !== null && (!halfBlind || halfBlind.to !== props.name) && (
         <Image
           className="piece center"
           src={imageMap.get(props.piece.color + props.piece.type)}
         />
       )}
+      {!halfBlind ||
+        (halfBlind.from === props.name && (
+          <Image
+            className="piece center"
+            style={{ opacity: 0.3 }}
+            src={imageMap.get(halfBlind.color + halfBlind.piece)}
+          />
+        ))}
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
+    halfBlind: state.game.halfBlind,
     turnNumber: state.game.turnNumber,
     inCheck: state.game.inCheck,
     history: state.game.history

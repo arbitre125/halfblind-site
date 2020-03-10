@@ -1,4 +1,6 @@
 import {
+  HALF_BLIND_FETCHING,
+  HALF_BLIND_FETCHED,
   BOARD_FETCHING,
   BOARD_FETCHED,
   MOVES_FETCHING,
@@ -16,9 +18,10 @@ import {
 } from "../types";
 import { squareToIndices } from "../../../helpers/squareIndices";
 
-const initialState = {
+const initialGameState = {
   fetching: false,
   fetched: false,
+  halfBlind: null,
   board: Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null)),
   moves: [],
   turnNumber: 0,
@@ -27,8 +30,18 @@ const initialState = {
   history: []
 };
 
-const gameReducer = (state = initialState, action) => {
+const gameReducer = (state = initialGameState, action) => {
   switch (action.type) {
+    case HALF_BLIND_FETCHING:
+      return {
+        ...state,
+        fetching: true
+      };
+    case HALF_BLIND_FETCHED:
+      return {
+        ...state,
+        halfBlind: action.payload
+      };
     case BOARD_FETCHING:
       return {
         ...state,
@@ -104,6 +117,7 @@ const gameReducer = (state = initialState, action) => {
     case MAKE_MOVE:
       return {
         ...state,
+        //handle check, en passant, halfblind
         board: state.board.map((row, i) =>
           row.map((square, j) =>
             squareToIndices(action.payload.from)[0] === i &&
@@ -121,7 +135,9 @@ const gameReducer = (state = initialState, action) => {
     case RESET_GAME:
       return {
         ...state,
+        halfBlind: null,
         board: action.payload,
+        turnNumber: 0,
         history: []
       };
     default:

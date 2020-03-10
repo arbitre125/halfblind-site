@@ -1,6 +1,8 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const NEW_GAME = "NEW_GAME";
+export const HALF_BLIND_FETCHING = "HALF_BLIND_FETCHING";
+export const HALF_BLIND_FETCHED = "HALF_BLIND_FETCHED";
 export const BOARD_FETCHING = "BOARD_FETCHING";
 export const BOARD_FETCHED = "BOARD_FETCHED";
 export const MOVES_FETCHING = "MOVES_FETCHING";

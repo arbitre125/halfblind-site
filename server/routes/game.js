@@ -18,23 +18,26 @@ game.post(`/newgame`, (req, res) => {
 
 game.get(`/:gameId`, (req, res) => {
   if (chess_games[req.params.gameId]) {
+    const gameMatch = chess_games[req.params.gameId];
     res.send({
-      board: chess_games[req.params.gameId].board(),
-      turn: chess_games[req.params.gameId].turn(),
-      turnNumber: chess_games[req.params.gameId].turn_number(),
-      moves: chess_games[req.params.gameId].moves({ verbose: true }),
-      history: chess_games[req.params.gameId].history({ verbose: true }),
-      inCheck: chess_games[req.params.gameId].in_check(),
-      gameOver: chess_games[req.params.gameId].game_over(),
-      inCheckmate: chess_games[req.params.gameId].in_checkmate(),
-      inDraw: chess_games[req.params.gameId].in_draw(),
-      inStalemate: chess_games[req.params.gameId].in_stalemate(),
-      insufficientMaterial: chess_games[
-        req.params.gameId
-      ].insufficient_material(),
-      inThreeFoldRepetition: chess_games[
-        req.params.gameId
-      ].in_threefold_repetition()
+      board: gameMatch.board(),
+      turn: gameMatch.turn(),
+      turnNumber: gameMatch.turn_number(),
+      halfBlind:
+        gameMatch.turn_number() % 3 === 2
+          ? gameMatch.history({ verbose: true })[
+              gameMatch.history({ verbose: false }).length - 1
+            ]
+          : null,
+      moves: gameMatch.moves({ verbose: true }),
+      inCheck: gameMatch.in_check(),
+      gameOver: gameMatch.game_over(),
+      inCheckmate: gameMatch.in_checkmate(),
+      inDraw: gameMatch.in_draw(),
+      inStalemate: gameMatch.in_stalemate(),
+      insufficientMaterial: gameMatch.insufficient_material(),
+      inThreeFoldRepetition: gameMatch.in_threefold_repetition(),
+      history: gameMatch.history({ verbose: true })
     });
   } else {
     res.send("There is no game with that id.");

@@ -1,5 +1,7 @@
 import axios from "axios";
 import {
+  HALF_BLIND_FETCHING,
+  HALF_BLIND_FETCHED,
   BOARD_FETCHING,
   BOARD_FETCHED,
   MOVES_FETCHING,
@@ -15,6 +17,28 @@ import {
   MAKE_MOVE,
   RESET_GAME
 } from "../types";
+
+export const fetchHalfBlindAction = id => {
+  return dispatch => {
+    dispatch({
+      type: HALF_BLIND_FETCHING
+    });
+
+    return axios
+      .get(`/game/${id}`)
+      .then(res => {
+        if (res.status === 200) {
+          dispatch({
+            type: HALF_BLIND_FETCHED,
+            payload: res.data.halfBlind
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
 
 export const fetchBoardAction = id => {
   return dispatch => {
