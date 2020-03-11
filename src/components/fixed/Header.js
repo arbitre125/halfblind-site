@@ -6,28 +6,23 @@ import {
   newGameAction
 } from "../../redux/store/actions/userActions";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";
-import axios from "axios";
-import decode from "jwt-decode";
 import half_eye from "../../images/logos/half-eye-l-w.png";
 
-const Header = ({ userLogged, usertoken, currentGameId, logout, newGame }) => {
+const Header = ({
+  userLogged,
+  userDetails,
+  currentGameId,
+  logout,
+  newGame
+}) => {
   let history = useHistory();
-
-  const updateNewGame = async () => {
-    return await axios
-      .post(`/game/newgame`)
-      .then(res => res.data)
-      .catch(err => console.log(err));
-  };
 
   const enterGame = async () => {
     if (userLogged) {
       if (currentGameId) {
         history.push(`/game/${currentGameId}`);
       } else {
-        const id = await updateNewGame();
-        localStorage.setItem("gameId", id);
-        newGame(id);
+        const id = await newGame();
         history.push(`/game/${id}`);
       }
     } else {
@@ -37,12 +32,8 @@ const Header = ({ userLogged, usertoken, currentGameId, logout, newGame }) => {
 
   const logoutHandler = async e => {
     e.preventDefault();
-    await axios
-      .post(`/game/${currentGameId}/delete`)
-      .then(res => res)
-      .catch(err => console.log(err));
-    localStorage.clear();
-    logout();
+
+    await logout(currentGameId);
     history.push("/login");
   };
 
@@ -63,7 +54,7 @@ const Header = ({ userLogged, usertoken, currentGameId, logout, newGame }) => {
         alignRight
         title={
           <span className="grey-link txt-sm">
-            {userLogged && decode(usertoken).username}
+            {userLogged && userDetails.username}
           </span>
         }
       >
@@ -121,18 +112,18 @@ const Header = ({ userLogged, usertoken, currentGameId, logout, newGame }) => {
 const mapStateToProps = state => {
   return {
     userLogged: state.user.userLogged,
-    usertoken: state.user.usertoken,
+    userDetails: state.user.userDetails,
     currentGameId: state.user.currentGameId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => {
-      dispatch(logoutAction());
+    logout: currentGameId => {
+      dispatch(logoutAction(currentGameId));
     },
-    newGame: id => {
-      dispatch(newGameAction(id));
+    newGame: () => {
+      dispatch(newGameAction());
     }
   };
 };

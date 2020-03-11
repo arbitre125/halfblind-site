@@ -3,9 +3,8 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginAction } from "../redux/store/actions/userActions";
 import { Form, Button, Alert } from "react-bootstrap";
-import axios from "axios";
 
-const LoginPage = ({ login }) => {
+const LoginPage = ({ userLogged, login }) => {
   const [info, setInfo] = useState({ email: "", password: "" });
   const [wrongAlert, setWrongAlert] = useState(false);
 
@@ -15,29 +14,16 @@ const LoginPage = ({ login }) => {
     setInfo({ ...info, [e.target.id]: e.target.value });
   };
 
-  const loginHandler = async user => {
-    return await axios
-      .post("/users/login", {
-        email: user.email,
-        password: user.password
-      })
-      .then(res => res)
-      .catch(err => console.log(err));
-  };
-
   const onSubmit = async e => {
     e.preventDefault();
 
-    await loginHandler(info).then(res => {
-      if (res.data) {
-        localStorage.setItem("usertoken", res.data.token);
-        login(res.data.token);
-        history.push("/");
-      } else {
-        setWrongAlert(true);
-        setInfo({ email: "", password: "" });
-      }
-    });
+    await login(info);
+    window.setTimeout(() => {
+      console.log(userLogged);
+    }, 1000);
+
+    setWrongAlert(true);
+    setInfo({ email: "", password: "" });
   };
 
   return (
@@ -102,12 +88,18 @@ const LoginPage = ({ login }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    userLogged: state.user.userLogged
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
-    login: token => {
-      dispatch(loginAction(token));
+    login: user => {
+      dispatch(loginAction(user));
     }
   };
 };
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

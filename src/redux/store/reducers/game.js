@@ -40,6 +40,8 @@ const gameReducer = (state = initialGameState, action) => {
     case HALF_BLIND_FETCHED:
       return {
         ...state,
+        fetching: false,
+        fetched: true,
         halfBlind: action.payload
       };
     case BOARD_FETCHING:
@@ -117,6 +119,7 @@ const gameReducer = (state = initialGameState, action) => {
     case MAKE_MOVE:
       return {
         ...state,
+        // halfBlind: something
         //handle check, en passant, halfblind
         board: state.board.map((row, i) =>
           row.map((square, j) =>

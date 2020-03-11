@@ -5,26 +5,16 @@ import { newGameAction } from "../redux/store/actions/userActions";
 import { Button, Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
-import axios from "axios";
 
 const EntryPage = ({ userLogged, currentGameId, newGame }) => {
   let history = useHistory();
-
-  const updateNewGame = async () => {
-    return await axios
-      .post(`/game/newgame`)
-      .then(res => res.data)
-      .catch(err => console.log(err));
-  };
 
   const enterGame = async () => {
     if (userLogged) {
       if (currentGameId) {
         history.push(`/game/${currentGameId}`);
       } else {
-        const id = await updateNewGame();
-        localStorage.setItem("gameId", id);
-        newGame(id);
+        const id = await newGame();
         history.push(`/game/${id}`);
       }
     } else {
@@ -105,8 +95,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    newGame: id => {
-      dispatch(newGameAction(id));
+    newGame: () => {
+      dispatch(newGameAction());
     }
   };
 };
