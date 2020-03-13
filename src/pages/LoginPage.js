@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { loginAction } from "../redux/store/actions/userActions";
 import { Form, Button, Alert } from "react-bootstrap";
 
-const LoginPage = ({ userLogged, login }) => {
+const LoginPage = ({ login }) => {
   const [info, setInfo] = useState({ email: "", password: "" });
   const [wrongAlert, setWrongAlert] = useState(false);
 
@@ -17,11 +17,10 @@ const LoginPage = ({ userLogged, login }) => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    await login(info);
-    window.setTimeout(() => {
-      console.log(userLogged);
-    }, 1000);
+    await login(history, info);
+    // After, push history -> "/"
 
+    // If not, wasn't authenticated
     setWrongAlert(true);
     setInfo({ email: "", password: "" });
   };
@@ -88,18 +87,12 @@ const LoginPage = ({ userLogged, login }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    userLogged: state.user.userLogged
-  };
-};
-
 const mapDispatchToProps = dispatch => {
   return {
-    login: user => {
-      dispatch(loginAction(user));
+    login: (history, user) => {
+      dispatch(loginAction(history, user));
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(null, mapDispatchToProps)(LoginPage);

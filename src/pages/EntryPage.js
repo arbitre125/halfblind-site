@@ -14,8 +14,7 @@ const EntryPage = ({ userLogged, currentGameId, newGame }) => {
       if (currentGameId) {
         history.push(`/game/${currentGameId}`);
       } else {
-        const id = await newGame();
-        history.push(`/game/${id}`);
+        await newGame(history);
       }
     } else {
       history.push(`/login`);
@@ -95,8 +94,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    newGame: () => {
-      dispatch(newGameAction());
+    newGame: history => {
+      dispatch(newGameAction(history));
     }
   };
 };

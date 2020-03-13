@@ -9,7 +9,7 @@ import setAuthorizationToken from "../../../utils/setAuthorizationToken";
 import decode from "jwt-decode";
 import axios from "axios";
 
-export const loginAction = user => {
+export const loginAction = (history, user) => {
   return async dispatch => {
     dispatch({
       type: USER_AUTHENTICATING
@@ -25,6 +25,7 @@ export const loginAction = user => {
               type: USER_AUTHENTICATED,
               payload: decode(res.data.token)
             });
+            history.push("/");
           } else {
             dispatch({
               type: USER_NOT_AUTHENTICATED
@@ -36,28 +37,29 @@ export const loginAction = user => {
   };
 };
 
-export const logoutAction = currentGameId => {
+export const logoutAction = (history, currentGameId) => {
   return async dispatch => {
     return await axios
       .post(`/game/${currentGameId}/delete`)
-      .then(res => {
+      .then(() => {
         localStorage.clear();
         dispatch({ type: USER_NOT_AUTHENTICATED });
-        return res;
+        history.push("/login");
       })
       .catch(err => console.log(err));
   };
 };
 
-export const newGameAction = () => {
+export const newGameAction = history => {
   return async dispatch => {
     dispatch({ type: NEW_GAME_FETCHING });
 
     return await axios
       .post(`/game/newgame`)
       .then(res => {
+        localStorage.setItem("currentGameId", res.data);
         dispatch({ type: NEW_GAME_FETCHED, payload: res.data });
-        return res.data;
+        history.push(`/game/${res.data}`);
       })
       .catch(err => console.log(err));
   };

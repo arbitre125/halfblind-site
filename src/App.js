@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { USER_AUTHENTICATED } from "./redux/store/types";
+import { USER_AUTHENTICATED, NEW_GAME_FETCHED } from "./redux/store/types";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import UserRoute from "./authentication/routing/UserRoute";
 import NonUserRoute from "./authentication/routing/NonUserRoute";
@@ -23,17 +23,23 @@ if (localStorage.usertoken) {
     type: USER_AUTHENTICATED,
     payload: decode(localStorage.usertoken)
   });
+  if (localStorage.currentGameId) {
+    store.dispatch({
+      type: NEW_GAME_FETCHED,
+      payload: localStorage.currentGameId
+    });
+  }
 }
 
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="primary">
-        <div>
-          <BrowserRouter>
-            <div>
-              <Header />
-            </div>
+      <BrowserRouter>
+        <div className="primary">
+          <div>
+            <Header />
+          </div>
+          <div>
             <Switch>
               <Route exact path="/">
                 <EntryPage />
@@ -54,12 +60,12 @@ const App = () => {
                 <ProfilePage />
               </UserRoute>
             </Switch>
-          </BrowserRouter>
+          </div>
         </div>
         <div>
           <Footer />
         </div>
-      </div>
+      </BrowserRouter>
     </Provider>
   );
 };

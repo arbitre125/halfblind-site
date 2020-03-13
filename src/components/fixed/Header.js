@@ -26,15 +26,15 @@ const Header = ({
         history.push(`/game/${id}`);
       }
     } else {
-      history.push(`/login`);
+      history.push("/login");
     }
   };
 
   const logoutHandler = async e => {
     e.preventDefault();
 
-    await logout(currentGameId);
-    history.push("/login");
+    await logout(history, currentGameId);
+    // After, push history -> "/login" (in action creator)
   };
 
   const notLoggedIn = (
@@ -119,8 +119,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: currentGameId => {
-      dispatch(logoutAction(currentGameId));
+    logout: (history, currentGameId) => {
+      dispatch(logoutAction(history, currentGameId));
     },
     newGame: () => {
       dispatch(newGameAction());
