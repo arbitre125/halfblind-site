@@ -212,6 +212,8 @@ const gameReducer = (state = initialGameState, action) => {
         halfBlind: null,
         board: action.payload,
         turnNumber: 0,
+        inCheck: false,
+        gameOver: -1,
         history: []
       };
     default:

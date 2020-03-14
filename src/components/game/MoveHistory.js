@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
+import eye from "../../images/logos/half-eye-r-w.png";
 
-const MoveHistory = ({ history, ...props }) => {
+const MoveHistory = ({ halfBlind, history, ...props }) => {
   return (
     <Card
       className="secondary"
@@ -24,7 +25,15 @@ const MoveHistory = ({ history, ...props }) => {
                       {move.san}
                     </td>
                     <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
-                      {history[ind + 1].san}
+                      {halfBlind && ind + 1 === history.length - 1 ? (
+                        <Image
+                          src={eye}
+                          width={15}
+                          style={{ marginBottom: 5 }}
+                        />
+                      ) : (
+                        history[ind + 1].san
+                      )}
                     </td>
                   </tr>
                 ) : null
@@ -51,7 +60,15 @@ const MoveHistory = ({ history, ...props }) => {
                   <tr key={ind}>
                     <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
                     <td style={{ paddingLeft: 10, paddingBottom: 10 }}>
-                      {move.san}
+                      {halfBlind ? (
+                        <Image
+                          src={eye}
+                          width={15}
+                          style={{ marginBottom: 5 }}
+                        />
+                      ) : (
+                        move.san
+                      )}
                     </td>
                   </tr>
                 )
@@ -66,6 +83,7 @@ const MoveHistory = ({ history, ...props }) => {
 
 const mapStateToProps = state => {
   return {
+    halfBlind: state.game.halfBlind,
     history: state.game.history
   };
 };

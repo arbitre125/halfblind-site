@@ -124,3 +124,14 @@
   padding: 10%;
   z-index: 3;
 }
+
+.x-hide {
+  font-family: sans-serif;
+  position: absolute;
+  top: 0px;
+  right: 8px;
+}
+
+.x-hide:hover {
+  cursor: pointer;
+}

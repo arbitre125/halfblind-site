@@ -120,6 +120,9 @@ export const fetchInCheckAction = id => {
             type: IN_CHECK_FETCHED,
             payload: res.data.inCheck
           });
+          if (res.data.inCheck) {
+            dispatch(fetchGameOverAction(id));
+          }
         }
       })
       .catch(err => {
@@ -196,7 +199,6 @@ export const makeMoveAction = (id, move) => {
             payload: res.data
           });
           dispatch(fetchInCheckAction(id));
-          dispatch(fetchGameOverAction(id));
         }
       })
       .catch(err => console.log(err));
