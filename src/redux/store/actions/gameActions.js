@@ -195,6 +195,8 @@ export const makeMoveAction = (id, move) => {
             type: MAKE_MOVE,
             payload: res.data
           });
+          dispatch(fetchInCheckAction(id));
+          dispatch(fetchGameOverAction(id));
         }
       })
       .catch(err => console.log(err));

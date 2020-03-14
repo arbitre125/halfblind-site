@@ -38,10 +38,10 @@ const GamePage = ({
   useEffect(() => {
     fetchHalfBlind(gameId);
     fetchBoard(gameId);
-    fetchMoves(gameId);
+    fetchMoves(gameId); // PLAN: fetched each move
     fetchTurnNumber(gameId);
-    fetchInCheck(gameId);
-    fetchGameOver(gameId);
+    fetchInCheck(gameId); // Fetched each move
+    fetchGameOver(gameId); // Fetched each move
     fetchHistory(gameId);
   }, [
     gameId,

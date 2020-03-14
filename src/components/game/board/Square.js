@@ -56,6 +56,7 @@ const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
   const showPiece =
     props.piece !== null &&
     (!halfBlind || halfBlind.to !== props.name) &&
+    // Don't show rook for half-blind castle
     !(
       halfBlind &&
       history.length > 0 &&
@@ -69,7 +70,11 @@ const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
 
   const showHalfBlindPiece = halfBlind && halfBlind.from === props.name;
 
-  // For half-blind castles
+  // Show half-blind captured piece
+  const showCapturedPiece =
+    halfBlind && halfBlind.captured && halfBlind.to === props.name;
+
+  // Show rook for half-blind castle
   const showRook =
     halfBlind &&
     history.length > 0 &&
@@ -118,6 +123,12 @@ const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
         <Image
           className="piece center"
           src={imageMap.get(lastMove.color + "r")}
+        />
+      )}
+      {showCapturedPiece && (
+        <Image
+          className="piece center"
+          src={imageMap.get(turn + halfBlind.captured)}
         />
       )}
       {showHalfBlindPiece && (
