@@ -152,7 +152,7 @@ const gameReducer = (state = initialGameState, action) => {
             ) {
               return null;
             }
-            // If castle
+            // Kingside castle
             else if (action.payload.flags === "k") {
               // Remove rook
               if (
@@ -165,6 +165,28 @@ const gameReducer = (state = initialGameState, action) => {
               else if (
                 squareToIndices(action.payload.to)[0] === i &&
                 squareToIndices(action.payload.to)[1] - 1 === j
+              ) {
+                return {
+                  type: "r",
+                  color: action.payload.color
+                };
+              } else {
+                return square;
+              }
+            }
+            // Queenside castle
+            else if (action.payload.flags === "q") {
+              // Remove rook
+              if (
+                squareToIndices(action.payload.to)[0] === i &&
+                squareToIndices(action.payload.to)[1] - 2 === j
+              ) {
+                return null;
+              }
+              // Place rook
+              else if (
+                squareToIndices(action.payload.to)[0] === i &&
+                squareToIndices(action.payload.to)[1] + 1 === j
               ) {
                 return {
                   type: "r",

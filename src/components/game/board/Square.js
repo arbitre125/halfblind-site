@@ -59,9 +59,12 @@ const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
     !(
       halfBlind &&
       history.length > 0 &&
-      lastMove.flags === "k" &&
-      ((lastMove.color === "w" && props.name === "f1") ||
-        (lastMove.color === "b" && props.name === "f8"))
+      ((lastMove.flags === "k" &&
+        ((lastMove.color === "w" && props.name === "f1") ||
+          (lastMove.color === "b" && props.name === "f8"))) ||
+        (lastMove.flags === "q" &&
+          ((lastMove.color === "w" && props.name === "d1") ||
+            (lastMove.color === "b" && props.name === "d8"))))
     );
 
   const showHalfBlindPiece = halfBlind && halfBlind.from === props.name;
@@ -70,9 +73,12 @@ const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
   const showRook =
     halfBlind &&
     history.length > 0 &&
-    lastMove.flags === "k" &&
-    ((lastMove.color === "w" && props.name === "h1") ||
-      (lastMove.color === "b" && props.name === "h8"));
+    ((lastMove.flags === "k" &&
+      ((lastMove.color === "w" && props.name === "h1") ||
+        (lastMove.color === "b" && props.name === "h8"))) ||
+      (lastMove.flags === "q" &&
+        ((lastMove.color === "w" && props.name === "a1") ||
+          (lastMove.color === "b" && props.name === "a8"))));
 
   const backgroundColor =
     inCheck &&
