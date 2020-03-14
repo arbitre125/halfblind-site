@@ -119,19 +119,67 @@ const gameReducer = (state = initialGameState, action) => {
     case MAKE_MOVE:
       return {
         ...state,
-        // halfBlind: something
-        //handle check, en passant, halfblind
-        board: state.board.map((row, i) =>
-          row.map((square, j) =>
-            squareToIndices(action.payload.from)[0] === i &&
-            squareToIndices(action.payload.from)[1] === j
-              ? null
-              : squareToIndices(action.payload.to)[0] === i &&
-                squareToIndices(action.payload.to)[1] === j
-              ? { type: action.payload.piece, color: action.payload.color }
-              : square
-          )
-        ),
+        halfBlind: state.turnNumber % 3 === 1 ? action.payload : null,
+        // handle castle, en passant
+        board: state.board.map((row, i) => {
+          return row.map((square, j) => {
+            // Remove moved piece from square
+            if (
+              squareToIndices(action.payload.from)[0] === i &&
+              squareToIndices(action.payload.from)[1] === j
+            ) {
+              return null;
+            }
+            // Place moved piece to square
+            else if (
+              squareToIndices(action.payload.to)[0] === i &&
+              squareToIndices(action.payload.to)[1] === j
+            ) {
+              return {
+                type: action.payload.piece,
+                color: action.payload.color
+              };
+            }
+            // If en passant, remove captured piece
+            else if (
+              action.payload.flags === "e" &&
+              ((action.payload.color === "w" &&
+                squareToIndices(action.payload.to)[0] + 1 === i &&
+                squareToIndices(action.payload.to)[1] === j) ||
+                (action.payload.color === "b" &&
+                  squareToIndices(action.payload.to)[0] - 1 === i &&
+                  squareToIndices(action.payload.to)[1] === j))
+            ) {
+              return null;
+            }
+            // If castle
+            else if (action.payload.flags === "k") {
+              // Remove rook
+              if (
+                squareToIndices(action.payload.to)[0] === i &&
+                squareToIndices(action.payload.to)[1] + 1 === j
+              ) {
+                return null;
+              }
+              // Place rook
+              else if (
+                squareToIndices(action.payload.to)[0] === i &&
+                squareToIndices(action.payload.to)[1] - 1 === j
+              ) {
+                return {
+                  type: "r",
+                  color: action.payload.color
+                };
+              } else {
+                return square;
+              }
+            }
+            // Return rest unchanged
+            else {
+              return square;
+            }
+          });
+        }),
         turnNumber: state.turnNumber + 1,
         history: [...state.history, action.payload]
       };

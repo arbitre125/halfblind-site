@@ -45,7 +45,7 @@ const App = () => {
                 <EntryPage />
               </Route>
               <UserRoute path="/game/:gameId">
-                <GamePage size={640} />
+                <GamePage size={560} />
               </UserRoute>
               <Route path="/about">
                 <AboutPage />

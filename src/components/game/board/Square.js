@@ -53,6 +53,27 @@ const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
 
   const lastMove = history[history.length - 1];
 
+  const showPiece =
+    props.piece !== null &&
+    (!halfBlind || halfBlind.to !== props.name) &&
+    !(
+      halfBlind &&
+      history.length > 0 &&
+      lastMove.flags === "k" &&
+      ((lastMove.color === "w" && props.name === "f1") ||
+        (lastMove.color === "b" && props.name === "f8"))
+    );
+
+  const showHalfBlindPiece = halfBlind && halfBlind.from === props.name;
+
+  // For half-blind castles
+  const showRook =
+    halfBlind &&
+    history.length > 0 &&
+    lastMove.flags === "k" &&
+    ((lastMove.color === "w" && props.name === "h1") ||
+      (lastMove.color === "b" && props.name === "h8"));
+
   const backgroundColor =
     inCheck &&
     props.piece !== null &&
@@ -81,20 +102,25 @@ const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
 
   return (
     <div className="no-select" style={squareStyle}>
-      {props.piece !== null && (!halfBlind || halfBlind.to !== props.name) && (
+      {showPiece && (
         <Image
           className="piece center"
           src={imageMap.get(props.piece.color + props.piece.type)}
         />
       )}
-      {!halfBlind ||
-        (halfBlind.from === props.name && (
-          <Image
-            className="piece center"
-            style={{ opacity: 0.3 }}
-            src={imageMap.get(halfBlind.color + halfBlind.piece)}
-          />
-        ))}
+      {showRook && (
+        <Image
+          className="piece center"
+          src={imageMap.get(lastMove.color + "r")}
+        />
+      )}
+      {showHalfBlindPiece && (
+        <Image
+          className="piece center"
+          style={{ opacity: 0.3 }}
+          src={imageMap.get(halfBlind.color + halfBlind.piece)}
+        />
+      )}
     </div>
   );
 };
