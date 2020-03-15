@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { Card, Image } from "react-bootstrap";
 import eye from "../../images/logos/half-eye-r-w.png";
 
 const MoveHistory = ({ halfBlind, history, ...props }) => {
+  const historyEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    historyEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [history]);
+
   return (
     <Card
       className="secondary"
@@ -26,11 +36,14 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
                     </td>
                     <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
                       {halfBlind && ind + 1 === history.length - 1 ? (
-                        <Image
-                          src={eye}
-                          width={15}
-                          style={{ marginBottom: 5 }}
-                        />
+                        <>
+                          {history[ind + 1].san.slice(0, 1)}&thinsp;
+                          <Image
+                            src={eye}
+                            width={15}
+                            style={{ marginBottom: 5 }}
+                          />
+                        </>
                       ) : (
                         history[ind + 1].san
                       )}
@@ -61,11 +74,14 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
                     <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
                     <td style={{ paddingLeft: 10, paddingBottom: 10 }}>
                       {halfBlind ? (
-                        <Image
-                          src={eye}
-                          width={15}
-                          style={{ marginBottom: 5 }}
-                        />
+                        <>
+                          {move.san.slice(0, 1)}&thinsp;
+                          <Image
+                            src={eye}
+                            width={15}
+                            style={{ marginBottom: 5 }}
+                          />
+                        </>
                       ) : (
                         move.san
                       )}
@@ -77,6 +93,7 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
           </table>
         )}
       </Card.Body>
+      <div ref={historyEndRef}></div>
     </Card>
   );
 };

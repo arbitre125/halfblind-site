@@ -120,7 +120,6 @@ const gameReducer = (state = initialGameState, action) => {
       return {
         ...state,
         halfBlind: state.turnNumber % 3 === 1 ? action.payload : null,
-        // handle castle, en passant
         board: state.board.map((row, i) => {
           return row.map((square, j) => {
             // Remove moved piece from square
@@ -135,10 +134,16 @@ const gameReducer = (state = initialGameState, action) => {
               squareToIndices(action.payload.to)[0] === i &&
               squareToIndices(action.payload.to)[1] === j
             ) {
-              return {
-                type: action.payload.piece,
-                color: action.payload.color
-              };
+              // Handle promotion
+              return action.payload.promotion
+                ? {
+                    type: action.payload.promotion,
+                    color: action.payload.color
+                  }
+                : {
+                    type: action.payload.piece,
+                    color: action.payload.color
+                  };
             }
             // If en passant, remove captured piece
             else if (

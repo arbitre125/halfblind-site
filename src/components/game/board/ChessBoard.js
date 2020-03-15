@@ -68,12 +68,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="h8"
-                color="dark"
-                piece={board[0][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  8
+                </p>
+                <Square
+                  name="h8"
+                  color="dark"
+                  piece={board[0][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -134,12 +147,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="h7"
-                color="light"
-                piece={board[1][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  7
+                </p>
+                <Square
+                  name="h7"
+                  color="light"
+                  piece={board[1][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -200,12 +226,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="h6"
-                color="dark"
-                piece={board[2][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  6
+                </p>
+                <Square
+                  name="h6"
+                  color="dark"
+                  piece={board[2][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -266,12 +305,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="h5"
-                color="light"
-                piece={board[3][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  2
+                </p>
+                <Square
+                  name="h5"
+                  color="light"
+                  piece={board[3][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -332,12 +384,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="h4"
-                color="dark"
-                piece={board[4][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  4
+                </p>
+                <Square
+                  name="h4"
+                  color="dark"
+                  piece={board[4][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -398,12 +463,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="h3"
-                color="light"
-                piece={board[5][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  3
+                </p>
+                <Square
+                  name="h3"
+                  color="light"
+                  piece={board[5][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -464,78 +542,206 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="h2"
-                color="dark"
-                piece={board[6][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  2
+                </p>
+                <Square
+                  name="h2"
+                  color="dark"
+                  piece={board[6][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
             <td>
-              <Square
-                name="a1"
-                color="dark"
-                piece={board[7][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  a
+                </p>
+                <Square
+                  name="a1"
+                  color="dark"
+                  piece={board[7][0]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="b1"
-                color="light"
-                piece={board[7][1]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  b
+                </p>
+                <Square
+                  name="b1"
+                  color="light"
+                  piece={board[7][1]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="c1"
-                color="dark"
-                piece={board[7][2]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  c
+                </p>
+                <Square
+                  name="c1"
+                  color="dark"
+                  piece={board[7][2]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="d1"
-                color="light"
-                piece={board[7][3]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  d
+                </p>
+                <Square
+                  name="d1"
+                  color="light"
+                  piece={board[7][3]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="e1"
-                color="dark"
-                piece={board[7][4]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  e
+                </p>
+                <Square
+                  name="e1"
+                  color="dark"
+                  piece={board[7][4]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="f1"
-                color="light"
-                piece={board[7][5]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  f
+                </p>
+                <Square
+                  name="f1"
+                  color="light"
+                  piece={board[7][5]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="g1"
-                color="dark"
-                piece={board[7][6]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  g
+                </p>
+                <Square
+                  name="g1"
+                  color="dark"
+                  piece={board[7][6]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="h1"
-                color="light"
-                piece={board[7][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  h
+                </p>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  1
+                </p>
+                <Square
+                  name="h1"
+                  color="light"
+                  piece={board[7][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
         </tbody>
@@ -603,12 +809,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="a1"
-                color="dark"
-                piece={board[7][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  1
+                </p>
+                <Square
+                  name="a1"
+                  color="dark"
+                  piece={board[7][0]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -669,12 +888,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="a2"
-                color="light"
-                piece={board[6][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  2
+                </p>
+                <Square
+                  name="a2"
+                  color="light"
+                  piece={board[6][0]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -735,12 +967,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="a3"
-                color="dark"
-                piece={board[5][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  3
+                </p>
+                <Square
+                  name="a3"
+                  color="dark"
+                  piece={board[5][0]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -801,12 +1046,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="a4"
-                color="light"
-                piece={board[4][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  4
+                </p>
+                <Square
+                  name="a4"
+                  color="light"
+                  piece={board[4][0]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -867,12 +1125,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="a5"
-                color="dark"
-                piece={board[3][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  5
+                </p>
+                <Square
+                  name="a5"
+                  color="dark"
+                  piece={board[3][0]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -933,12 +1204,25 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="a6"
-                color="light"
-                piece={board[2][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  6
+                </p>
+                <Square
+                  name="a6"
+                  color="light"
+                  piece={board[2][0]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
@@ -999,78 +1283,208 @@ const ChessBoard = ({ board, ...props }) => {
               />
             </td>
             <td>
-              <Square
-                name="a7"
-                color="dark"
-                piece={board[1][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  7
+                </p>
+                <Square
+                  name="a7"
+                  color="dark"
+                  piece={board[1][0]}
+                  size={props.size}
+                />
+              </div>
             </td>
           </tr>
           <tr>
             <td>
-              <Square
-                name="h8"
-                color="dark"
-                piece={board[0][7]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  h
+                </p>
+                <Square
+                  name="h8"
+                  color="dark"
+                  piece={board[0][7]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="g8"
-                color="light"
-                piece={board[0][6]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  g
+                </p>
+                <Square
+                  name="g8"
+                  color="light"
+                  piece={board[0][6]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="f8"
-                color="dark"
-                piece={board[0][5]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  f
+                </p>
+                <Square
+                  name="f8"
+                  color="dark"
+                  piece={board[0][5]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="e8"
-                color="light"
-                piece={board[0][4]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  e
+                </p>
+                <Square
+                  name="e8"
+                  color="light"
+                  piece={board[0][4]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="d8"
-                color="dark"
-                piece={board[0][3]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  d
+                </p>
+                <Square
+                  name="d8"
+                  color="dark"
+                  piece={board[0][3]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="c8"
-                color="light"
-                piece={board[0][2]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  c
+                </p>
+                <Square
+                  name="c8"
+                  color="light"
+                  piece={board[0][2]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="b8"
-                color="dark"
-                piece={board[0][1]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="white-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    bottom: -18,
+                    left: 1
+                  }}
+                >
+                  b
+                </p>
+                <Square
+                  name="b8"
+                  color="dark"
+                  piece={board[0][1]}
+                  size={props.size}
+                />
+              </div>
             </td>
             <td>
-              <Square
-                name="a8"
-                color="light"
-                piece={board[0][0]}
-                size={props.size}
-              />
+              <div style={{ position: "relative" }}>
+                <p
+                  className="dark-grey-txt txt-xs"
+                  style={{
+                    zIndex: 2,
+                    position: "absolute",
+                    top: 0,
+                    right: 1
+                  }}
+                >
+                  8
+                </p>
+                <div style={{ position: "relative" }}>
+                  <p
+                    className="dark-grey-txt txt-xs"
+                    style={{
+                      zIndex: 2,
+                      position: "absolute",
+                      bottom: -18,
+                      left: 1
+                    }}
+                  >
+                    a
+                  </p>
+                  <Square
+                    name="a8"
+                    color="light"
+                    piece={board[0][0]}
+                    size={props.size}
+                  />
+                </div>
+              </div>
             </td>
           </tr>
         </tbody>

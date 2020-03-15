@@ -45,7 +45,7 @@ const GameOver = props => {
               className="grey-txt text-xs x-hide"
               onClick={() => setShow(false)}
             >
-              x
+              &times;
             </Card.Text>
             <Button variant="outline-light" onClick={props.resetGame}>
               New Game

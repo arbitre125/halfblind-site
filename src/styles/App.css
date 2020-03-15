@@ -63,6 +63,10 @@
   font-size: 12px;
 }
 
+.txt-xs-sm {
+  font-size: 14px;
+}
+
 .txt-sm {
   font-size: 16px;
 }
@@ -89,6 +93,10 @@
 
 .grey-txt {
   color: #e2e2e2 !important;
+}
+
+.dark-grey-txt {
+  color: #6d6d6d !important;
 }
 
 .grey-link {

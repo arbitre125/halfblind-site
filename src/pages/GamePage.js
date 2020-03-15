@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   fetchHalfBlindAction,
   fetchBoardAction,
-  fetchMovesAction,
+  // fetchMovesAction,
   fetchTurnNumberAction,
   fetchInCheckAction,
   fetchGameOverAction,
@@ -24,7 +24,7 @@ const GamePage = ({
   gameOver,
   fetchHalfBlind,
   fetchBoard,
-  fetchMoves,
+  // fetchMoves,
   fetchTurnNumber,
   fetchInCheck,
   fetchGameOver,
@@ -38,7 +38,7 @@ const GamePage = ({
   useEffect(() => {
     fetchHalfBlind(gameId);
     fetchBoard(gameId);
-    fetchMoves(gameId); // PLAN: fetched each move
+    // fetchMoves(gameId); // PLAN: fetched each move
     fetchTurnNumber(gameId);
     fetchInCheck(gameId); // Fetched each move
     fetchGameOver(gameId); // Fetched each move
@@ -47,7 +47,7 @@ const GamePage = ({
     gameId,
     fetchHalfBlind,
     fetchBoard,
-    fetchMoves,
+    // fetchMoves,
     fetchTurnNumber,
     fetchInCheck,
     fetchGameOver,
@@ -125,9 +125,9 @@ const mapDispatchToProps = dispatch => {
     fetchBoard: id => {
       dispatch(fetchBoardAction(id));
     },
-    fetchMoves: id => {
-      dispatch(fetchMovesAction(id));
-    },
+    // fetchMoves: id => {
+    //   dispatch(fetchMovesAction(id));
+    // },
     fetchTurnNumber: id => {
       dispatch(fetchTurnNumberAction(id));
     },

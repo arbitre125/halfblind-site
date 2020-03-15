@@ -22,11 +22,10 @@ const Header = ({
       if (currentGameId) {
         history.push(`/game/${currentGameId}`);
       } else {
-        const id = await newGame();
-        history.push(`/game/${id}`);
+        await newGame(history);
       }
     } else {
-      history.push("/login");
+      history.push(`/login`);
     }
   };
 
@@ -122,8 +121,8 @@ const mapDispatchToProps = dispatch => {
     logout: (history, currentGameId) => {
       dispatch(logoutAction(history, currentGameId));
     },
-    newGame: () => {
-      dispatch(newGameAction());
+    newGame: history => {
+      dispatch(newGameAction(history));
     }
   };
 };
