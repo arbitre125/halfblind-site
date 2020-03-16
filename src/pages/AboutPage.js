@@ -2,24 +2,28 @@ import React from "react";
 import { Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 
-const AboutPage = () => {
+const AboutPage = props => {
   return (
     <>
       <Image
         src={whole_logo}
         width="500"
-        style={{ position: "absolute", right: -200, top: 93, opacity: 0.5 }}
+        style={{
+          position: "absolute",
+          right: -200,
+          top: 93,
+          opacity: (props.width * 0.1) / 300 - 0.05
+        }}
       />
       <div
         className="secondary"
         style={{
           minHeight: 650,
           padding: 80,
-          paddingTop: 40,
-          paddingRight: 320
+          paddingTop: 40
         }}
       >
-        <div style={{ maxWidth: 800 }}>
+        <div style={{ maxWidth: 700 }}>
           <p className="white-txt txt-lg" style={{ paddingBottom: 20 }}>
             About
           </p>

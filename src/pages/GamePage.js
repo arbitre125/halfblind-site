@@ -35,6 +35,9 @@ const GamePage = ({
 }) => {
   let { gameId } = useParams();
 
+  // Board size
+  const size = props.width > 1120 ? 560 : props.width > 1050 ? 480 : 400;
+
   useEffect(() => {
     fetchHalfBlind(gameId);
     fetchBoard(gameId);
@@ -63,32 +66,54 @@ const GamePage = ({
         overflowX: "hidden"
       }}
     >
-      <Row style={{ display: "flex" }}>
-        <Col
-          style={{
-            padding: 5
-          }}
-        >
-          <GameInfo size={props.size} />
-          <div
+      {props.width > 960 ? (
+        <Row style={{ display: "flex" }}>
+          <Col
             style={{
-              position: "absolute",
-              top: props.size / 2 + 100,
-              right: 5
+              padding: 5
             }}
           >
-            <Button variant="outline-light" onClick={() => resetGame(gameId)}>
-              New game
-            </Button>
-          </div>
-        </Col>
-        <Col>
-          <ChessBoard perspective="white" size={props.size} />
-        </Col>
-        <Col style={{ padding: 5 }}>
-          <MoveHistory size={props.size} />
-        </Col>
-      </Row>
+            <div style={{ position: "relative", top: size / 2 - 160 / 2 }}>
+              <GameInfo size={size} />
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                top: size / 2 + 100,
+                right: 5
+              }}
+            >
+              <Button variant="outline-light" onClick={() => resetGame(gameId)}>
+                New game
+              </Button>
+            </div>
+          </Col>
+          <Col>
+            <ChessBoard perspective="white" size={size} />
+          </Col>
+          <Col style={{ padding: 5 }}>
+            <MoveHistory size={size} />
+          </Col>
+        </Row>
+      ) : (
+        <>
+          <Row
+            style={{
+              padding: 5
+            }}
+          >
+            <Col>
+              <GameInfo size={size} />
+            </Col>
+            <Col>
+              <MoveHistory size={size} />
+            </Col>
+          </Row>
+          <Row className="center" style={{ paddingTop: 20 }}>
+            <ChessBoard perspective="white" size={size} />
+          </Row>
+        </>
+      )}
       <div className="center">
         <div style={{ position: "relative", marginTop: 20, marginBottom: 10 }}>
           <InputMove makeMove={makeMove} id={gameId} />
@@ -103,7 +128,7 @@ const GamePage = ({
         <GameOver
           type={gameOver}
           resetGame={() => resetGame(gameId)}
-          size={props.size}
+          size={size}
         />
       )}
     </div>

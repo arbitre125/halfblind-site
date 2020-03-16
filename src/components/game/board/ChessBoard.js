@@ -315,7 +315,7 @@ const ChessBoard = ({ board, ...props }) => {
                     right: 1
                   }}
                 >
-                  2
+                  5
                 </p>
                 <Square
                   name="h5"

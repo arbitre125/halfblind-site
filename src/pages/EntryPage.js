@@ -6,7 +6,7 @@ import { Button, Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
 
-const EntryPage = ({ userLogged, currentGameId, newGame }) => {
+const EntryPage = ({ userLogged, currentGameId, newGame, ...props }) => {
   let history = useHistory();
 
   const enterGame = async () => {
@@ -27,7 +27,13 @@ const EntryPage = ({ userLogged, currentGameId, newGame }) => {
         <Image
           src={whole_logo}
           width="500"
-          style={{ position: "absolute", right: -200, top: 27, opacity: 0.5 }}
+          style={{
+            position: "absolute",
+            right: -200,
+            top: 27,
+            opacity: (props.width * 0.1) / 300 + 0.1,
+            zIndex: 0
+          }}
         />
         <div style={{ paddingTop: 250 }}>
           <div className="center" style={{ padding: 10 }}>
@@ -36,7 +42,11 @@ const EntryPage = ({ userLogged, currentGameId, newGame }) => {
             </p>
           </div>
           <div className="center">
-            <Button variant="outline-light" onClick={enterGame}>
+            <Button
+              variant="outline-light"
+              onClick={enterGame}
+              style={{ zIndex: 1 }}
+            >
               Play
             </Button>
           </div>
@@ -44,12 +54,13 @@ const EntryPage = ({ userLogged, currentGameId, newGame }) => {
       </div>
       <div
         className="secondary"
-        style={{ height: 500, paddingLeft: 80, paddingRight: 80 }}
+        style={{
+          minHeight: 500,
+          padding: 80,
+          paddingTop: 40
+        }}
       >
-        <p
-          className="white-txt txt-lg"
-          style={{ paddingTop: 60, paddingBottom: 20 }}
-        >
+        <p className="white-txt txt-lg" style={{ paddingTop: 60 }}>
           Rules:
         </p>
         <ol className="grey-txt txt-sm-md">
@@ -62,7 +73,7 @@ const EntryPage = ({ userLogged, currentGameId, newGame }) => {
             <div style={{ height: 10 }}></div>
             <span className="grey-txt txt-sm">
               <i>
-                (&nbsp;the piece is indicated by the half-blind icon:{" "}
+                (&nbsp;the move is indicated by the half-blind icon:{" "}
                 <span>
                   <Image
                     src={half_eye}

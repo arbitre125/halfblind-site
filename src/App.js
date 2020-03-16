@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { USER_AUTHENTICATED, NEW_GAME_FETCHED } from "./redux/store/types";
@@ -32,23 +32,35 @@ if (localStorage.usertoken) {
 }
 
 const App = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+    });
+    return () =>
+      window.removeEventListener("resize", () => {
+        setWidth(window.innerWidth);
+      });
+  });
+
   return (
     <Provider store={store}>
       <BrowserRouter>
         <div className="primary">
           <div>
-            <Header />
+            <Header width={width} />
           </div>
           <div>
             <Switch>
               <Route exact path="/">
-                <EntryPage />
+                <EntryPage width={width} />
               </Route>
               <UserRoute path="/game/:gameId">
-                <GamePage size={560} />
+                <GamePage width={width} />
               </UserRoute>
               <Route path="/about">
-                <AboutPage />
+                <AboutPage width={width} />
               </Route>
               <NonUserRoute path="/login">
                 <LoginPage />

@@ -31,7 +31,7 @@ const LoginPage = ({ login }) => {
       style={{
         height: "100vh",
         padding: 60,
-        paddingTop: 20
+        paddingTop: 40
       }}
     >
       <div style={{ width: 350 }}>

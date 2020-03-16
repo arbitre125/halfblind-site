@@ -18,7 +18,7 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
     <Card
       className="secondary"
       style={{
-        width: 250,
+        width: 230,
         maxHeight: props.size / 2,
         overflowY: "scroll"
       }}

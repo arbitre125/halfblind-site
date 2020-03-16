@@ -13,7 +13,8 @@ const Header = ({
   userDetails,
   currentGameId,
   logout,
-  newGame
+  newGame,
+  ...props
 }) => {
   let history = useHistory();
 
@@ -69,6 +70,8 @@ const Header = ({
     </Nav>
   );
 
+  console.log(props.width);
+
   return (
     <Navbar className="secondary" variant="dark">
       <Navbar.Brand
@@ -93,17 +96,59 @@ const Header = ({
           </Col>
         </Row>
       </Navbar.Brand>
-      <Nav className="mr-auto">
-        <NavDropdown title={<span className="grey-link txt-sm">Play</span>}>
-          <NavDropdown.Item onClick={enterGame} className="txt-sm">
-            Play Offline
-          </NavDropdown.Item>
-        </NavDropdown>
-        <Nav.Link href="/about" className="grey-link txt-sm">
-          About
-        </Nav.Link>
-      </Nav>
-      {userLogged ? loggedIn : notLoggedIn}
+      {props.width > 550 ? (
+        <>
+          <Nav className="mr-auto">
+            <NavDropdown title={<span className="grey-link txt-sm">Play</span>}>
+              <NavDropdown.Item onClick={enterGame} className="txt-sm">
+                Play Offline
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="/about" className="grey-link txt-sm">
+              About
+            </Nav.Link>
+          </Nav>
+          {userLogged ? loggedIn : notLoggedIn}
+        </>
+      ) : (
+        <>
+          <Nav className="mr-auto"></Nav>
+          <Nav className="mr-sm-2">
+            <NavDropdown
+              alignRight
+              title={<span className="grey-link txt-sm">Options</span>}
+            >
+              <NavDropdown.Item onClick={enterGame} className="txt-sm">
+                Play Offline
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/about" className="txt-sm">
+                About
+              </NavDropdown.Item>
+              {userLogged ? (
+                <>
+                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                  <NavDropdown.Item
+                    href="/login"
+                    onClick={logoutHandler}
+                    className="txt-sm"
+                  >
+                    Logout
+                  </NavDropdown.Item>
+                </>
+              ) : (
+                <>
+                  <NavDropdown.Item href="/login" className="txt-sm">
+                    Login
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/register" className="txt-sm">
+                    Register
+                  </NavDropdown.Item>
+                </>
+              )}
+            </NavDropdown>
+          </Nav>
+        </>
+      )}
     </Navbar>
   );
 };
