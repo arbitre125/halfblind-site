@@ -11,7 +11,7 @@ game.get(`/all`, (req, res) => {
 });
 
 game.post(`/newgame`, (req, res) => {
-  const chess = new Chess("1k2b3/5P2/8/8/8/8/8/1K6 w - - 0 1");
+  const chess = new Chess();
   const id = uuid().slice(0, 8);
   chess_games[id] = chess;
   res.send(id);
