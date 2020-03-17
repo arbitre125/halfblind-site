@@ -8,7 +8,7 @@ const GameInfo = props => {
       className="secondary"
       style={{
         float: "right",
-        width: 250,
+        width: 220,
         height: 160
       }}
     >

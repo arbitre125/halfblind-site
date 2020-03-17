@@ -19,7 +19,7 @@ const AboutPage = props => {
         className="secondary"
         style={{
           minHeight: 650,
-          padding: 80,
+          padding: "10%",
           paddingTop: 40
         }}
       >
@@ -66,7 +66,7 @@ const AboutPage = props => {
         className="primary"
         style={{
           minHeight: 400,
-          padding: 80
+          padding: "10%"
         }}
       >
         <p className="white-txt txt-lg" style={{ paddingBottom: 20 }}>

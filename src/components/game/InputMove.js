@@ -18,6 +18,7 @@ function InputMove(props) {
     <InputGroup style={{ width: 150 }}>
       <FormControl
         className="no-outline"
+        style={{ fontSize: 16 }}
         onChange={handleChange}
         value={value}
       />

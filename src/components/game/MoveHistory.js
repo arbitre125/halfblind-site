@@ -18,8 +18,8 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
     <Card
       className="secondary"
       style={{
-        width: 230,
-        maxHeight: props.size / 2,
+        width: 200,
+        maxHeight: props.maxHeight,
         overflowY: "scroll"
       }}
     >
@@ -31,7 +31,7 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
                 ind % 2 === 0 ? (
                   <tr key={ind}>
                     <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
-                    <td style={{ paddingLeft: 10, paddingBottom: 10 }}>
+                    <td style={{ paddingLeft: 8, paddingBottom: 10 }}>
                       {move.san}
                     </td>
                     <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
@@ -61,7 +61,7 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
                   ind % 2 === 0 ? (
                     <tr key={ind}>
                       <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
-                      <td style={{ paddingLeft: 10, paddingBottom: 10 }}>
+                      <td style={{ paddingLeft: 8, paddingBottom: 10 }}>
                         {move.san}
                       </td>
                       <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
@@ -72,7 +72,7 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
                 ) : (
                   <tr key={ind}>
                     <td style={{ paddingBottom: 10 }}>{ind / 2 + 1}.</td>
-                    <td style={{ paddingLeft: 10, paddingBottom: 10 }}>
+                    <td style={{ paddingLeft: 8, paddingBottom: 10 }}>
                       {halfBlind ? (
                         <>
                           {move.san.slice(0, 1)}&thinsp;
@@ -92,8 +92,8 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
             </tbody>
           </table>
         )}
+        <div ref={historyEndRef}></div>
       </Card.Body>
-      <div ref={historyEndRef}></div>
     </Card>
   );
 };

@@ -70,8 +70,6 @@ const Header = ({
     </Nav>
   );
 
-  console.log(props.width);
-
   return (
     <Navbar className="secondary" variant="dark">
       <Navbar.Brand

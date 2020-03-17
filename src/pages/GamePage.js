@@ -36,7 +36,7 @@ const GamePage = ({
   let { gameId } = useParams();
 
   // Board size
-  const size = props.width > 1120 ? 560 : props.width > 1050 ? 480 : 400;
+  const size = props.width > 1200 ? 560 : props.width > 540 ? 480 : 400;
 
   useEffect(() => {
     fetchHalfBlind(gameId);
@@ -59,6 +59,7 @@ const GamePage = ({
 
   return (
     <div
+      className="primary"
       style={{
         height: "100vh",
         paddingTop: 20,
@@ -66,64 +67,108 @@ const GamePage = ({
         overflowX: "hidden"
       }}
     >
-      {props.width > 960 ? (
-        <Row style={{ display: "flex" }}>
-          <Col
-            style={{
-              padding: 5
-            }}
-          >
-            <div style={{ position: "relative", top: size / 2 - 160 / 2 }}>
-              <GameInfo size={size} />
-            </div>
-            <div
+      {props.width > 1000 ? (
+        <>
+          <Row style={{ display: "flex" }}>
+            <Col
               style={{
-                position: "absolute",
-                top: size / 2 + 100,
-                right: 5
+                padding: 5
               }}
             >
-              <Button variant="outline-light" onClick={() => resetGame(gameId)}>
-                New game
-              </Button>
+              <div style={{ position: "relative", top: size / 2 - 160 / 2 }}>
+                <GameInfo size={size} />
+              </div>
+              <div
+                style={{
+                  position: "absolute",
+                  top: size / 2 + 100,
+                  right: 5
+                }}
+              >
+                <Button
+                  variant="outline-light"
+                  onClick={() => resetGame(gameId)}
+                >
+                  New game
+                </Button>
+              </div>
+            </Col>
+            <Col>
+              <ChessBoard perspective="white" size={size} />
+            </Col>
+            <Col style={{ padding: 5 }}>
+              <MoveHistory size={size} maxHeight={size / 2} />
+            </Col>
+          </Row>
+          <div className="center">
+            <div
+              style={{ position: "relative", marginTop: 20, marginBottom: 10 }}
+            >
+              <InputMove makeMove={makeMove} id={gameId} />
             </div>
-          </Col>
-          <Col>
-            <ChessBoard perspective="white" size={size} />
-          </Col>
-          <Col style={{ padding: 5 }}>
-            <MoveHistory size={size} />
-          </Col>
-        </Row>
+          </div>
+          <div className="center">
+            <p className="center grey-txt txt-xs">
+              Input your move using&nbsp;
+              <a
+                className="grey-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://cheatography.com/davechild/cheat-sheets/chess-algebraic-notation/"
+              >
+                <u>Algebraic Notation</u>
+              </a>
+            </p>
+          </div>
+        </>
       ) : (
         <>
           <Row
             style={{
-              padding: 5
+              padding: 0
             }}
           >
-            <Col>
+            <Col style={{ marginLeft: 10, paddingLeft: 0 }}>
               <GameInfo size={size} />
             </Col>
-            <Col>
-              <MoveHistory size={size} />
+            <Col style={{ marginLeft: -20, paddingRight: 0 }}>
+              <MoveHistory size={size} maxHeight={160} />
             </Col>
           </Row>
           <Row className="center" style={{ paddingTop: 20 }}>
             <ChessBoard perspective="white" size={size} />
           </Row>
+          <div className="center">
+            <div
+              style={{ position: "relative", marginTop: 20, marginBottom: 10 }}
+            >
+              <InputMove makeMove={makeMove} id={gameId} />
+            </div>
+          </div>
+          <div className="center">
+            <p className="center grey-txt txt-xs">
+              Input your move using&nbsp;
+              <a
+                className="grey-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://cheatography.com/davechild/cheat-sheets/chess-algebraic-notation/"
+              >
+                <u>Algebraic Notation</u>
+              </a>
+            </p>
+          </div>
+          <div className="center">
+            <Button
+              variant="outline-light"
+              style={{ margin: 20 }}
+              onClick={() => resetGame(gameId)}
+            >
+              New game
+            </Button>
+          </div>
         </>
       )}
-      <div className="center">
-        <div style={{ position: "relative", marginTop: 20, marginBottom: 10 }}>
-          <InputMove makeMove={makeMove} id={gameId} />
-        </div>
-      </div>
-      <div className="center">
-        <p className="center grey-txt txt-xs">
-          Input your move in valid PGN format
-        </p>
-      </div>
       {gameOver !== -1 && (
         <GameOver
           type={gameOver}
