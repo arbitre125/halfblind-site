@@ -7,12 +7,12 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
   const historyEndRef = useRef(null);
 
   const scrollToBottom = () => {
-    historyEndRef.current.scrollIntoView({ behavior: "smooth" });
+    historyEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
   useEffect(() => {
     scrollToBottom();
-  }, [history]);
+  });
 
   return (
     <Card

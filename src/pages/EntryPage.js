@@ -2,7 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { newGameAction } from "../redux/store/actions/userActions";
-import { Button, Image } from "react-bootstrap";
+import Gallery from "../components/Gallery";
+import { Row, Col, Button, Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
 
@@ -60,40 +61,49 @@ const EntryPage = ({ userLogged, currentGameId, newGame, ...props }) => {
           paddingTop: 40
         }}
       >
-        <div style={{ maxWidth: 800 }}>
-          <p className="white-txt txt-lg" style={{ paddingTop: 60 }}>
-            Rules:
-          </p>
-          <ol className="grey-txt txt-sm-md">
-            <li style={{ paddingBottom: 20 }}>
-              Every third turn, a player makes a <b>half-blind move</b>.
-            </li>
-            <li style={{ paddingBottom: 20 }}>
-              A <b>half-blind move</b> is a move in which the opposing player
-              only sees <i>which</i> piece was moved, not <i>where</i> it was
-              moved to.
-              <div style={{ height: 10 }}></div>
-              <span className="grey-txt txt-sm">
-                <i>
-                  (&nbsp;the move is indicated by the half-blind icon:{" "}
-                  <span>
-                    <Image
-                      src={half_eye}
-                      width="20"
-                      style={{ marginBottom: 5 }}
-                    />
-                  </span>{" "}
-                  )
-                </i>
-              </span>
-              <div style={{ height: 10 }}></div>
-            </li>
-            <li style={{ marginTop: -20, paddingBottom: 20 }}>
-              The position of the piece remains hidden until the next turn has
-              been made.
-            </li>
-          </ol>
-        </div>
+        <Row>
+          <Col style={{ paddingTop: 60, minWidth: 420 }}>
+            <div style={{ maxWidth: 800 }}>
+              <p className="white-txt txt-lg" style={{ paddingBottom: 40 }}>
+                Rules:
+              </p>
+              <ol className="grey-txt txt-sm-md">
+                <li style={{ paddingBottom: 20 }}>
+                  Every third turn, a player makes a <b>half-blind move</b>.
+                </li>
+                <li style={{ paddingBottom: 20 }}>
+                  A <b>half-blind move</b> is a move in which the opposing
+                  player only sees <i>which</i> piece was moved, not{" "}
+                  <i>where</i> it was moved to.
+                  <div style={{ height: 10 }}></div>
+                  <span className="grey-txt txt-sm">
+                    <i>
+                      (&nbsp;the move is indicated by the half-blind icon:{" "}
+                      <span>
+                        <Image
+                          src={half_eye}
+                          width="20"
+                          style={{ marginBottom: 5 }}
+                        />
+                      </span>{" "}
+                      )
+                    </i>
+                  </span>
+                  <div style={{ height: 10 }}></div>
+                </li>
+                <li style={{ marginTop: -20, paddingBottom: 20 }}>
+                  The position of the piece remains hidden until the next turn
+                  has been made.
+                </li>
+              </ol>
+            </div>
+          </Col>
+          <Col style={{ paddingTop: 60, paddingBottom: 30 }}>
+            <div className="center">
+              <Gallery enterGame={enterGame} />
+            </div>
+          </Col>
+        </Row>
       </div>
     </>
   );
