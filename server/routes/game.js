@@ -10,6 +10,13 @@ game.get(`/all`, (req, res) => {
   res.send(Object.keys(chess_games));
 });
 
+game.post(`/offline/newgame`, (req, res) => {
+  const chess = new Chess();
+  const id = req.body.username;
+  chess_games[id] = chess;
+  res.send(id);
+});
+
 game.post(`/newgame`, (req, res) => {
   const chess = new Chess();
   const id = uuid().slice(0, 8);
@@ -54,8 +61,9 @@ game.post(`/:gameId/reset`, (req, res) => {
   res.send(chess_games[req.params.gameId].reset());
 });
 
-game.post(`/:gameId/delete`, (req, res) => {
-  delete chess_games[req.params.gameId];
+game.post(`/delete`, (req, res) => {
+  delete chess_games[req.body.username];
+  delete chess_games[req.body.currentGameId];
   res.send(true);
 });
 

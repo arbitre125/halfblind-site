@@ -37,7 +37,8 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
                     <td style={{ paddingLeft: 50, paddingBottom: 10 }}>
                       {halfBlind && ind + 1 === history.length - 1 ? (
                         <>
-                          {history[ind + 1].san.slice(0, 1)}&thinsp;
+                          {history[ind + 1].san.slice(0, 1).replace("O", "K")}
+                          &thinsp;
                           <Image
                             src={eye}
                             width={15}
@@ -75,7 +76,7 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
                     <td style={{ paddingLeft: 8, paddingBottom: 10 }}>
                       {halfBlind ? (
                         <>
-                          {move.san.slice(0, 1)}&thinsp;
+                          {move.san.slice(0, 1).replace("O", "K")}&thinsp;
                           <Image
                             src={eye}
                             width={15}

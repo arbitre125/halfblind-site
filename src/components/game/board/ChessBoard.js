@@ -70,7 +70,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -149,7 +149,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -228,7 +228,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -307,7 +307,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -386,7 +386,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -465,7 +465,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -544,7 +544,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -567,7 +567,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -588,7 +588,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -609,7 +609,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -630,7 +630,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -651,7 +651,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -672,7 +672,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -693,7 +693,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -714,7 +714,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -725,7 +725,7 @@ const ChessBoard = ({ board, ...props }) => {
                   h
                 </p>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -811,7 +811,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -890,7 +890,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -969,7 +969,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1048,7 +1048,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1127,7 +1127,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1206,7 +1206,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1285,7 +1285,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1308,7 +1308,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1329,7 +1329,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1350,7 +1350,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1371,7 +1371,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1392,7 +1392,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1413,7 +1413,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1434,7 +1434,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="white-txt txt-xs"
+                  className="white-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1455,7 +1455,7 @@ const ChessBoard = ({ board, ...props }) => {
             <td>
               <div style={{ position: "relative" }}>
                 <p
-                  className="dark-grey-txt txt-xs"
+                  className="dark-grey-txt txt-xs no-select"
                   style={{
                     zIndex: 2,
                     position: "absolute",
@@ -1467,7 +1467,7 @@ const ChessBoard = ({ board, ...props }) => {
                 </p>
                 <div style={{ position: "relative" }}>
                   <p
-                    className="dark-grey-txt txt-xs"
+                    className="dark-grey-txt txt-xs no-select"
                     style={{
                       zIndex: 2,
                       position: "absolute",

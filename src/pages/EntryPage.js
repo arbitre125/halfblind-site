@@ -1,21 +1,27 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { newGameAction } from "../redux/store/actions/userActions";
+import { newOfflineGameAction } from "../redux/store/actions/userActions";
 import Gallery from "../components/Gallery";
 import { Row, Col, Button, Image } from "react-bootstrap";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
 
-const EntryPage = ({ userLogged, currentGameId, newGame, ...props }) => {
+const EntryPage = ({
+  userLogged,
+  userDetails,
+  currentGameId,
+  newOfflineGame,
+  ...props
+}) => {
   let history = useHistory();
 
-  const enterGame = async () => {
+  const enterOfflineGame = async () => {
     if (userLogged) {
       if (currentGameId) {
         history.push(`/game/${currentGameId}`);
       } else {
-        await newGame(history);
+        await newOfflineGame(userDetails.username, history);
       }
     } else {
       history.push(`/login`);
@@ -45,7 +51,7 @@ const EntryPage = ({ userLogged, currentGameId, newGame, ...props }) => {
           <div className="center">
             <Button
               variant="outline-light"
-              onClick={enterGame}
+              onClick={enterOfflineGame}
               style={{ zIndex: 1 }}
             >
               Play
@@ -100,7 +106,7 @@ const EntryPage = ({ userLogged, currentGameId, newGame, ...props }) => {
           </Col>
           <Col style={{ paddingTop: 60, paddingBottom: 30 }}>
             <div className="center">
-              <Gallery enterGame={enterGame} />
+              <Gallery enterOfflineGame={enterOfflineGame} />
             </div>
           </Col>
         </Row>
@@ -112,14 +118,15 @@ const EntryPage = ({ userLogged, currentGameId, newGame, ...props }) => {
 const mapStateToProps = state => {
   return {
     userLogged: state.user.userLogged,
+    userDetails: state.user.userDetails,
     currentGameId: state.user.currentGameId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    newGame: history => {
-      dispatch(newGameAction(history));
+    newOfflineGame: (username, history) => {
+      dispatch(newOfflineGameAction(username, history));
     }
   };
 };

@@ -53,7 +53,7 @@ const descriptionMap = new Map([
     1,
     "Click through the following gallery for an example from a half-blind game from white's perspective."
   ],
-  [2, "Our first move is normal."],
+  [2, "White's first move is normal."],
   [
     3,
     "Black's first move is half-blind. We see that the e-pawn was moved, but we don't know where!"
@@ -62,13 +62,13 @@ const descriptionMap = new Map([
   [5, "Black's next move is normal."],
   [
     6,
-    "Now we play a half-blind move. The knight could be in 5 places, but black can rule a few out..."
+    "Now white plays a half-blind move. The knight could be in 5 places, but black can rule a few out..."
   ],
   [
     7,
-    "Black carelessly proceeds with the Petrov, only to realize that we did not take on e5, but played the tricky Ng5."
+    "Black carelessly proceeds with the Petrov, only to realize that white did not take on e5, but played the tricky Ng5."
   ],
-  [8, "We walk away with a free knight!"],
+  [8, "White walks away with a free knight!"],
   [
     9,
     "Notice: Black could have avoided this mistake by simply attempting 3. ... g5, and realizing that it can't be played."
@@ -95,19 +95,19 @@ const Gallery = props => {
     <Card className="primary" style={{ width: 400 }}>
       <Card.Img variant="top" src={imageMap.get(view)} />
       <Card.Body style={{ minHeight: 175 }}>
-        <Card.Text className="white-txt txt-sm" style={{ paddingTop: -10 }}>
+        <div className="white-txt txt-sm" style={{ paddingTop: -10 }}>
           {moveMap.get(view)}
           {view === 10 && (
             <Button
               variant="outline-light"
               className="center-horiz"
-              onClick={props.enterGame}
+              onClick={props.enterOfflineGame}
             >
               Play Offline
             </Button>
           )}
-        </Card.Text>
-        <Card.Text className="grey-txt txt-sm" style={{ marginTop: -10 }}>
+        </div>
+        <Card.Text className="grey-txt txt-sm" style={{ marginTop: 10 }}>
           {descriptionMap.get(view)}
         </Card.Text>
         <Button

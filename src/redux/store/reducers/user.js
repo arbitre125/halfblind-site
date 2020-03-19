@@ -2,8 +2,10 @@ import {
   USER_AUTHENTICATING,
   USER_AUTHENTICATED,
   USER_NOT_AUTHENTICATED,
-  NEW_GAME_FETCHING,
-  NEW_GAME_FETCHED
+  NEW_OFFLINE_GAME_FETCHING,
+  NEW_OFFLINE_GAME_FETCHED,
+  NEW_ONLINE_GAME_FETCHING,
+  NEW_ONLINE_GAME_FETCHED
 } from "../types";
 
 const initialUserState = {
@@ -11,6 +13,7 @@ const initialUserState = {
   fetched: false,
   userLogged: false,
   userDetails: {},
+  offlineGame: false,
   currentGameId: null
 };
 
@@ -35,14 +38,27 @@ const userReducer = (state = initialUserState, action) => {
         userLogged: false,
         userDetails: {},
         fetching: false,
+        offlineGame: false,
         currentGameId: null
       };
-    case NEW_GAME_FETCHING:
+    case NEW_OFFLINE_GAME_FETCHING:
       return {
         ...state,
         fetching: true
       };
-    case NEW_GAME_FETCHED:
+    case NEW_OFFLINE_GAME_FETCHED:
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        offlineGame: true
+      };
+    case NEW_ONLINE_GAME_FETCHING:
+      return {
+        ...state,
+        fetching: true
+      };
+    case NEW_ONLINE_GAME_FETCHED:
       return {
         ...state,
         fetching: false,

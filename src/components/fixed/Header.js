@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   logoutAction,
-  newGameAction
+  newOfflineGameAction
 } from "../../redux/store/actions/userActions";
 import { Navbar, Nav, NavDropdown, Image, Row, Col } from "react-bootstrap";
 import half_eye from "../../images/logos/half-eye-l-w.png";
@@ -13,17 +13,17 @@ const Header = ({
   userDetails,
   currentGameId,
   logout,
-  newGame,
+  newOfflineGame,
   ...props
 }) => {
   let history = useHistory();
 
-  const enterGame = async () => {
+  const enterOfflineGame = async () => {
     if (userLogged) {
       if (currentGameId) {
         history.push(`/game/${currentGameId}`);
       } else {
-        await newGame(history);
+        await newOfflineGame(history, userDetails.username);
       }
     } else {
       history.push(`/login`);
@@ -32,8 +32,8 @@ const Header = ({
 
   const logoutHandler = async e => {
     e.preventDefault();
-
-    await logout(history, currentGameId);
+    console.log("here");
+    await logout(userDetails.username, currentGameId, history);
     // After, push history -> "/login" (in action creator)
   };
 
@@ -98,7 +98,7 @@ const Header = ({
         <>
           <Nav className="mr-auto">
             <NavDropdown title={<span className="grey-link txt-sm">Play</span>}>
-              <NavDropdown.Item onClick={enterGame} className="txt-sm">
+              <NavDropdown.Item onClick={enterOfflineGame} className="txt-sm">
                 Play Offline
               </NavDropdown.Item>
             </NavDropdown>
@@ -116,7 +116,7 @@ const Header = ({
               alignRight
               title={<span className="grey-link txt-sm">Options</span>}
             >
-              <NavDropdown.Item onClick={enterGame} className="txt-sm">
+              <NavDropdown.Item onClick={enterOfflineGame} className="txt-sm">
                 Play Offline
               </NavDropdown.Item>
               <NavDropdown.Item href="/about" className="txt-sm">
@@ -161,11 +161,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: (history, currentGameId) => {
-      dispatch(logoutAction(history, currentGameId));
+    logout: (username, currentGameId, history) => {
+      dispatch(logoutAction(username, currentGameId, history));
     },
-    newGame: history => {
-      dispatch(newGameAction(history));
+    newOfflineGame: (username, history) => {
+      dispatch(newOfflineGameAction(username, history));
     }
   };
 };

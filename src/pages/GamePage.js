@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   fetchHalfBlindAction,
@@ -20,6 +20,7 @@ import GameOver from "../components/game/GameOver";
 import InputMove from "../components/game/InputMove";
 
 const GamePage = ({
+  userDetails,
   board,
   gameOver,
   fetchHalfBlind,
@@ -33,7 +34,7 @@ const GamePage = ({
   resetGame,
   ...props
 }) => {
-  let { gameId } = useParams();
+  let gameId = userDetails.username;
 
   // Board size
   const size = props.width > 1200 ? 560 : props.width > 540 ? 480 : 400;
@@ -182,6 +183,7 @@ const GamePage = ({
 
 const mapStateToProps = state => {
   return {
+    userDetails: state.user.userDetails,
     board: state.game.board,
     gameOver: state.game.gameOver
   };
