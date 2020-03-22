@@ -1,4 +1,5 @@
 import {
+
   USER_AUTHENTICATING,
   USER_AUTHENTICATED,
   USER_NOT_AUTHENTICATED,
@@ -10,6 +11,7 @@ import {
 import setAuthorizationToken from "../../../utils/setAuthorizationToken";
 import decode from "jwt-decode";
 import axios from "axios";
+
 
 export const loginAction = (history, user) => {
   return async dispatch => {
@@ -59,6 +61,7 @@ export const newOfflineGameAction = (username, history) => {
     return await axios
       .post(`/game/offline/newgame`, { username })
       .then(res => {
+        localStorage.setItem("offlineGame", true);
         dispatch({ type: NEW_OFFLINE_GAME_FETCHED });
         history.push(`/game/offline/${username}`);
       })

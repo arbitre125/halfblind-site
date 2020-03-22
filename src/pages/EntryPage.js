@@ -10,6 +10,7 @@ import half_eye from "../images/logos/half-eye-r-w.png";
 const EntryPage = ({
   userLogged,
   userDetails,
+  offlineGame,
   currentGameId,
   newOfflineGame,
   ...props
@@ -21,7 +22,11 @@ const EntryPage = ({
       if (currentGameId) {
         history.push(`/game/${currentGameId}`);
       } else {
-        await newOfflineGame(userDetails.username, history);
+        if (offlineGame) {
+          history.push(`/game/offline/${userDetails.username}`);
+        } else {
+          await newOfflineGame(userDetails.username, history);
+        }
       }
     } else {
       history.push(`/login`);
@@ -119,7 +124,8 @@ const mapStateToProps = state => {
   return {
     userLogged: state.user.userLogged,
     userDetails: state.user.userDetails,
-    currentGameId: state.user.currentGameId
+    currentGameId: state.user.currentGameId,
+    offlineGame: state.user.offlineGame
   };
 };
 

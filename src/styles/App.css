@@ -96,7 +96,7 @@
 }
 
 .dark-grey-txt {
-  color: #6d6d6d !important;
+  color: #585858 !important;
 }
 
 .grey-link {
@@ -105,6 +105,14 @@
 
 .grey-link:hover {
   color: #ffffff !important;
+}
+
+.dark-grey-link {
+  color: #585858 !important;
+}
+
+.dark-grey-link:hover {
+  color: #1a1a1a !important;
 }
 
 .indicator {

@@ -13,6 +13,7 @@ game.get(`/all`, (req, res) => {
 game.post(`/offline/newgame`, (req, res) => {
   const chess = new Chess();
   const id = req.body.username;
+  console.log(id);
   chess_games[id] = chess;
   res.send(id);
 });

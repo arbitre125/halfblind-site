@@ -14,10 +14,10 @@ const LoginPage = ({ login }) => {
     setInfo({ ...info, [e.target.id]: e.target.value });
   };
 
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
 
-    await login(history, info);
+    login(history, info);
     // After, push history -> "/"
 
     // If not, wasn't authenticated

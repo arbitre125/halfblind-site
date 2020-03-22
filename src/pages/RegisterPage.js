@@ -10,7 +10,7 @@ const RegisterPage = () => {
     confirmPassword: ""
   });
   const [successAlert, setSuccessAlert] = useState(false);
-  const [wrongAlert, setWrongAlert] = useState(false);
+  const [wrongAlert, setWrongAlert] = useState({ show: false, message: "" });
 
   const onChange = e => {
     setInfo({ ...info, [e.target.id]: e.target.value });
@@ -21,7 +21,8 @@ const RegisterPage = () => {
       .post("/users/register", {
         username: newUser.username,
         email: newUser.email,
-        password: newUser.password
+        password: newUser.password,
+        confirmPassword: newUser.confirmPassword
       })
       .then(res => res)
       .catch(err => console.log(err));
@@ -30,23 +31,18 @@ const RegisterPage = () => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    // Check user already exist
-    // Check valid email
-    // Check valid username/pass format
-    // Confirm passwords match
-
     const res = await register({
       email: info.email,
       username: info.username,
-      password: info.password
+      password: info.password,
+      confirmPassword: info.confirmPassword
     });
 
-    console.log(res);
-    if (res.data) {
-      setSuccessAlert(true);
-      setWrongAlert(false);
+    if (res.data.error) {
+      setWrongAlert({ show: true, message: res.data.error });
     } else {
-      setWrongAlert(true);
+      setSuccessAlert(true);
+      setWrongAlert({ show: false, message: "" });
     }
     setInfo({
       email: "",
@@ -67,7 +63,7 @@ const RegisterPage = () => {
     >
       <div style={{ maxWidth: 400 }}>
         <p className="white-txt txt-lg">Register</p>
-        <Form className="white-txt txt-sm-md">
+        <Form className="white-txt txt-sm-md" style={{ width: 360 }}>
           <Form.Group controlId="email">
             <Form.Label style={{ float: "left" }}>Email</Form.Label>
             <Form.Control
@@ -104,15 +100,15 @@ const RegisterPage = () => {
               placeholder="Confirm password"
             />
           </Form.Group>
-          {wrongAlert && (
+          {wrongAlert.show && (
             <Alert
               className="txt-sm"
               variant="danger"
               style={{ marginTop: 30 }}
-              onClose={() => setWrongAlert(false)}
+              onClose={() => setWrongAlert({ show: false, message: "" })}
               dismissible
             >
-              That email already exists.
+              {wrongAlert.message}
             </Alert>
           )}
           <Button
@@ -132,7 +128,11 @@ const RegisterPage = () => {
             onClose={() => setSuccessAlert(false)}
             dismissible
           >
-            Account created, <a href="/login">login</a>!
+            Account created,{" "}
+            <a className="dark-grey-link" href="/login">
+              login
+            </a>
+            !
           </Alert>
         )}
         <p className="grey-txt txt-sm" style={{ paddingTop: 15 }}>

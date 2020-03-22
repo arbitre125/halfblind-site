@@ -12,6 +12,7 @@ const Header = ({
   userLogged,
   userDetails,
   currentGameId,
+  offlineGame,
   logout,
   newOfflineGame,
   ...props
@@ -23,7 +24,11 @@ const Header = ({
       if (currentGameId) {
         history.push(`/game/${currentGameId}`);
       } else {
-        await newOfflineGame(history, userDetails.username);
+        if (offlineGame) {
+          history.push(`/game/offline/${userDetails.username}`);
+        } else {
+          await newOfflineGame(userDetails.username, history);
+        }
       }
     } else {
       history.push(`/login`);
@@ -32,7 +37,6 @@ const Header = ({
 
   const logoutHandler = async e => {
     e.preventDefault();
-    console.log("here");
     await logout(userDetails.username, currentGameId, history);
     // After, push history -> "/login" (in action creator)
   };
@@ -155,7 +159,8 @@ const mapStateToProps = state => {
   return {
     userLogged: state.user.userLogged,
     userDetails: state.user.userDetails,
-    currentGameId: state.user.currentGameId
+    currentGameId: state.user.currentGameId,
+    offlineGame: state.user.offlineGame
   };
 };
 

@@ -3,7 +3,8 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import {
   USER_AUTHENTICATED,
-  NEW_ONLINE_GAME_FETCHED
+  NEW_ONLINE_GAME_FETCHED,
+  NEW_OFFLINE_GAME_FETCHED
 } from "./redux/store/types";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import UserRoute from "./authentication/routing/UserRoute";
@@ -15,6 +16,7 @@ import AboutPage from "./pages/AboutPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
+import NotFoundPage from "./pages/NotFoundPage";
 import Footer from "./components/fixed/Footer";
 import setAuthorizationToken from "./utils/setAuthorizationToken";
 import decode from "jwt-decode";
@@ -30,6 +32,11 @@ if (localStorage.usertoken) {
     store.dispatch({
       type: NEW_ONLINE_GAME_FETCHED,
       payload: localStorage.currentGameId
+    });
+  }
+  if (localStorage.offlineGame) {
+    store.dispatch({
+      type: NEW_OFFLINE_GAME_FETCHED
     });
   }
 }
@@ -74,6 +81,7 @@ const App = () => {
               <UserRoute path="/profile">
                 <ProfilePage />
               </UserRoute>
+              <NotFoundPage />
             </Switch>
           </div>
         </div>
