@@ -11,7 +11,9 @@ const MoveHistory = ({ halfBlind, history, ...props }) => {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    if (props.maxHeight !== 160) {
+      scrollToBottom();
+    }
   });
 
   return (

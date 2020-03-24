@@ -73,7 +73,7 @@ const EntryPage = ({
         }}
       >
         <Row>
-          <Col style={{ paddingTop: 60, minWidth: 420 }}>
+          <Col style={{ paddingTop: 60, minWidth: 440 }}>
             <div style={{ maxWidth: 800 }}>
               <p className="white-txt txt-lg" style={{ paddingBottom: 40 }}>
                 Rules:

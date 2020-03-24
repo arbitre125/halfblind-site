@@ -74,7 +74,7 @@ const AboutPage = props => {
         </p>
         <ul style={{ color: "white" }}>
           <li>
-            <p className="grey-txt txt-sm-md">alpha v0.1.0 (02.21.20):</p>
+            <p className="grey-txt txt-sm-md">alpha v0.1.0 (March 24, 2020):</p>
             <ul>
               <li>
                 <p className="grey-txt txt-sm">Initial release.</p>
