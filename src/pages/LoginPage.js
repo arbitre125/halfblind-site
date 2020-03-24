@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginAction } from "../redux/store/actions/userActions";
 import { Form, Button, Alert } from "react-bootstrap";
 
-const LoginPage = ({ login }) => {
+const LoginPage = ({ fetching, fetched, loginError, userLogged, login }) => {
   const [info, setInfo] = useState({ email: "", password: "" });
-  const [wrongAlert, setWrongAlert] = useState(false);
+  const [wrongAlert, setWrongAlert] = useState({ show: false, message: "" });
 
   let history = useHistory();
+
+  useEffect(() => {
+    if (fetched && !userLogged) {
+      setWrongAlert({ show: true, message: loginError });
+      setInfo({ email: "", password: "" });
+    }
+  }, [fetching, fetched, loginError, userLogged]);
 
   const onChange = e => {
     setInfo({ ...info, [e.target.id]: e.target.value });
@@ -16,13 +23,7 @@ const LoginPage = ({ login }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-
     login(history, info);
-    // After, push history -> "/"
-
-    // If not, wasn't authenticated
-    setWrongAlert(true);
-    setInfo({ email: "", password: "" });
   };
 
   return (
@@ -55,15 +56,20 @@ const LoginPage = ({ login }) => {
               placeholder="Enter password"
             />
           </Form.Group>
-          {wrongAlert && (
+          {wrongAlert.show && (
             <Alert
               className="txt-sm"
               variant="danger"
               style={{ marginTop: 30 }}
-              onClose={() => setWrongAlert(false)}
+              onClose={() => setWrongAlert({ show: false, message: "" })}
               dismissible
             >
-              Invalid email/password. Try again.
+              {wrongAlert.message}
+            </Alert>
+          )}
+          {fetching && (
+            <Alert className="txt-sm" variant="light" style={{ marginTop: 30 }}>
+              Logging in...
             </Alert>
           )}
           <Button
@@ -87,6 +93,15 @@ const LoginPage = ({ login }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    fetching: state.user.fetching,
+    fetched: state.user.fetched,
+    loginError: state.user.loginError,
+    userLogged: state.user.userLogged
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     login: (history, user) => {
@@ -95,4 +110,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

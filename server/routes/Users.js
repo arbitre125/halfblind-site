@@ -55,7 +55,7 @@ users.post("/register", (req, res) => {
           error: "Your password must contain at least 8 characters."
         });
       } else if (userData.password.length > 30) {
-        res.json({ error: "Your password must not exceed 30 characters" });
+        res.json({ error: "Your password must not exceed 30 characters." });
       } else if (userData.password !== userData.confirmPassword) {
         res.json({ error: "Your passwords do not match." });
       } else {
@@ -86,7 +86,14 @@ users.post("/login", (req, res) => {
     }
   })
     .then(user => {
-      if (
+      if (!user) {
+        res.json({ error: "That email has not been registered." });
+      } else if (
+        user !== null &&
+        !bcrypt.compareSync(req.body.password, user.password)
+      ) {
+        res.json({ error: "That password is incorrect." });
+      } else if (
         user !== null &&
         bcrypt.compareSync(req.body.password, user.password)
       ) {

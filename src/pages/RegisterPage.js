@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { registerAction } from "../redux/store/actions/userActions";
 import { Form, Button, Alert } from "react-bootstrap";
 
-const RegisterPage = () => {
+const RegisterPage = ({ fetching, fetched, registerError, register }) => {
   const [info, setInfo] = useState({
     email: "",
     username: "",
@@ -12,44 +13,26 @@ const RegisterPage = () => {
   const [successAlert, setSuccessAlert] = useState(false);
   const [wrongAlert, setWrongAlert] = useState({ show: false, message: "" });
 
+  useEffect(() => {
+    if (fetched) {
+      if (registerError) {
+        setWrongAlert({ show: true, message: registerError });
+        setInfo({ email: "", username: "", password: "", confirmPassword: "" });
+      } else {
+        setWrongAlert({ show: false, message: "" });
+        setSuccessAlert(true);
+        setInfo({ email: "", username: "", password: "", confirmPassword: "" });
+      }
+    }
+  }, [fetching, fetched, registerError]);
+
   const onChange = e => {
     setInfo({ ...info, [e.target.id]: e.target.value });
   };
 
-  const register = async newUser => {
-    return await axios
-      .post("/users/register", {
-        username: newUser.username,
-        email: newUser.email,
-        password: newUser.password,
-        confirmPassword: newUser.confirmPassword
-      })
-      .then(res => res)
-      .catch(err => console.log(err));
-  };
-
   const onSubmit = async e => {
     e.preventDefault();
-
-    const res = await register({
-      email: info.email,
-      username: info.username,
-      password: info.password,
-      confirmPassword: info.confirmPassword
-    });
-
-    if (res.data.error) {
-      setWrongAlert({ show: true, message: res.data.error });
-    } else {
-      setSuccessAlert(true);
-      setWrongAlert({ show: false, message: "" });
-    }
-    setInfo({
-      email: "",
-      username: "",
-      password: "",
-      confirmPassword: ""
-    });
+    register(info);
   };
 
   return (
@@ -111,6 +94,11 @@ const RegisterPage = () => {
               {wrongAlert.message}
             </Alert>
           )}
+          {fetching && (
+            <Alert className="txt-sm" variant="light" style={{ marginTop: 30 }}>
+              Registering...
+            </Alert>
+          )}
           <Button
             className="dark-btn"
             variant="outline-light"
@@ -147,4 +135,20 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+const mapStateToProps = state => {
+  return {
+    fetching: state.user.fetching,
+    fetched: state.user.fetched,
+    registerError: state.user.registerError
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    register: newUser => {
+      dispatch(registerAction(newUser));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
