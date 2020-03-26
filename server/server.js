@@ -13,7 +13,7 @@ app.use(cors());
 const Users = require("./routes/users");
 app.use("/users", Users);
 
-const Chess = require("./routes/game");
-app.use("/game", Chess);
+const Chess = require("./routes/games");
+app.use("/games", Chess);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

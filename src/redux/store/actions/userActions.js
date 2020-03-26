@@ -77,7 +77,7 @@ export const loginAction = (history, user) => {
 export const logoutAction = (username, currentGameId, history) => {
   return async dispatch => {
     return await axios
-      .post(`/game/delete`, { username, currentGameId })
+      .post(`/games/delete`, { username, currentGameId })
       .then(() => {
         localStorage.clear();
         dispatch({ type: LOGOUT });
@@ -92,7 +92,7 @@ export const newOfflineGameAction = (username, history) => {
     dispatch({ type: NEW_OFFLINE_GAME_FETCHING });
     console.log(username);
     return await axios
-      .post(`/game/offline/newgame`, { username })
+      .post(`/games/offline/newgame`, { username })
       .then(res => {
         localStorage.setItem("offlineGame", true);
         dispatch({ type: NEW_OFFLINE_GAME_FETCHED });
@@ -107,7 +107,7 @@ export const newOnlineGameAction = history => {
     dispatch({ type: NEW_ONLINE_GAME_FETCHING });
 
     return await axios
-      .post(`/game/newgame`)
+      .post(`/games/newgame`)
       .then(res => {
         localStorage.setItem("currentGameId", res.data);
         dispatch({ type: NEW_ONLINE_GAME_FETCHED, payload: res.data });

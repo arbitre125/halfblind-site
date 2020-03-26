@@ -1,31 +1,16 @@
 const express = require("express");
-const game = express.Router();
+const games = express.Router();
 // DOCS: https://github.com/jhlywa/chess.js/blob/master/README.md
 const Chess = require("../chess/chess").Chess;
 const uuid = require("uuid");
 
 let chess_games = {};
 
-game.get(`/all`, (req, res) => {
+games.get(`/`, (req, res) => {
   res.send(Object.keys(chess_games));
 });
 
-game.post(`/offline/newgame`, (req, res) => {
-  const chess = new Chess();
-  const id = req.body.username;
-  console.log(id);
-  chess_games[id] = chess;
-  res.send(id);
-});
-
-game.post(`/newgame`, (req, res) => {
-  const chess = new Chess();
-  const id = uuid().slice(0, 8);
-  chess_games[id] = chess;
-  res.send(id);
-});
-
-game.get(`/:gameId`, (req, res) => {
+games.get(`/:gameId`, (req, res) => {
   if (chess_games[req.params.gameId]) {
     const gameMatch = chess_games[req.params.gameId];
     res.send({
@@ -53,19 +38,34 @@ game.get(`/:gameId`, (req, res) => {
   }
 });
 
-game.post(`/:gameId/move`, (req, res) => {
+games.post(`/offline/newgame`, (req, res) => {
+  const chess = new Chess();
+  const id = req.body.username;
+  console.log(id);
+  chess_games[id] = chess;
+  res.send(id);
+});
+
+games.post(`/newgame`, (req, res) => {
+  const chess = new Chess();
+  const id = uuid().slice(0, 8);
+  chess_games[id] = chess;
+  res.send(id);
+});
+
+games.post(`/:gameId/move`, (req, res) => {
   const moveAttempt = chess_games[req.params.gameId].move(req.body.move);
   res.send(moveAttempt);
 });
 
-game.post(`/:gameId/reset`, (req, res) => {
+games.post(`/:gameId/reset`, (req, res) => {
   res.send(chess_games[req.params.gameId].reset());
 });
 
-game.post(`/delete`, (req, res) => {
+games.post(`/delete`, (req, res) => {
   delete chess_games[req.body.username];
   delete chess_games[req.body.currentGameId];
   res.send(true);
 });
 
-module.exports = game;
+module.exports = games;
