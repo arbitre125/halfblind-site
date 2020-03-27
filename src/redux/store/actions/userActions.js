@@ -1,4 +1,5 @@
 import {
+  CONNECTION_FAILURE,
   USER_REGISTERING,
   USER_REGISTERED,
   USER_NOT_REGISTERED,
@@ -34,9 +35,14 @@ export const registerAction = newUser => {
               type: USER_NOT_REGISTERED,
               payload: res.data.error
             });
-          } else {
+          } else if (res.data.token) {
             dispatch({
               type: USER_REGISTERED
+            });
+          } else {
+            console.log(res);
+            dispatch({
+              type: CONNECTION_FAILURE
             });
           }
         }
@@ -67,7 +73,12 @@ export const loginAction = (history, user) => {
               type: USER_NOT_AUTHENTICATED,
               payload: res.data.error
             });
-          } // maybe else: logout for saftey
+          } else {
+            console.log(res);
+            dispatch({
+              type: CONNECTION_FAILURE
+            });
+          }
         }
       })
       .catch(err => console.log(err));

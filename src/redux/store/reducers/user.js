@@ -1,4 +1,5 @@
 import {
+  CONNECTION_FAILURE,
   USER_REGISTERING,
   USER_REGISTERED,
   USER_NOT_REGISTERED,
@@ -15,6 +16,7 @@ import {
 const initialUserState = {
   fetching: false,
   fetched: false,
+  connectionFailed: false,
   registerError: null,
   loginError: null,
   userLogged: false,
@@ -25,6 +27,13 @@ const initialUserState = {
 
 const userReducer = (state = initialUserState, action) => {
   switch (action.type) {
+    case CONNECTION_FAILURE:
+      return {
+        ...state,
+        fetching: false,
+        fetched: false,
+        connectionFailed: true
+      };
     case USER_REGISTERING:
       return {
         ...state,

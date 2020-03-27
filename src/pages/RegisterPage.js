@@ -3,7 +3,13 @@ import { connect } from "react-redux";
 import { registerAction } from "../redux/store/actions/userActions";
 import { Form, Button, Alert } from "react-bootstrap";
 
-const RegisterPage = ({ fetching, fetched, registerError, register }) => {
+const RegisterPage = ({
+  fetching,
+  fetched,
+  connectionFailed,
+  registerError,
+  register
+}) => {
   const [info, setInfo] = useState({
     email: "",
     username: "",
@@ -23,8 +29,10 @@ const RegisterPage = ({ fetching, fetched, registerError, register }) => {
         setSuccessAlert(true);
         setInfo({ email: "", username: "", password: "", confirmPassword: "" });
       }
+    } else if (connectionFailed) {
+      setWrongAlert({ show: true, message: "Cannot connect to server." });
     }
-  }, [fetching, fetched, registerError]);
+  }, [fetching, fetched, connectionFailed, registerError]);
 
   const onChange = e => {
     setInfo({ ...info, [e.target.id]: e.target.value });
@@ -139,6 +147,7 @@ const mapStateToProps = state => {
   return {
     fetching: state.user.fetching,
     fetched: state.user.fetched,
+    connectionFailed: state.user.connectionFailed,
     registerError: state.user.registerError
   };
 };

@@ -4,7 +4,14 @@ import { connect } from "react-redux";
 import { loginAction } from "../redux/store/actions/userActions";
 import { Form, Button, Alert } from "react-bootstrap";
 
-const LoginPage = ({ fetching, fetched, loginError, userLogged, login }) => {
+const LoginPage = ({
+  fetching,
+  fetched,
+  connectionFailed,
+  loginError,
+  userLogged,
+  login
+}) => {
   const [info, setInfo] = useState({ email: "", password: "" });
   const [wrongAlert, setWrongAlert] = useState({ show: false, message: "" });
 
@@ -14,8 +21,10 @@ const LoginPage = ({ fetching, fetched, loginError, userLogged, login }) => {
     if (fetched && !userLogged) {
       setWrongAlert({ show: true, message: loginError });
       setInfo({ email: "", password: "" });
+    } else if (connectionFailed) {
+      setWrongAlert({ show: true, message: "Cannot connect to server." });
     }
-  }, [fetching, fetched, loginError, userLogged]);
+  }, [fetching, fetched, connectionFailed, loginError, userLogged]);
 
   const onChange = e => {
     setInfo({ ...info, [e.target.id]: e.target.value });
@@ -97,6 +106,7 @@ const mapStateToProps = state => {
   return {
     fetching: state.user.fetching,
     fetched: state.user.fetched,
+    connectionFailed: state.user.connectionFailed,
     loginError: state.user.loginError,
     userLogged: state.user.userLogged
   };
