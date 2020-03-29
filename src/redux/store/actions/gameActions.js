@@ -25,7 +25,7 @@ export const fetchHalfBlindAction = id => {
     });
 
     return axios
-      .get(`/games/${id}`)
+      .get(`https://halfblind-server.herokuapp.com/games/${id}`)
       .then(res => {
         if (res.status === 200) {
           dispatch({
@@ -47,7 +47,7 @@ export const fetchBoardAction = id => {
     });
 
     return axios
-      .get(`/games/${id}`)
+      .get(`https://halfblind-server.herokuapp.com/games/${id}`)
       .then(res => {
         if (res.status === 200) {
           dispatch({
@@ -69,7 +69,7 @@ export const fetchMovesAction = id => {
     });
 
     return axios
-      .get(`/games/${id}`)
+      .get(`https://halfblind-server.herokuapp.com/games/${id}`)
       .then(res => {
         if (res.status === 200) {
           dispatch({
@@ -91,7 +91,7 @@ export const fetchTurnNumberAction = id => {
     });
 
     return axios
-      .get(`/games/${id}`)
+      .get(`https://halfblind-server.herokuapp.com/games/${id}`)
       .then(res => {
         if (res.status === 200) {
           dispatch({
@@ -113,7 +113,7 @@ export const fetchInCheckAction = id => {
     });
 
     return axios
-      .get(`/games/${id}`)
+      .get(`https://halfblind-server.herokuapp.com/games/${id}`)
       .then(res => {
         if (res.status === 200) {
           dispatch({
@@ -138,7 +138,7 @@ export const fetchGameOverAction = id => {
     });
 
     return axios
-      .get(`/games/${id}`)
+      .get(`https://halfblind-server.herokuapp.com/games/${id}`)
       .then(res => {
         if (res.status === 200) {
           dispatch({
@@ -171,7 +171,7 @@ export const fetchHistoryAction = id => {
     });
 
     return axios
-      .get(`/games/${id}`)
+      .get(`https://halfblind-server.herokuapp.com/games/${id}`)
       .then(res => {
         if (res.status === 200) {
           dispatch({
@@ -191,7 +191,7 @@ export const fetchHistoryAction = id => {
 export const makeMoveAction = (id, move) => {
   return dispatch => {
     return axios
-      .post(`/games/${id}/move`, { move })
+      .post(`https://halfblind-server.herokuapp.com/games/${id}/move`, { move })
       .then(res => {
         if (res.status === 200 && res.data !== "") {
           dispatch({
@@ -208,12 +208,12 @@ export const makeMoveAction = (id, move) => {
 export const resetGameAction = id => {
   return dispatch => {
     return axios
-      .post(`/games/${id}/reset`)
+      .post(`https://halfblind-server.herokuapp.com/games/${id}/reset`)
       .then(async res => {
         if (res.status === 200) {
           // Get board (going to be startPos)
           const board = await axios
-            .get(`/games/${id}`)
+            .get(`https://halfblind-server.herokuapp.com/games/${id}`)
             .then(res => res.data.board)
             .catch(err => console.log(err));
           dispatch({

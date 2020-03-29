@@ -22,7 +22,7 @@ export const registerAction = newUser => {
       type: USER_REGISTERING
     });
     return await axios
-      .post("/users/register", {
+      .post("https://halfblind-server.herokuapp.com/users/register", {
         username: newUser.username,
         email: newUser.email,
         password: newUser.password,
@@ -57,7 +57,7 @@ export const loginAction = (history, user) => {
       type: USER_AUTHENTICATING
     });
     return await axios
-      .post("/users/login", user)
+      .post("https://halfblind-server.herokuapp.com/users/login", user)
       .then(res => {
         if (res.status === 200) {
           if (res.data.token) {
@@ -88,7 +88,10 @@ export const loginAction = (history, user) => {
 export const logoutAction = (username, currentGameId, history) => {
   return async dispatch => {
     return await axios
-      .post(`/games/delete`, { username, currentGameId })
+      .post(`https://halfblind-server.herokuapp.com/games/delete`, {
+        username,
+        currentGameId
+      })
       .then(() => {
         localStorage.clear();
         dispatch({ type: LOGOUT });
@@ -103,7 +106,9 @@ export const newOfflineGameAction = (username, history) => {
     dispatch({ type: NEW_OFFLINE_GAME_FETCHING });
     console.log(username);
     return await axios
-      .post(`/games/offline/newgame`, { username })
+      .post(`https://halfblind-server.herokuapp.com/games/offline/newgame`, {
+        username
+      })
       .then(res => {
         localStorage.setItem("offlineGame", true);
         dispatch({ type: NEW_OFFLINE_GAME_FETCHED });
@@ -118,7 +123,7 @@ export const newOnlineGameAction = history => {
     dispatch({ type: NEW_ONLINE_GAME_FETCHING });
 
     return await axios
-      .post(`/games/newgame`)
+      .post(`https://halfblind-server.herokuapp.com/games/newgame`)
       .then(res => {
         localStorage.setItem("currentGameId", res.data);
         dispatch({ type: NEW_ONLINE_GAME_FETCHED, payload: res.data });
