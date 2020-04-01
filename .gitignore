@@ -7,6 +7,12 @@
 # production
 /build
 
+# deployment
+.firebaserc
+firebase.json
+firebase/*
+.firebase/*
+
 # misc
 .DS_Store
 
