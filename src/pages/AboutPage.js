@@ -8,6 +8,7 @@ const AboutPage = props => {
       <Image
         src={whole_logo}
         width="500"
+        className="no-select"
         style={{
           position: "absolute",
           right: -200,

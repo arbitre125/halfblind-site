@@ -1,4 +1,6 @@
 import {
+  CHANGE_PERSPECTIVE,
+  SET_AUTO_FLIP_PERSPECTIVE,
   HALF_BLIND_FETCHING,
   HALF_BLIND_FETCHED,
   BOARD_FETCHING,
@@ -21,6 +23,9 @@ import { squareToIndices } from "../../../helpers/squareIndices";
 const initialGameState = {
   fetching: false,
   fetched: false,
+  halfBlindFetched: false,
+  autoFlipPerspective: true,
+  perspectiveWhite: true,
   halfBlind: null,
   board: Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null)),
   moves: [],
@@ -32,6 +37,18 @@ const initialGameState = {
 
 const gameReducer = (state = initialGameState, action) => {
   switch (action.type) {
+    case CHANGE_PERSPECTIVE:
+      return {
+        ...state,
+        perspectiveWhite: state.autoFlipPerspective
+          ? state.turnNumber % 2 === 0 // If needed, wait for flip
+          : state.perspectiveWhite
+      };
+    case SET_AUTO_FLIP_PERSPECTIVE:
+      return {
+        ...state,
+        autoFlipPerspective: action.payload
+      };
     case HALF_BLIND_FETCHING:
       return {
         ...state,
@@ -42,6 +59,7 @@ const gameReducer = (state = initialGameState, action) => {
         ...state,
         fetching: false,
         fetched: true,
+        halfBlindFetched: true,
         halfBlind: action.payload
       };
     case BOARD_FETCHING:
@@ -78,7 +96,8 @@ const gameReducer = (state = initialGameState, action) => {
         ...state,
         fetching: false,
         fetched: true,
-        turnNumber: action.payload
+        turnNumber: action.payload,
+        perspectiveWhite: action.payload % 2 === 0
       };
     case IN_CHECK_FETCHING:
       return {

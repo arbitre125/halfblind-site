@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import Square from "./Square";
 
-const ChessBoard = ({ board, ...props }) => {
-  if (props.perspective === "white") {
+const ChessBoard = ({ perspectiveWhite, board, ...props }) => {
+  if (perspectiveWhite) {
     return (
       <table
         className="center no-padding-no-margin"
@@ -1495,6 +1495,7 @@ const ChessBoard = ({ board, ...props }) => {
 
 const mapStateToProps = state => {
   return {
+    perspectiveWhite: state.game.perspectiveWhite,
     board: state.game.board
   };
 };

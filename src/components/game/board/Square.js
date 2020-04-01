@@ -29,9 +29,15 @@ const imageMap = new Map([
   ["br", br]
 ]);
 
-const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
+const Square = ({
+  halfBlindFetched,
+  halfBlind,
+  turnNumber,
+  inCheck,
+  history,
+  ...props
+}) => {
   const turn = turnNumber % 2 === 0 ? "w" : "b";
-
   const lastMove = history[history.length - 1];
 
   const showPiece =
@@ -92,39 +98,56 @@ const Square = ({ halfBlind, turnNumber, inCheck, history, ...props }) => {
     zIndex: 1
   };
 
-  return (
-    <div className="no-select" style={squareStyle}>
-      {showPiece && (
-        <Image
-          className="piece center"
-          src={imageMap.get(props.piece.color + props.piece.type)}
-        />
-      )}
-      {showRook && (
-        <Image
-          className="piece center"
-          src={imageMap.get(lastMove.color + "r")}
-        />
-      )}
-      {showCapturedPiece && (
-        <Image
-          className="piece center"
-          src={imageMap.get(turn + halfBlind.captured)}
-        />
-      )}
-      {showHalfBlindPiece && (
-        <Image
-          className="piece center"
-          style={{ opacity: 0.3 }}
-          src={imageMap.get(halfBlind.color + halfBlind.piece)}
-        />
-      )}
-    </div>
-  );
+  if (!halfBlindFetched) {
+    // Prevent half-blind highlight loading too fast
+    return (
+      <div
+        className="no-select"
+        style={{
+          backgroundColor: props.color === "light" ? "#e4e8f7" : "#a2a6b3",
+          width: props.size / 8,
+          height: props.size / 8,
+          margin: -1,
+          zIndex: 1
+        }}
+      ></div>
+    );
+  } else {
+    return (
+      <div className="no-select" style={squareStyle}>
+        {showPiece && (
+          <Image
+            className="piece center"
+            src={imageMap.get(props.piece.color + props.piece.type)}
+          />
+        )}
+        {showRook && (
+          <Image
+            className="piece center"
+            src={imageMap.get(lastMove.color + "r")}
+          />
+        )}
+        {showCapturedPiece && (
+          <Image
+            className="piece center"
+            src={imageMap.get(turn + halfBlind.captured)}
+          />
+        )}
+        {showHalfBlindPiece && (
+          <Image
+            className="piece center"
+            style={{ opacity: 0.3 }}
+            src={imageMap.get(halfBlind.color + halfBlind.piece)}
+          />
+        )}
+      </div>
+    );
+  }
 };
 
 const mapStateToProps = state => {
   return {
+    halfBlindFetched: state.game.halfBlindFetched,
     halfBlind: state.game.halfBlind,
     turnNumber: state.game.turnNumber,
     inCheck: state.game.inCheck,

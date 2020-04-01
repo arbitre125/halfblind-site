@@ -10,7 +10,8 @@ import {
   fetchGameOverAction,
   fetchHistoryAction,
   makeMoveAction,
-  resetGameAction
+  resetGameAction,
+  setAutoFlipPerspective
 } from "../redux/store/actions/gameActions";
 import { Row, Col, Button } from "react-bootstrap";
 import GameInfo from "../components/game/GameInfo";
@@ -21,6 +22,7 @@ import InputMove from "../components/game/InputMove";
 
 const GamePage = ({
   userDetails,
+  autoFlipPerspective,
   board,
   gameOver,
   fetchHalfBlind,
@@ -32,6 +34,7 @@ const GamePage = ({
   fetchHistory,
   makeMove,
   resetGame,
+  setAutoFlipPerspective,
   ...props
 }) => {
   let gameId = userDetails.username;
@@ -42,7 +45,7 @@ const GamePage = ({
   useEffect(() => {
     fetchHalfBlind(gameId);
     fetchBoard(gameId);
-    // fetchMoves(gameId); // PLAN: fetched each move
+    // fetchMoves(gameId); // PLAN: Fetched each move
     fetchTurnNumber(gameId);
     fetchInCheck(gameId); // Fetched each move
     fetchGameOver(gameId); // Fetched each move
@@ -76,8 +79,26 @@ const GamePage = ({
                 padding: 5
               }}
             >
+              <div
+                style={{
+                  position: "absolute",
+                  top: size / 2 - 105,
+                  right: 5
+                }}
+              >
+                <label className="white-txt txt-sm">
+                  <input
+                    type="checkbox"
+                    checked={autoFlipPerspective}
+                    onChange={() =>
+                      setAutoFlipPerspective(!autoFlipPerspective)
+                    }
+                  />
+                  &thinsp;Flip board
+                </label>
+              </div>
               <div style={{ position: "relative", top: size / 2 - 160 / 2 }}>
-                <GameInfo size={size} />
+                <GameInfo />
               </div>
               <div
                 style={{
@@ -123,6 +144,7 @@ const GamePage = ({
           </div>
         </>
       ) : (
+        // Mobile view
         <>
           <Row
             style={{
@@ -130,14 +152,14 @@ const GamePage = ({
             }}
           >
             <Col style={{ marginLeft: 10, paddingLeft: 0 }}>
-              <GameInfo size={size} />
+              <GameInfo />
             </Col>
             <Col style={{ marginLeft: -20, paddingRight: 0 }}>
               <MoveHistory size={size} maxHeight={160} />
             </Col>
           </Row>
           <Row className="center" style={{ paddingTop: 20 }}>
-            <ChessBoard perspective="white" size={size} />
+            <ChessBoard size={size} />
           </Row>
           <div className="center">
             <div
@@ -184,6 +206,7 @@ const GamePage = ({
 const mapStateToProps = state => {
   return {
     userDetails: state.user.userDetails,
+    autoFlipPerspective: state.game.autoFlipPerspective,
     board: state.game.board,
     gameOver: state.game.gameOver
   };
@@ -217,6 +240,9 @@ const mapDispatchToProps = dispatch => {
     },
     resetGame: id => {
       dispatch(resetGameAction(id));
+    },
+    setAutoFlipPerspective: b => {
+      dispatch(setAutoFlipPerspective(b));
     }
   };
 };

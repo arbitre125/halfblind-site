@@ -1,8 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 // import Clock from "./Clock";
 import { Card } from "react-bootstrap";
 
-const GameInfo = props => {
+const GameInfo = ({ perspectiveWhite }) => {
+  // Hardcoded for offline
+  const whitePlayer = { username: "Player 1", rating: "No Rating" };
+  const blackPlayer = { username: "Player 2", rating: "No Rating" };
+
   return (
     <Card
       className="secondary"
@@ -16,11 +21,15 @@ const GameInfo = props => {
         <table>
           <tbody>
             <tr className="white-txt txt-sm-md">
-              <td width="200">Player 2</td>
+              <td width="200">
+                {perspectiveWhite ? blackPlayer.username : whitePlayer.username}
+              </td>
               <td className="txt-md">0:00.0</td>
             </tr>
             <tr className="grey-txt txt-xs">
-              <td style={{ position: "relative", top: -5 }}>(No rating)</td>
+              <td style={{ position: "relative", top: -5 }}>
+                {perspectiveWhite ? blackPlayer.rating : whitePlayer.rating}
+              </td>
             </tr>
             <tr>
               <td>
@@ -28,11 +37,15 @@ const GameInfo = props => {
               </td>
             </tr>
             <tr className="white-txt txt-sm-md">
-              <td width="200">Player 1</td>
+              <td width="200">
+                {perspectiveWhite ? whitePlayer.username : blackPlayer.username}
+              </td>
               <td className="txt-md">0:00.0</td>
             </tr>
             <tr className="grey-txt txt-xs">
-              <td style={{ position: "relative", top: -5 }}>(No rating)</td>
+              <td style={{ position: "relative", top: -5 }}>
+                {perspectiveWhite ? whitePlayer.rating : blackPlayer.rating}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -41,4 +54,10 @@ const GameInfo = props => {
   );
 };
 
-export default GameInfo;
+const mapStateToProps = state => {
+  return {
+    perspectiveWhite: state.game.perspectiveWhite
+  };
+};
+
+export default connect(mapStateToProps)(GameInfo);

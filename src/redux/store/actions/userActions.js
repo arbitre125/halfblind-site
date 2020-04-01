@@ -16,13 +16,18 @@ import setAuthorizationToken from "../../../utils/setAuthorizationToken";
 import decode from "jwt-decode";
 import axios from "axios";
 
+const baseDomain =
+  process.env.NODE_ENV === "production"
+    ? "https://halfblind-server.herokuapp.com"
+    : "";
+
 export const registerAction = newUser => {
   return async dispatch => {
     dispatch({
       type: USER_REGISTERING
     });
     return await axios
-      .post("https://halfblind-server.herokuapp.com/users/register", {
+      .post(`${baseDomain}/users/register`, {
         username: newUser.username,
         email: newUser.email,
         password: newUser.password,
@@ -56,8 +61,9 @@ export const loginAction = (history, user) => {
     dispatch({
       type: USER_AUTHENTICATING
     });
+    console.log(`${baseDomain}/users/login`);
     return await axios
-      .post("https://halfblind-server.herokuapp.com/users/login", user)
+      .post(`${baseDomain}/users/login`, user)
       .then(res => {
         if (res.status === 200) {
           if (res.data.token) {
@@ -88,7 +94,7 @@ export const loginAction = (history, user) => {
 export const logoutAction = (username, currentGameId, history) => {
   return async dispatch => {
     return await axios
-      .post(`https://halfblind-server.herokuapp.com/games/delete`, {
+      .post(`${baseDomain}/games/delete`, {
         username,
         currentGameId
       })
@@ -106,7 +112,7 @@ export const newOfflineGameAction = (username, history) => {
     dispatch({ type: NEW_OFFLINE_GAME_FETCHING });
     console.log(username);
     return await axios
-      .post(`https://halfblind-server.herokuapp.com/games/offline/newgame`, {
+      .post(`${baseDomain}/games/offline/newgame`, {
         username
       })
       .then(res => {
@@ -123,7 +129,7 @@ export const newOnlineGameAction = history => {
     dispatch({ type: NEW_ONLINE_GAME_FETCHING });
 
     return await axios
-      .post(`https://halfblind-server.herokuapp.com/games/newgame`)
+      .post(`${baseDomain}/games/newgame`)
       .then(res => {
         localStorage.setItem("currentGameId", res.data);
         dispatch({ type: NEW_ONLINE_GAME_FETCHED, payload: res.data });

@@ -39,6 +39,7 @@ const EntryPage = ({
         <Image
           src={whole_logo}
           width="500"
+          className="no-select"
           style={{
             position: "absolute",
             right: -200,
@@ -73,7 +74,7 @@ const EntryPage = ({
         }}
       >
         <Row>
-          <Col style={{ paddingTop: 60, minWidth: 440 }}>
+          <Col style={{ paddingTop: 60, minWidth: 400 }}>
             <div style={{ maxWidth: 800 }}>
               <p className="white-txt txt-lg" style={{ paddingBottom: 40 }}>
                 Rules:
