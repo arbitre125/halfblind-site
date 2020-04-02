@@ -46,7 +46,11 @@ const LoginPage = ({
     >
       <div style={{ width: 350 }}>
         <p className="white-txt txt-lg">Login</p>
-        <Form className="white-txt txt-sm-md">
+        <Form
+          className="white-txt txt-sm-md"
+          style={{ width: 360 }}
+          onSubmit={onSubmit}
+        >
           <Form.Group controlId="email">
             <Form.Label style={{ float: "left" }}>Email</Form.Label>
             <Form.Control
@@ -84,7 +88,7 @@ const LoginPage = ({
           <Button
             className="dark-btn"
             variant="outline-light"
-            onClick={onSubmit}
+            type="submit"
             style={{ marginTop: 10 }}
           >
             Login

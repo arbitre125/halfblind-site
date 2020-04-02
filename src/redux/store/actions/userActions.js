@@ -13,13 +13,9 @@ import {
   NEW_ONLINE_GAME_FETCHED
 } from "../types";
 import setAuthorizationToken from "../../../utils/setAuthorizationToken";
+import { baseDomain } from "../../../constants";
 import decode from "jwt-decode";
 import axios from "axios";
-
-const baseDomain =
-  process.env.NODE_ENV === "production"
-    ? "https://halfblind-server.herokuapp.com"
-    : "";
 
 export const registerAction = newUser => {
   return async dispatch => {
@@ -110,15 +106,14 @@ export const logoutAction = (username, currentGameId, history) => {
 export const newOfflineGameAction = (username, history) => {
   return async dispatch => {
     dispatch({ type: NEW_OFFLINE_GAME_FETCHING });
-    console.log(username);
+
     return await axios
       .post(`${baseDomain}/games/offline/newgame`, {
         username
       })
       .then(res => {
-        localStorage.setItem("offlineGame", true);
         dispatch({ type: NEW_OFFLINE_GAME_FETCHED });
-        history.push(`/game/offline/${username}`);
+        history.push(`/offline/game/${username}`);
       })
       .catch(err => console.log(err));
   };
@@ -131,7 +126,6 @@ export const newOnlineGameAction = history => {
     return await axios
       .post(`${baseDomain}/games/newgame`)
       .then(res => {
-        localStorage.setItem("currentGameId", res.data);
         dispatch({ type: NEW_ONLINE_GAME_FETCHED, payload: res.data });
         history.push(`/game/${res.data}`);
       })

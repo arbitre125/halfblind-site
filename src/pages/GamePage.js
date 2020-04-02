@@ -14,6 +14,7 @@ import {
   setAutoFlipPerspective
 } from "../redux/store/actions/gameActions";
 import { Row, Col, Button } from "react-bootstrap";
+import Switch from "react-switch";
 import GameInfo from "../components/game/GameInfo";
 import ChessBoard from "../components/game/board/ChessBoard";
 import MoveHistory from "../components/game/MoveHistory";
@@ -82,19 +83,22 @@ const GamePage = ({
               <div
                 style={{
                   position: "absolute",
-                  top: size / 2 - 105,
+                  top: size / 2 - 115,
                   right: 5
                 }}
               >
                 <label className="white-txt txt-sm">
-                  <input
-                    type="checkbox"
+                  <span style={{ position: "relative", top: -8 }}>
+                    Auto-flip board? &nbsp;
+                  </span>
+                  <Switch
                     checked={autoFlipPerspective}
                     onChange={() =>
                       setAutoFlipPerspective(!autoFlipPerspective)
                     }
+                    onColor="#84BC84"
+                    activeBoxShadow="none"
                   />
-                  &thinsp;Flip board
                 </label>
               </div>
               <div style={{ position: "relative", top: size / 2 - 160 / 2 }}>
@@ -189,6 +193,19 @@ const GamePage = ({
             >
               New game
             </Button>
+          </div>
+          <div className="center">
+            <label className="white-txt txt-sm">
+              <span style={{ position: "relative", top: -8 }}>
+                Flip board? &nbsp;
+              </span>
+              <Switch
+                checked={autoFlipPerspective}
+                onChange={() => setAutoFlipPerspective(!autoFlipPerspective)}
+                onColor="#84BC84"
+                activeBoxShadow="none"
+              />
+            </label>
           </div>
         </>
       )}

@@ -54,7 +54,11 @@ const RegisterPage = ({
     >
       <div style={{ maxWidth: 400 }}>
         <p className="white-txt txt-lg">Register</p>
-        <Form className="white-txt txt-sm-md" style={{ width: 360 }}>
+        <Form
+          className="white-txt txt-sm-md"
+          style={{ width: 360 }}
+          onSubmit={onSubmit}
+        >
           <Form.Group controlId="email">
             <Form.Label style={{ float: "left" }}>Email</Form.Label>
             <Form.Control
@@ -110,7 +114,7 @@ const RegisterPage = ({
           <Button
             className="dark-btn"
             variant="outline-light"
-            onClick={onSubmit}
+            type="submit"
             style={{ marginTop: 10 }}
           >
             Register

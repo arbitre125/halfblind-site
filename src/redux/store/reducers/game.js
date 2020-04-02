@@ -24,7 +24,7 @@ const initialGameState = {
   fetching: false,
   fetched: false,
   halfBlindFetched: false,
-  autoFlipPerspective: true,
+  autoFlipPerspective: false,
   perspectiveWhite: true,
   halfBlind: null,
   board: Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => null)),

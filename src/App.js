@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import {
-  USER_AUTHENTICATED,
-  NEW_ONLINE_GAME_FETCHED,
-  NEW_OFFLINE_GAME_FETCHED
-} from "./redux/store/types";
+import { USER_AUTHENTICATED } from "./redux/store/types";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import UserRoute from "./authentication/routing/UserRoute";
 import NonUserRoute from "./authentication/routing/NonUserRoute";
@@ -21,24 +17,15 @@ import Footer from "./components/fixed/Footer";
 import setAuthorizationToken from "./utils/setAuthorizationToken";
 import decode from "jwt-decode";
 
-// Persist authentication
+// Initialize
 if (localStorage.usertoken) {
+  // Persist authentication
   setAuthorizationToken(localStorage.usertoken);
+  const decodedUsername = decode(localStorage.usertoken);
   store.dispatch({
     type: USER_AUTHENTICATED,
-    payload: decode(localStorage.usertoken)
+    payload: decodedUsername
   });
-  if (localStorage.currentGameId) {
-    store.dispatch({
-      type: NEW_ONLINE_GAME_FETCHED,
-      payload: localStorage.currentGameId
-    });
-  }
-  if (localStorage.offlineGame) {
-    store.dispatch({
-      type: NEW_OFFLINE_GAME_FETCHED
-    });
-  }
 }
 
 const App = () => {
@@ -66,7 +53,7 @@ const App = () => {
               <Route exact path="/">
                 <EntryPage width={width} />
               </Route>
-              <UserRoute path="/game/offline">
+              <UserRoute path="/offline/game">
                 <GamePage width={width} />
               </UserRoute>
               <Route path="/about">

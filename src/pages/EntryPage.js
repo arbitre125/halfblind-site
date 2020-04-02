@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { newOfflineGameAction } from "../redux/store/actions/userActions";
 import Gallery from "../components/Gallery";
 import { Row, Col, Button, Image } from "react-bootstrap";
+import { baseDomain } from "../constants";
+import axios from "axios";
 import whole_logo from "../images/logos/whole-w.png";
 import half_eye from "../images/logos/half-eye-r-w.png";
 
@@ -19,15 +21,19 @@ const EntryPage = ({
 
   const enterOfflineGame = async () => {
     if (userLogged) {
-      if (currentGameId) {
-        history.push(`/game/${currentGameId}`);
-      } else {
-        if (offlineGame) {
-          history.push(`/game/offline/${userDetails.username}`);
-        } else {
-          await newOfflineGame(userDetails.username, history);
-        }
-      }
+      // Test route
+      axios
+        .get(`${baseDomain}/games/${userDetails.username}`)
+        .then(res => {
+          if (res.data !== "There is no game with that id.") {
+            history.push(`/offline/game/${userDetails.username}`);
+          } else {
+            newOfflineGame(userDetails.username, history);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     } else {
       history.push(`/login`);
     }

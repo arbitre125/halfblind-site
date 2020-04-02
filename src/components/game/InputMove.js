@@ -15,19 +15,21 @@ function InputMove(props) {
   };
 
   return (
-    <InputGroup style={{ width: 150 }}>
-      <FormControl
-        className="no-outline"
-        style={{ fontSize: 16 }}
-        onChange={handleChange}
-        value={value}
-      />
-      <InputGroup.Append>
-        <Button variant="outline-light" onClick={handleSubmit}>
-          Move
-        </Button>
-      </InputGroup.Append>
-    </InputGroup>
+    <form onSubmit={handleSubmit}>
+      <InputGroup style={{ width: 150 }}>
+        <FormControl
+          className="no-outline"
+          style={{ fontSize: 16 }}
+          onChange={handleChange}
+          value={value}
+        />
+        <InputGroup.Append>
+          <Button variant="outline-light" type="submit">
+            Move
+          </Button>
+        </InputGroup.Append>
+      </InputGroup>
+    </form>
   );
 }
 

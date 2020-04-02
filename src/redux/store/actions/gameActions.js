@@ -19,11 +19,7 @@ import {
   MAKE_MOVE,
   RESET_GAME
 } from "../types";
-
-const baseDomain =
-  process.env.NODE_ENV === "production"
-    ? "https://halfblind-server.herokuapp.com"
-    : "";
+import { baseDomain } from "../../../constants";
 
 export const fetchHalfBlindAction = id => {
   return dispatch => {
